@@ -12,3 +12,32 @@ const isProduction = environment === 'production';
 const app = express(); // initializes the Express application
 
 app.use(morgan('dev')); // Connects the morgan middleware for logging information about requests and responses
+
+// Add the cookie-parser middleware for parsing cookies and the express.json middleware for parsing
+// JSON bodies of requests with Content-Type of "application/json".
+app.use(cookieParser());
+app.use(express.json());
+
+// Security Middleware
+if (!isProduction) {
+    // enable cors only in development
+    app.use(cors());
+}
+
+  // helmet helps set a variety of headers to better secure your app
+app.use(
+    helmet.crossOriginResourcePolicy({
+        policy: "cross-origin"
+    })
+);
+
+  // Set the _csrf token and create req.csrfToken method
+app.use(
+    csurf({
+        cookie: {
+            secure: isProduction,
+            sameSite: isProduction && "Lax",
+            httpOnly: true
+        }
+    })
+);
