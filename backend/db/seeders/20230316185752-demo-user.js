@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA;
 }
 
 module.exports = {
@@ -11,25 +11,25 @@ module.exports = {
     options.tableName = 'Users';
     return queryInterface.bulkInsert(options, [
       {
-        email: 'demo@user.io',
-        firstName: 'demodemo',
-        lastName: 'omedomed',
-        username: 'Demo-lition',
+        email: 'john@user.io',
+        firstName: 'John',
+        lastName: 'Smithserson',
+        username: 'Jsmithser',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
-        email: 'user1@user.io',
-        firstName: 'demodemotwo',
-        lastName: 'omedomedtwo',
-        username: 'FakeUser1',
-        hashedPassword: bcrypt.hashSync('password2')
+        email: 'Carrie@user.io',
+        firstName: 'Carrie',
+        lastName: 'Robbins',
+        username: 'Crobbins',
+        hashedPassword: bcrypt.hashSync('password')
       },
       {
-        email: 'user2@user.io',
-        firstName: 'demodemothree',
-        lastName: 'omedomedthree',
-        username: 'FakeUser2',
-        hashedPassword: bcrypt.hashSync('password3')
+        email: 'Dirk@user.io',
+        firstName: 'Dirk',
+        lastName: 'Chester',
+        username: 'Dchester',
+        hashedPassword: bcrypt.hashSync('password')
       }
     ], {});
   },
