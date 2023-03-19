@@ -16,6 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Booking.init({
+    id: { // because it is a through/join table
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     spotId: {
       allowNull: false,
       type: DataTypes.INTEGER,
