@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
             "createdAt",
             "updatedAt",
             [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
-            [sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage']
+            [sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'] // 'MAX' here to get 1 or truthy values
         ]
     });
 
