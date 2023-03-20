@@ -1,5 +1,4 @@
 'use strict';
-const bcrypt = require("bcryptjs");
 
 const { Spot, User, Booking } = require('../models');
 
@@ -12,22 +11,18 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
 
     const spots = await Spot.findAll();
-    // console.log(spots);
     const spotIdMap = {};
+
     for (let spot of spots) {
       spotIdMap[spot.name] = spot.id;
     }
-    // console.log(spotIdMap);
-    // { 'Rocks Landing': 1, 'Pearl overlook': 2, 'Black Bear Cove': 3 }
 
     const users = await User.findAll();
-    // console.log(users);
     const userIdMap = {};
+
     for (let user of users) {
       userIdMap[user.firstName] = user.id;
     }
-    // console.log(userIdMap);
-    // { John: 1, Carrie: 2, Dirk: 3 }
 
     options.tableName = 'Bookings';
     return queryInterface.bulkInsert(options, [
