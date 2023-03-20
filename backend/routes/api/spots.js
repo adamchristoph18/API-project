@@ -19,19 +19,11 @@ router.get('/', async (req, res) => {
         }],
 
         attributes: [ // attributes to include in my query/response
-            "id",
-            "ownerId",
-            "address",
-            "city",
-            "state",
-            "country",
-            "lat",
-            "lng",
-            "name",
-            "description",
-            "price",
-            "createdAt",
-            "updatedAt",
+            "id", "ownerId", "address",
+            "city", "state", "country",
+            "lat", "lng", "name",
+            "description", "price", "createdAt", "updatedAt",
+
             [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
             [sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'] // 'MAX' here to get 1 or truthy values
         ]
