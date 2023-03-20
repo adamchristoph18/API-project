@@ -9,13 +9,11 @@ router.get('/', async (req, res) => {
     const spotsArray = await Spot.findAll({
         include: [{
             model: Review,
-            as: 'Reviews',
-            attributes: []
+            as: 'Reviews'
         },
         {
             model: SpotImage,
-            as: 'SpotImages',
-            attributes: []
+            as: 'SpotImages'
         }],
 
         attributes: [
