@@ -1,5 +1,4 @@
 'use strict';
-const bcrypt = require("bcryptjs");
 
 const { Review, ReviewImage } = require('../models');
 
@@ -12,13 +11,11 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
 
     const reviews = await Review.findAll();
-
     const reviewIdMap = {};
+
     for (let review of reviews) {
       reviewIdMap[review.review] = review.id;
     }
-
-    // console.log(reviewIdMap);
 
     options.tableName = 'ReviewImages';
     return queryInterface.bulkInsert(options, [
