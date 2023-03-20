@@ -10,12 +10,12 @@ router.get('/', async (req, res) => {
         include: [{
             model: Review,
             as: 'Reviews',
-            attributes: []
+            attributes: [] // need this because I don't want to include any attributes from the review model
         },
         {
             model: SpotImage,
             as: 'SpotImages',
-            attributes: []
+            attributes: [] // need this because I don't want to include any attributes from the SpotImage model
         }],
 
         attributes: [ // attributes to include in my query/response
