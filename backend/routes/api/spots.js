@@ -26,7 +26,8 @@ router.get('/', async (req, res) => {
 
             [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
             [sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'] // 'MAX' here to get 1 or truthy values
-        ]
+        ],
+        group: ['Spot.id'] // tells sql how I want the data split up (per spot)
     });
 
     spotsObj['Spots'] = spotsArray; // set a key of 'Spots' to the array of spots
