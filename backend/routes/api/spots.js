@@ -1,31 +1,43 @@
 const express = require('express');
-const { Spot, Review } = require('../../db/models');
+const { Spot, Review, SpotImage, sequelize } = require('../../db/models');
 
 const router = express.Router();
 
 
 router.get('/', async (req, res) => {
     const spotsObj = {}; // initialize a new object
-    const spotsArray = await Spot.findAll(); // to get an array of spot objects
+    const spotsArray = await Spot.findAll({
+        include: [{
+            model: Review,
+            as: 'Reviews',
+            attributes: []
+        },
+        {
+            model: SpotImage,
+            as: 'SpotImages',
+            attributes: []
+        }],
 
-    for (let spot of spotsArray) {
-
-        const reviews = await Review.findAll({
-            where: {
-                spotId: spot.id // find all of the reviews that correspond to the spot
-            }
-        });
-
-        let totalStars = 0;
-        for (let review of reviews) {
-            totalStars += review.stars;
-        }
-        spot.avgRating = totalStars / reviews.length;
-        // total of all of the review.stars / divided by reviews.length
-    }
+        attributes: [
+            "id",
+            "ownerId",
+            "address",
+            "city",
+            "state",
+            "country",
+            "lat",
+            "lng",
+            "name",
+            "description",
+            "price",
+            "createdAt",
+            "updatedAt",
+            [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
+            [sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage']
+        ]
+    });
 
     spotsObj['Spots'] = spotsArray; // set a key of 'Spots' to the array of spots
-
     return res.status(200).json(spotsObj);
 });
 
