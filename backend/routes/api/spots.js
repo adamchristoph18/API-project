@@ -156,4 +156,93 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
     return res.status(201).json(newSpot);
 })
 
+
+// Add an Image to a Spot based on the Spot's id
+router.post('/:spotId/images', requireAuth, async (req, res) => {
+    const { spotId } = req.params;
+    const { url, preview } = req.body;
+    // Require proper authorization: Spot must belong to the current user ??
+    const currentSpot = await Spot.findOne({
+        where: {
+            id: spotId,
+            ownerId: req.user.id
+        }
+    });
+
+    if (!currentSpot) {
+        return res.status(404).json({
+            "message": "Spot couldn't be found"
+        })
+    }
+
+    const newSpotImage = await SpotImage.create({
+        spotId: currentSpot.id,
+        url,
+        preview
+    });
+
+    return res.status(200).json(newSpotImage);
+})
+
+
+// Edit a Spot
+router.put('/:spotId', requireAuth, validateCreateSpot, async (req, res) => {
+    const { spotId } = req.params;
+
+    const currentSpot = await Spot.findOne({
+        where: {
+            id: spotId,
+            ownerId: req.user.id
+        }
+    });
+
+    if (!currentSpot) {
+        return res.status(404).json({
+            "message": "Spot couldn't be found"
+        })
+    }
+
+    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+    if (address) currentSpot.address = address;
+    if (city) currentSpot.city = city;
+    if (state) currentSpot.state = state;
+    if (country) currentSpot.country = country;
+    if (lat) currentSpot.lat = lat;
+    if (lng) currentSpot.lng = lng;
+    if (name) currentSpot.name = name;
+    if (description) currentSpot.description = description;
+    if (price) currentSpot.price = price;
+
+    await currentSpot.save();
+
+    return res.status(400).json(currentSpot);
+})
+
+
+// Delete a Spot
+router.delete('/:spotId', requireAuth, async (req, res) => {
+    const { spotId } = req.params;
+
+    const currentSpot = await Spot.findOne({
+        where: {
+            id: spotId,
+            ownerId: req.user.id
+        }
+    });
+
+    if (!currentSpot) {
+        return res.status(404).json({
+            "message": "Spot couldn't be found"
+        })
+    }
+
+    await currentSpot.destroy();
+
+    return res.status(200).json({
+        "message": "Successfully deleted"
+    })
+})
+
+
 module.exports = router;
