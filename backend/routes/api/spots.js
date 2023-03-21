@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
             [sequelize.col('SpotImages.url'), 'previewImage'] // .url is a string
             ]
         },
-        group: ['Spot.id'] // tells sql how I want the data split up (per spot)
+        group: ['Spot.id', 'SpotImages.url'] // tells sql how I want the data split up (per spot)
     });
 
     spotsObj['Spots'] = spotsArray; // set a key of 'Spots' to the array of spots
