@@ -34,12 +34,14 @@ router.get('/', async (req, res) => {
 
 // Get all Spots owned by the Current User
 router.get('/current', async (req, res) => {
+    const currentUserSpotsObj = {}; // initialize a new object
     const currentUserId = req.user.id;
     const currentUser = await User.findByPk(currentUserId);
 
-    const spots = await currentUser.getSpots();
+    const spotsArray = await currentUser.getSpots();
 
-    return res.status(200).json(spots);
+    currentUserSpotsObj['Spots'] = spotsArray; // set a key of 'Spots' to the array of spots owned by the current user
+    return res.status(200).json(currentUserSpotsObj);
 })
 
 
