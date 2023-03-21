@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Spot.belongsTo(models.User, { foreignKey: 'ownerId' });
+      Spot.belongsTo(models.User, { foreignKey: 'ownerId', as: 'Owner' });
 
       Spot.hasMany(models.Booking, { foreignKey: 'spotId', onDelete: 'CASCADE',  hooks: true });
       Spot.hasMany(models.Review, { foreignKey: 'spotId', onDelete: 'CASCADE',  hooks: true });
@@ -42,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DECIMAL,
       validate: {
+        isNumeric: true,
         isDecimal: true
       }
     },
@@ -49,12 +50,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DECIMAL,
       validate: {
+        isNumeric: true,
         isDecimal: true
       }
     },
     name: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING(49)
     },
     description: {
       allowNull: false,

@@ -54,6 +54,18 @@ module.exports = {
         name: 'Black Bear Cove',
         description:'A bear lovers dream in the Alaskan wilderness',
         price: 310
+      },
+      {
+        ownerId: userIdMap['Dirk'],
+        address: '593 Copperstone Dr',
+        city: 'Tinkletown',
+        state: 'Rhode Island',
+        country: 'United States of America',
+        lat: 39.7243243,
+        lng: 66.8936274,
+        name: 'Copper Sopper Beach House',
+        description:'Large beach house on the sand that made Tinkletown famous',
+        price: 420
       }
     ], {});
   },
