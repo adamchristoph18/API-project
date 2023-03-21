@@ -8,12 +8,12 @@ router.get('/', async (req, res) => {
     const spotsObj = {}; // initialize a new object
     const spotsArray = await Spot.findAll({
         include: [{
-            model: Review,
+            model: Review, // this is imported above
             as: 'Reviews',
             attributes: [] // need this because I don't want to include any attributes from the review model
         },
         {
-            model: SpotImage,
+            model: SpotImage, // this is imported above
             as: 'SpotImages',
             attributes: [] // need this because I don't want to include any attributes from the SpotImage model
         }],
