@@ -3,7 +3,7 @@ const { Spot, Review, SpotImage, sequelize } = require('../../db/models');
 
 const router = express.Router();
 
-
+// GET ALL SPOTS
 router.get('/', async (req, res) => {
     const spotsObj = {}; // initialize a new object
     const spotsArray = await Spot.findAll({
