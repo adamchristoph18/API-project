@@ -1,9 +1,9 @@
 const express = require('express');
-const { Spot, Review, SpotImage, sequelize } = require('../../db/models');
+const { Spot, Review, SpotImage, sequelize, User } = require('../../db/models');
 
 const router = express.Router();
 
-// GET ALL SPOTS
+// Get all spots
 router.get('/', async (req, res) => {
     const spotsObj = {}; // initialize a new object
     const spotsArray = await Spot.findAll({
@@ -30,6 +30,17 @@ router.get('/', async (req, res) => {
     spotsObj['Spots'] = spotsArray; // set a key of 'Spots' to the array of spots
     return res.status(200).json(spotsObj);
 });
+
+
+// Get all Spots owned by the Current User
+router.get('/current', async (req, res) => {
+    const currentUserId = req.user.id;
+    const currentUser = await User.findByPk(currentUserId);
+
+    const spots = await currentUser.getSpots();
+
+    return res.status(200).json(spots);
+})
 
 
 module.exports = router;
