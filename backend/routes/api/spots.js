@@ -18,15 +18,12 @@ router.get('/', async (req, res) => {
             attributes: [] // need this because I don't want to include any attributes from the SpotImage model
         }],
 
-        attributes: [ // attributes to include in my query/response
-            "id", "ownerId", "address",
-            "city", "state", "country",
-            "lat", "lng", "name",
-            "description", "price", "createdAt", "updatedAt",
-
+        attributes: { // attributes to include in my query/response
+            include: [ // include here to add new columns on top of everything that spot has
             [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
-            [sequelize.fn('MAX', sequelize.col('SpotImages.url')), 'previewImage'] // 'MAX' here to get 1 or truthy values
-        ],
+            [sequelize.col('SpotImages.url'), 'previewImage'] // .url is a string
+            ]
+        },
         group: ['Spot.id'] // tells sql how I want the data split up (per spot)
     });
 
