@@ -67,14 +67,38 @@ router.get('/current', async (req, res) => {
 // Get details of a Spot from an id
 router.get('/:spotId', async (req, res) => {
     const { spotId } = req.params;
-    const spot = await Spot.findByPk(spotId);
+    const spot = await Spot.findByPk(spotId, {
+        include: [{
+            model: Review, // this is imported above
+            as: 'Reviews',
+            attributes: [] // need this because I don't want to include any attributes from the review model
+        },
+        {
+            model: SpotImage, // this is imported above
+            as: 'SpotImages',
+            attributes: ['id', 'url', 'preview']
+        },
+        {
+            model: User, // this is imported above
+            as: 'Owner',
+            attributes: ['id', 'firstName', 'lastName']
+        }],
 
-    if (!spot) { // error handling for the instance that a spot with the passed in id does not exist
+        attributes: { // attributes to include in my query/response
+            include: [ // include here to add new columns on top of everything that spot has
+            [sequelize.fn('COUNT'), 'numReviews'],
+            [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgStarRating']
+            ]
+        },
+    });
+
+    if (!spot.id) { // error handling for the instance that a spot with the passed in id does not exist
         return res.status(404).json({
             "message": "Spot couldn't be found"
         })
     }
 
+    return res.status(200).json(spot);
 })
 
 
