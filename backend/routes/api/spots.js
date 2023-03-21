@@ -64,4 +64,19 @@ router.get('/current', async (req, res) => {
 })
 
 
+// Get details of a Spot from an id
+router.get('/:spotId', async (req, res) => {
+    const { spotId } = req.params;
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) { // error handling for the instance that a spot with the passed in id does not exist
+        return res.status(404).json({
+            "message": "Spot couldn't be found"
+        })
+    }
+
+})
+
+
+
 module.exports = router;
