@@ -42,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DECIMAL,
       validate: {
+        isNumeric: true,
         isDecimal: true
       }
     },
@@ -49,12 +50,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DECIMAL,
       validate: {
+        isNumeric: true,
         isDecimal: true
       }
     },
     name: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING(49)
     },
     description: {
       allowNull: false,
