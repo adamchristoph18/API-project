@@ -43,6 +43,12 @@ module.exports = {
         userId: userIdMap.Carrie,
         review: 'Too many Bears! Hated the decor. Do not recommend.',
         stars: 1
+      },
+      {
+        spotId: spotIdMap['Black Bear Cove'],
+        userId: userIdMap.Carrie,
+        review: 'Came back a second time, had more fun.',
+        stars: 4
       }
     ], {});
   },
