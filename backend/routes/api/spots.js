@@ -8,101 +8,128 @@ const router = express.Router();
 
 // Get all spots
 router.get('/', async (req, res) => {
-    const spotsObj = {}; // initialize a new object
-    const spotsArray = await Spot.findAll({
-        include: [{
-            model: Review, // this is imported above
-            as: 'Reviews',
-            attributes: [] // need this because I don't want to include any attributes from the review model
-        },
-        {
-            model: SpotImage, // this is imported above
-            as: 'SpotImages',
-            attributes: [] // need this because I don't want to include any attributes from the SpotImage model
-        }],
 
-        attributes: { // attributes to include in my query/response
-            include: [ // include here to add new columns on top of everything that spot has
-            [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
-            [sequelize.col('SpotImages.url'), 'previewImage'] // .url is a string
-            ]
-        },
-        group: ['Spot.id', 'SpotImages.url'] // tells sql how I want the data split up (per spot)
-    });
+    const spots = await Spot.findAll({ raw: true });
 
-    spotsObj['Spots'] = spotsArray; // set a key of 'Spots' to the array of spots
-    return res.status(200).json(spotsObj);
+    for (let spot of spots) {
+
+        const spotReviews = await Review.findOne({
+            attributes: [[sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]], // need to add .toFixed() here?
+            where: {
+                spotId: spot.id
+            },
+            raw: true
+        });
+
+        const spotImg = await SpotImage.findOne({
+            where: {
+                preview: true,
+                spotId: spot.id
+            }
+        })
+
+        spot.avgRating = spotReviews.avgRating;
+        spot.previewImage = spotImg.url;
+    }
+
+    return res.status(200).json({ Spots: spots });
 });
 
 
 // Get all Spots owned by the Current User
 router.get('/current', requireAuth, async (req, res) => {
-    const currentUserSpotsObj = {}; // initialize a new object
-    const currentUserId = req.user.id;
-    const currentUser = await User.findByPk(currentUserId);
 
-    const spotsArray = await currentUser.getSpots({
-        include: [{
-            model: Review, // this is imported above
-            as: 'Reviews',
-            attributes: [] // need this because I don't want to include any attributes from the review model
-        },
-        {
-            model: SpotImage, // this is imported above
-            as: 'SpotImages',
-            attributes: [] // need this because I don't want to include any attributes from the SpotImage model
-        }],
+    const spots = await Spot.findAll({ where: { ownerId: req.user.id } });
 
-        attributes: { // attributes to include in my query/response
-            include: [ // include here to add new columns on top of everything that spot has
-            [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
-            [sequelize.col('SpotImages.url'), 'previewImage'] // .url is a string
-            ]
-        },
-        group: ['Spot.id', 'SpotImages.url'] // tells sql how I want the data split up (per spot)
-    });
+    const spotsArray = [];
+    spots.forEach(spot => {
+        spot = spot.toJSON();
 
-    currentUserSpotsObj['Spots'] = spotsArray; // set a key of 'Spots' to the array of spots owned by the current user
-    return res.status(200).json(currentUserSpotsObj);
+        spotsArray.push(spot)
+    })
+
+    for (let spot of spotsArray) {
+
+        const spotReviews = await Review.findOne({
+            attributes: [[sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]], // need to add .toFixed() here?
+            where: {
+                spotId: spot.id
+            },
+            raw: true
+        });
+
+        const spotImg = await SpotImage.findOne({
+            where: {
+                preview: true,
+                spotId: spot.id
+            }
+        })
+
+        if (!spotReviews) {
+            spot.avgRating = null;
+        } else {
+            spot.avgRating = spotReviews.avgRating;
+        }
+
+        if (!spotImg) {
+            spot.previewImage = null;
+        } else {
+            spot.previewImage = spotImg.url;
+        }
+
+    }
+
+    return res.status(200).json({ Spots: spotsArray });
 })
 
 
 // Get details of a Spot from an id
-router.get('/:spotId', async (req, res) => {
-    const { spotId } = req.params;
-    const spot = await Spot.findByPk(spotId, {
-        include: [{
-            model: Review, // this is imported above
-            as: 'Reviews',
-            attributes: [] // need this because I don't want to include any attributes from the review model
-        },
-        {
-            model: SpotImage, // this is imported above
-            as: 'SpotImages',
-            attributes: ['id', 'url', 'preview']
-        },
-        {
-            model: User, // this is imported above
-            as: 'Owner',
-            attributes: ['id', 'firstName', 'lastName']
-        }],
+router.get('/:spotId', async (req, res, next) => {
 
-        attributes: { // attributes to include in my query/response
-            include: [ // include here to add new columns on top of everything that spot has
-            [sequelize.fn('COUNT'), 'numReviews'],
-            [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgStarRating']
-            ]
-        },
+    const { spotId } = req.params;
+    let spot = await Spot.findByPk(spotId, {
+        include: [
+            {
+                model: SpotImage,
+                attributes: ['id', 'url', 'preview']
+            },
+            {
+                model: User,
+                as: 'Owner',
+                attributes: ['id', 'firstName', 'lastName']
+            }
+        ]
     });
 
-    if (!spot.id) { // error handling for the instance that a spot with the passed in id does not exist
-        return res.status(404).json({
-            "message": "Spot couldn't be found"
-        })
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        return next(err);
     }
+
+    const spotReviews = await Review.findOne({
+        attributes: [[sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]], // need to add .toFixed() here?
+        where: {
+            spotId: spot.id
+        },
+        raw: true
+    });
+
+    const reviews = await spot.getReviews();
+    const totalReviews = reviews.length;
+    spot = spot.toJSON();
+
+    if (!spotReviews) {
+        spot['avgStarRating'] = null;
+    } else {
+        spot['avgStarRating'] = spotReviews.avgRating;
+    }
+
+    spot['numReviews'] = totalReviews; // this property is showing up at the very bottom (order of properties does not matter)
 
     return res.status(200).json(spot);
 })
+
 
 const validateCreateSpot = [
     check('address')
@@ -158,30 +185,37 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
 
 
 // Add an Image to a Spot based on the Spot's id
-router.post('/:spotId/images', requireAuth, async (req, res) => {
+router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const { spotId } = req.params;
-    const { url, preview } = req.body;
+    const { url: imageUrl, preview: imagePreview } = req.body;
     // Require proper authorization: Spot must belong to the current user ??
-    const currentSpot = await Spot.findOne({
-        where: {
-            id: spotId,
-            ownerId: req.user.id
-        }
-    });
+    const spot = await Spot.findByPk(spotId);
 
-    if (!currentSpot) {
-        return res.status(404).json({
-            "message": "Spot couldn't be found"
-        })
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        return next(err);
     }
 
-    const newSpotImage = await SpotImage.create({
-        spotId: currentSpot.id,
+    if (spot.ownerId !== req.user.id) {
+        const err = new Error("Forbidden");
+        err.status = 404;
+        return next(err);
+    }
+
+    const newSpotImage = await spot.createSpotImage({
+        spotId: req.user.id,
+        url: imageUrl,
+        preview: imagePreview
+    });
+
+    const { id, url, preview } = newSpotImage.toJSON();
+
+    return res.status(200).json({
+        id,
         url,
         preview
     });
-
-    return res.status(200).json(newSpotImage);
 })
 
 
