@@ -111,6 +111,26 @@ router.post('/:reviewId/images', requireAuth, async(req, res, next) => {
 })
 
 
+// Edit a Review
+router.put('/:reviewId', requireAuth, async(req, res, next) => {
+    const { reviewId } = req.params;
+
+    const review = await Review.findByPk(reviewId);
+
+    if (!review) {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        return next(err);
+    }
+
+    if (review.userId !== req.user.id) {
+        const err = new Error("Forbidden");
+        err.status = 404;
+        return next(err);
+    }
+
+})
+
 
 
 
