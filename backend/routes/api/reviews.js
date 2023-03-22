@@ -7,7 +7,10 @@ const { Spot, Review, SpotImage, sequelize, User, Booking } = require('../../db/
 const router = express.Router();
 
 
+// Get all Reviews of the Current User
+router.get('/current', requireAuth, async (req, res) => {
 
+})
 
 
 
