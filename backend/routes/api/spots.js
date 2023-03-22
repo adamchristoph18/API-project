@@ -2,7 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 const { handleValidationErrorsSpots } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage, sequelize, User } = require('../../db/models');
+const { Spot, Review, SpotImage, ReviewImage, sequelize, User } = require('../../db/models');
 
 const router = express.Router();
 
@@ -291,4 +291,51 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
 })
 
 
+// Get all Reviews by a Spot's id
+router.get('/:spotId/reviews', async (req, res, next) => {
+    const { spotId } = req.params;
+
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        return next(err);
+    }
+
+    const reviews = await Review.findAll({ where: { spotId } });
+
+    const reviewsArray = [];
+    reviews.forEach(review => {
+        review = review.toJSON();
+
+        reviewsArray.push(review);
+    })
+
+    for (let review of reviewsArray) {
+
+        const user = await User.findByPk(review.userId, {
+            attributes: ['id', 'firstName', 'lastName']
+        });
+
+        review['User'] = user;
+
+        const reviewImgs = await ReviewImage.findAll({
+            where: {
+                reviewId: review.id
+            },
+            attributes: ['id', 'url']
+        });
+
+        review['ReviewImages'] = reviewImgs;
+    }
+
+    return res.status(200).json({ Reviews: reviewsArray });
+})
+
+
+
+// console.log('--------------------------------------------')
+// console.log(reviews);
+// console.log('--------------------------------------------')
 module.exports = router;
