@@ -111,6 +111,17 @@ router.post('/:reviewId/images', requireAuth, async(req, res, next) => {
 })
 
 
+const validateEditingReview = [
+    check('review')
+        .exists({ checkFalsy: true })
+        .withMessage('Review text is required'),
+    check('stars')
+        .exists({ checkFalsy: true })
+        .withMessage('Stars must be an integer from 1 to 5'),
+        handleValidationErrors
+];
+
+
 // Edit a Review
 router.put('/:reviewId', requireAuth, validateEditingReview, async(req, res, next) => {
     const { reviewId } = req.params;
@@ -131,6 +142,38 @@ router.put('/:reviewId', requireAuth, validateEditingReview, async(req, res, nex
 
     const { review, stars } = req.body;
 
+    if (review) currReview.review = review;
+    if (stars) currReview.stars = stars;
+
+    await currReview.save();
+
+    return res.status(200).json(currReview);
+})
+
+
+// Delete a Review
+router.delete('/:reviewId', requireAuth, async(req, res, next) => {
+    const { reviewId } = req.params;
+
+    const currReview = await Review.findByPk(reviewId);
+
+    if (!currReview) {
+        const err = new Error("Review couldn't be found");
+        err.status = 404;
+        return next(err);
+    }
+
+    if (currReview.userId !== req.user.id) {
+        const err = new Error("Forbidden");
+        err.status = 404;
+        return next(err);
+    }
+
+    await currReview.destroy();
+
+    return res.status(200).json({
+        "message": "Successfully deleted"
+    })
 })
 
 
