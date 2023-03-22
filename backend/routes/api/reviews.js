@@ -1,6 +1,6 @@
 const express = require('express');
 const { check } = require('express-validator');
-const { handleValidationErrorsReviews } = require('../../utils/validation');
+const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
 const { Spot, Review, SpotImage, ReviewImage, sequelize, User, Booking } = require('../../db/models');
 
@@ -111,10 +111,8 @@ router.post('/:reviewId/images', requireAuth, async(req, res, next) => {
 })
 
 
-
-
 // Edit a Review
-router.put('/:reviewId', requireAuth, async(req, res, next) => {
+router.put('/:reviewId', requireAuth, validateEditingReview, async(req, res, next) => {
     const { reviewId } = req.params;
 
     const currReview = await Review.findByPk(reviewId);
