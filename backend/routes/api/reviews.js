@@ -111,6 +111,17 @@ router.post('/:reviewId/images', requireAuth, async(req, res, next) => {
 })
 
 
+const validateEditingReview = [
+    check('review')
+        .exists({ checkFalsy: true })
+        .withMessage('Review text is required'),
+    check('stars')
+        .exists({ checkFalsy: true })
+        .withMessage('Stars must be an integer from 1 to 5'),
+        handleValidationErrors
+];
+
+
 // Edit a Review
 router.put('/:reviewId', requireAuth, validateEditingReview, async(req, res, next) => {
     const { reviewId } = req.params;
@@ -131,6 +142,12 @@ router.put('/:reviewId', requireAuth, validateEditingReview, async(req, res, nex
 
     const { review, stars } = req.body;
 
+    if (review) currReview.review = review;
+    if (stars) currReview.stars = stars;
+
+    await currReview.save();
+
+    return res.status(200).json(currReview);
 })
 
 
