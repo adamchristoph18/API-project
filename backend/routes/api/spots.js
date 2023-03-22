@@ -1,13 +1,13 @@
 const express = require('express');
 const { check } = require('express-validator');
-const { handleValidationErrorsSpots, handleValidationErrorsReviews } = require('../../utils/validation');
+const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
 const { Spot, Review, SpotImage, ReviewImage, sequelize, User } = require('../../db/models');
 
 const router = express.Router();
 
 // Get all spots
-router.get('/', async (req, res) => {
+router.get('/', async(req, res) => {
 
     const spots = await Spot.findAll({ raw: true });
 
@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
 
 
 // Get all Spots owned by the Current User
-router.get('/current', requireAuth, async (req, res) => {
+router.get('/current', requireAuth, async(req, res) => {
 
     const spots = await Spot.findAll({ where: { ownerId: req.user.id } });
 
@@ -94,7 +94,7 @@ router.get('/current', requireAuth, async (req, res) => {
 
 
 // Get details of a Spot from an id
-router.get('/:spotId', async (req, res, next) => {
+router.get('/:spotId', async(req, res, next) => {
 
     const { spotId } = req.params;
     let spot = await Spot.findByPk(spotId, {
@@ -169,11 +169,11 @@ const validateCreateSpot = [
     check('price')
         .exists({ checkFalsy: true })
         .withMessage('Price per day is required'),
-    handleValidationErrorsSpots
+        handleValidationErrors
 ];
 
 // Create a Spot
-router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
+router.post('/', requireAuth, validateCreateSpot, async(req, res) => {
     const currentUser = req.user;
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
@@ -195,7 +195,7 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
 
 
 // Add an Image to a Spot based on the Spot's id
-router.post('/:spotId/images', requireAuth, async (req, res, next) => {
+router.post('/:spotId/images', requireAuth, async(req, res, next) => {
     const { spotId } = req.params;
     const { url: imageUrl, preview: imagePreview } = req.body;
     // Require proper authorization: Spot must belong to the current user ??
@@ -230,7 +230,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
 
 
 // Edit a Spot
-router.put('/:spotId', requireAuth, validateCreateSpot, async (req, res, next) => {
+router.put('/:spotId', requireAuth, validateCreateSpot, async(req, res, next) => {
     const { spotId } = req.params;
 
     const spot = await Spot.findByPk(spotId);
@@ -266,7 +266,7 @@ router.put('/:spotId', requireAuth, validateCreateSpot, async (req, res, next) =
 
 
 // Delete a Spot
-router.delete('/:spotId', requireAuth, async (req, res, next) => {
+router.delete('/:spotId', requireAuth, async(req, res, next) => {
     const { spotId } = req.params;
 
     const spot = await Spot.findByPk(spotId);
@@ -292,7 +292,7 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
 
 
 // Get all Reviews by a Spot's id
-router.get('/:spotId/reviews', async (req, res, next) => {
+router.get('/:spotId/reviews', async(req, res, next) => {
     const { spotId } = req.params;
 
     const spot = await Spot.findByPk(spotId);
@@ -341,11 +341,11 @@ const validateCreateReview = [
     check('stars')
         .exists({ checkFalsy: true })
         .withMessage('Stars must be an integer from 1 to 5'),
-    handleValidationErrorsReviews
+        handleValidationErrors
 ];
 
 // Create a Review for a Spot based on the Spot's id
-router.post('/:spotId/reviews', requireAuth, validateCreateReview, async (req, res, next) => {
+router.post('/:spotId/reviews', requireAuth, validateCreateReview, async(req, res, next) => {
     const { spotId } = req.params;
 
     const spot = await Spot.findByPk(spotId);
@@ -385,7 +385,5 @@ router.post('/:spotId/reviews', requireAuth, validateCreateReview, async (req, r
 
 
 
-// console.log('--------------------------------------------')
-// console.log(reviews);
-// console.log('--------------------------------------------')
+
 module.exports = router;
