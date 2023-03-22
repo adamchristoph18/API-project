@@ -1,6 +1,6 @@
 const express = require('express');
 const { check } = require('express-validator');
-const { handleValidationErrorsSpots } = require('../../utils/validation');
+const { handleValidationErrorsReviews } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
 const { Spot, Review, SpotImage, ReviewImage, sequelize, User, Booking } = require('../../db/models');
 
@@ -111,23 +111,27 @@ router.post('/:reviewId/images', requireAuth, async(req, res, next) => {
 })
 
 
+
+
 // Edit a Review
 router.put('/:reviewId', requireAuth, async(req, res, next) => {
     const { reviewId } = req.params;
 
-    const review = await Review.findByPk(reviewId);
+    const currReview = await Review.findByPk(reviewId);
 
-    if (!review) {
+    if (!currReview) {
         const err = new Error("Review couldn't be found");
         err.status = 404;
         return next(err);
     }
 
-    if (review.userId !== req.user.id) {
+    if (currReview.userId !== req.user.id) {
         const err = new Error("Forbidden");
         err.status = 404;
         return next(err);
     }
+
+    const { review, stars } = req.body;
 
 })
 
