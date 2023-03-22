@@ -29,20 +29,20 @@ module.exports = {
       {
         spotId: spotIdMap['Rocks Landing'],
         userId: userIdMap['Dirk'],
-        startDate: '2023-09-14',
-        endDate: '2023-10-03'
+        startDate: new Date('2023-09-14'),
+        endDate: new Date('2023-10-03')
       },
       {
         spotId: spotIdMap['Pearl overlook'],
         userId: userIdMap['John'],
-        startDate: '2023-12-14',
-        endDate: '2023-12-29'
+        startDate: new Date('2023-12-14'),
+        endDate: new Date('2023-12-29')
       },
       {
         spotId: spotIdMap['Black Bear Cove'],
         userId: userIdMap['Carrie'],
-        startDate: '2023-10-04',
-        endDate: '2023-10-20'
+        startDate: new Date('2023-10-04'),
+        endDate: new Date('2023-10-20')
       }
     ], {});
   },
