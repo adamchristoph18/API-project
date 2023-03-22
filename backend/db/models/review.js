@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
       validate: {
-        min: 0,
+        min: 1,
         max: 5
       }
     }
