@@ -1,6 +1,6 @@
 const express = require('express');
 const { check } = require('express-validator');
-const { handleValidationErrorsSpots, handleValidationErrorsReviews } = require('../../utils/validation');
+const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
 const { Spot, Review, SpotImage, ReviewImage, sequelize, User } = require('../../db/models');
 
@@ -169,7 +169,7 @@ const validateCreateSpot = [
     check('price')
         .exists({ checkFalsy: true })
         .withMessage('Price per day is required'),
-    handleValidationErrorsSpots
+        handleValidationErrors
 ];
 
 // Create a Spot
@@ -341,7 +341,7 @@ const validateCreateReview = [
     check('stars')
         .exists({ checkFalsy: true })
         .withMessage('Stars must be an integer from 1 to 5'),
-    handleValidationErrorsReviews
+        handleValidationErrors
 ];
 
 // Create a Review for a Spot based on the Spot's id
