@@ -17,12 +17,44 @@ router.get('/current', requireAuth, async(req, res) => {
         bookingsArray.push(booking);
     });
 
-    console.log('---------------');
-    console.log(bookingsArray)
-    console.log('---------------');
+    for (let booking of bookingsArray) {
+
+        const spot = await Spot.findByPk(booking.spotId, {
+            attributes: [
+                            'id',
+                            'ownerId',
+                            'address',
+                            'city',
+                            'state',
+                            'country',
+                            'lat',
+                            'lng',
+                            'name',
+                            'price'
+                        ],
+            raw: true
+        });
+
+        booking['Spot'] = spot;
+
+        const spotImg = await SpotImage.findOne({
+            where: {
+                preview: true,
+                spotId: spot.id
+            }
+        });
+
+        if (!spotImg) {
+            booking['Spot'].previewImage = null;
+        } else {
+            booking['Spot'].previewImage = spotImg.url;
+        }
+
+    }
 
     return res.status(200).json({ Bookings: bookingsArray });
 })
+
 
 
 
