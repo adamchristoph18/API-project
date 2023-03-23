@@ -441,8 +441,60 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
 })
 
 
+const validBooking = async(req, res, next) => {
+
+    const { spotId } = req.params;
+    const { startDate, endDate } = req.body;
+
+    if (new Date(endDate).getTime() <= new Date(startDate).getTime()) {
+        return res.status(400).json({
+            "message": "Bad Request",
+            "errors": {
+                "endDate": "endDate cannot be on or before startDate"
+            }
+        });
+    }
+
+    const bookings = await Booking.findAll({ where: { spotId } });
+
+    const bookingsArray = [];
+    bookings.forEach(booking => {
+        booking = booking.toJSON();
+        bookingsArray.push(booking);
+    });
+
+    const bookingConflict = {
+        message: "Sorry, this spot is already booked for the specified dates",
+        errors: {}
+    };
+
+    const newBookingStart = new Date(startDate).getTime();
+    const newBookingEnd = new Date(endDate).getTime();
+
+    for (let booking of bookingsArray) {
+
+        const currBookingStart = new Date(booking.startDate).getTime();
+        const currBookingEnd = new Date(booking.endDate).getTime();
+
+        if (newBookingStart >= currBookingStart && newBookingStart <= currBookingEnd) {
+            bookingConflict.errors.startDate = "Start date conflicts with an existing booking"
+            return res.status(403).json(bookingConflict);
+        }
+
+        if (newBookingEnd >= currBookingStart && newBookingEnd <= currBookingEnd) {
+            bookingConflict.errors.endDate = "End date conflicts with an existing booking"
+            return res.status(403).json(bookingConflict);
+        }
+
+    }
+
+    next();
+};
+
+
+
 // Create a Booking from a Spot based on the Spot's id
-router.post('/:spotId/bookings', requireAuth, async(req, res, next) => {
+router.post('/:spotId/bookings', requireAuth, validBooking, async(req, res, next) => {
 
     const { spotId } = req.params;
 
@@ -463,11 +515,11 @@ router.post('/:spotId/bookings', requireAuth, async(req, res, next) => {
     const { startDate, endDate } = req.body;
 
 
-    if (new Date(endDate).getTime() <= new Date(startDate).getTime()) {
-        const err = new Error('endDate cannot be on or before startDate');
-        err.status = 400;
-        return next(err);
-    }
+    // if (new Date(endDate).getTime() <= new Date(startDate).getTime()) {
+    //     const err = new Error('endDate cannot be on or before startDate');
+    //     err.status = 400;
+    //     return next(err);
+    // }
 
     const newBooking = await Booking.create({
         spotId,
