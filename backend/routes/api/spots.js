@@ -2,7 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage, ReviewImage, sequelize, User } = require('../../db/models');
+const { Spot, Review, SpotImage, ReviewImage, sequelize, User, Booking } = require('../../db/models');
 
 const router = express.Router();
 
@@ -381,6 +381,64 @@ router.post('/:spotId/reviews', requireAuth, validateCreateReview, async(req, re
     return res.status(201).json(newReview);
 })
 
+
+// Get all Bookings for a Spot based on the Spot's id
+router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
+    const { spotId } = req.params;
+
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        return next(err);
+    }
+
+
+    if (spot.ownerId !== req.user.id) {
+
+        const bookings = await Booking.findAll({
+            where: {
+                spotId
+            },
+            attributes: ['spotId', 'startDate', 'endDate']
+        });
+
+        const bookingsArray = [];
+        bookings.forEach(booking => {
+            booking = booking.toJSON();
+
+            bookingsArray.push(booking);
+        })
+
+        return res.status(200).json({ "Bookings": bookingsArray });
+
+    } else {
+
+        const bookings = await Booking.findAll({
+            where: {
+                spotId
+            }
+        });
+
+        const bookingsArray = [];
+        bookings.forEach(booking => {
+            booking = booking.toJSON();
+
+            bookingsArray.push(booking);
+        })
+
+        for (let booking of bookingsArray) {
+            const user = await User.findByPk(booking.userId, {
+                attributes: ['id', 'firstName', 'lastName']
+            });
+
+            booking['User'] = user;
+        }
+
+        return res.status(200).json({ "Bookings": bookingsArray });
+    }
+})
 
 
 
