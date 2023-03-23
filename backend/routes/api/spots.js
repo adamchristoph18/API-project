@@ -441,6 +441,45 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
 })
 
 
+// Create a Booking from a Spot based on the Spot's id
+router.post('/:spotId/bookings', requireAuth, async(req, res, next) => {
+
+    const { spotId } = req.params;
+
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) {
+        const err = new Error("Spot couldn't be found");
+        err.status = 404;
+        return next(err);
+    }
+
+    if (spot.ownerId === req.user.id) {
+        const err = new Error("This spot is your own!");
+        err.status = 404;
+        return next(err);
+    }
+
+    const { startDate, endDate } = req.body;
+
+
+    if (new Date(endDate).getTime() <= new Date(startDate).getTime()) {
+        const err = new Error('endDate cannot be on or before startDate');
+        err.status = 400;
+        return next(err);
+    }
+
+    const newBooking = await Booking.create({
+        spotId,
+        userId: req.user.id,
+        startDate,
+        endDate
+    });
+
+
+    return res.status(200).json(newBooking);
+
+})
 
 
 
