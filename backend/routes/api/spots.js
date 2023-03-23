@@ -446,7 +446,10 @@ const validBooking = async(req, res, next) => {
     const { spotId } = req.params;
     const { startDate, endDate } = req.body;
 
-    if (new Date(endDate).getTime() <= new Date(startDate).getTime()) {
+    const newBookingStart = new Date(startDate).getTime();
+    const newBookingEnd = new Date(endDate).getTime();
+
+    if (newBookingEnd <= newBookingStart) {
         return res.status(400).json({
             "message": "Bad Request",
             "errors": {
@@ -467,9 +470,6 @@ const validBooking = async(req, res, next) => {
         message: "Sorry, this spot is already booked for the specified dates",
         errors: {}
     };
-
-    const newBookingStart = new Date(startDate).getTime();
-    const newBookingEnd = new Date(endDate).getTime();
 
     for (let booking of bookingsArray) {
 
@@ -497,7 +497,6 @@ const validBooking = async(req, res, next) => {
 router.post('/:spotId/bookings', requireAuth, validBooking, async(req, res, next) => {
 
     const { spotId } = req.params;
-
     const spot = await Spot.findByPk(spotId);
 
     if (!spot) {
@@ -514,13 +513,6 @@ router.post('/:spotId/bookings', requireAuth, validBooking, async(req, res, next
 
     const { startDate, endDate } = req.body;
 
-
-    // if (new Date(endDate).getTime() <= new Date(startDate).getTime()) {
-    //     const err = new Error('endDate cannot be on or before startDate');
-    //     err.status = 400;
-    //     return next(err);
-    // }
-
     const newBooking = await Booking.create({
         spotId,
         userId: req.user.id,
@@ -530,7 +522,6 @@ router.post('/:spotId/bookings', requireAuth, validBooking, async(req, res, next
 
 
     return res.status(200).json(newBooking);
-
 })
 
 
