@@ -121,7 +121,7 @@ const validBooking = async(req, res, next) => {
     }
 
 
-    next();
+    next(); // since this is passed in middleware
 };
 
 
