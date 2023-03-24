@@ -492,6 +492,12 @@ const validBooking = async(req, res, next) => {
         const currBookingStart = new Date(booking.startDate).getTime();
         const currBookingEnd = new Date(booking.endDate).getTime();
 
+        if ((newBookingStart >= currBookingStart && newBookingStart <= currBookingEnd) && (newBookingEnd >= currBookingStart && newBookingEnd <= currBookingEnd)) {
+            bookingConflict.errors.startDate = "Start date conflicts with an existing booking"
+            bookingConflict.errors.endDate = "End date conflicts with an existing booking"
+            return res.status(403).json(bookingConflict);
+        }
+
         if (newBookingStart >= currBookingStart && newBookingStart <= currBookingEnd) {
             bookingConflict.errors.startDate = "Start date conflicts with an existing booking"
             return res.status(403).json(bookingConflict);
@@ -528,6 +534,16 @@ router.post('/:spotId/bookings', requireAuth, validBooking, async(req, res, next
     }
 
     const { startDate, endDate } = req.body;
+
+    const newStartDate = new Date(startDate).getTime();
+    const now = new Date().getTime();
+
+    if (newStartDate < now) { // check to make sure user isn't trying to make a booking in the past
+        const err = new Error("Please make a booking in the future!");
+        err.status = 403;
+        return next(err);
+    }
+
 
     const newBooking = await Booking.create({
         spotId,
