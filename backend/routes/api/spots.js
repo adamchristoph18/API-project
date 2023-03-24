@@ -6,10 +6,23 @@ const { Spot, Review, SpotImage, ReviewImage, sequelize, User, Booking } = requi
 
 const router = express.Router();
 
+
 // Get all spots
 router.get('/', async(req, res) => {
 
-    const spots = await Spot.findAll({ raw: true });
+    const page = req.query.page === undefined ? 1 : parseInt(req.query.page);
+    const size = req.query.size === undefined ? 5 : parseInt(req.query.size);
+
+    const offset = size * (page - 1);
+
+    const pagination = {};
+    if (page >= 1 && size >= 1) {
+        pagination.limit = size;
+        pagination.offset = offset;
+    }
+
+
+    const spots = await Spot.findAll({ raw: true, ...pagination });
 
     for (let spot of spots) {
 
@@ -42,7 +55,7 @@ router.get('/', async(req, res) => {
 
     }
 
-    return res.status(200).json({ Spots: spots });
+    return res.status(200).json({ Spots: spots, page: page, size: size });
 });
 
 
@@ -156,9 +169,11 @@ const validateCreateSpot = [
         .withMessage('Country is required'),
     check('lat')
         .exists({ checkFalsy: true })
+        .custom((lat) => lat >= -90 && lat <= 90)
         .withMessage('Latitude is not valid'),
     check('lng')
         .exists({ checkFalsy: true })
+        .custom((lng) => lng >= -180 && lng <= 180)
         .withMessage('Longitude is not valid'),
     check('name')
         .exists({ checkFalsy: true })
@@ -340,6 +355,7 @@ const validateCreateReview = [
         .withMessage('Review text is required'),
     check('stars')
         .exists({ checkFalsy: true })
+        .custom((star) => star >= 1 && star <= 5)
         .withMessage('Stars must be an integer from 1 to 5'),
         handleValidationErrors
 ];

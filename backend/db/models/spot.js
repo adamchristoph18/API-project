@@ -43,7 +43,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
       validate: {
         isNumeric: true,
-        isDecimal: true
+        isDecimal: true,
+        min: -90,
+        max: 90
       }
     },
     lng: {
@@ -51,12 +53,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
       validate: {
         isNumeric: true,
-        isDecimal: true
+        isDecimal: true,
+        min: -180,
+        max: 180
       }
     },
     name: {
       allowNull: false,
-      type: DataTypes.STRING(49)
+      type: DataTypes.STRING,
+      validate: {
+        len: [5, 49]
+      }
     },
     description: {
       allowNull: false,
