@@ -117,6 +117,7 @@ const validateEditingReview = [
         .withMessage('Review text is required'),
     check('stars')
         .exists({ checkFalsy: true })
+        .custom((star) => star >= 1 && star <= 5)
         .withMessage('Stars must be an integer from 1 to 5'),
         handleValidationErrors
 ];

@@ -6,6 +6,7 @@ const { Spot, Review, SpotImage, ReviewImage, sequelize, User, Booking } = requi
 
 const router = express.Router();
 
+
 // Get all spots
 router.get('/', async(req, res) => {
 
@@ -168,9 +169,11 @@ const validateCreateSpot = [
         .withMessage('Country is required'),
     check('lat')
         .exists({ checkFalsy: true })
+        .custom((lat) => lat >= -90 && lat <= 90)
         .withMessage('Latitude is not valid'),
     check('lng')
         .exists({ checkFalsy: true })
+        .custom((lng) => lng >= -180 && lng <= 180)
         .withMessage('Longitude is not valid'),
     check('name')
         .exists({ checkFalsy: true })
@@ -352,6 +355,7 @@ const validateCreateReview = [
         .withMessage('Review text is required'),
     check('stars')
         .exists({ checkFalsy: true })
+        .custom((star) => star >= 1 && star <= 5)
         .withMessage('Stars must be an integer from 1 to 5'),
         handleValidationErrors
 ];
