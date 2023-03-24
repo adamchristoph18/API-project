@@ -1,8 +1,6 @@
 const express = require('express');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage, ReviewImage, sequelize, User, Booking } = require('../../db/models');
+const { Spot, SpotImage } = require('../../db/models');
 
 const router = express.Router();
 
@@ -36,10 +34,6 @@ router.delete('/:imageId', requireAuth, async(req, res, next) => {
     });
 
 })
-
-
-
-
 
 
 
