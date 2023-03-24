@@ -535,6 +535,16 @@ router.post('/:spotId/bookings', requireAuth, validBooking, async(req, res, next
 
     const { startDate, endDate } = req.body;
 
+    const newStartDate = new Date(startDate).getTime();
+    const now = new Date().getTime();
+
+    if (newStartDate < now) { // check to make sure user isn't trying to make a booking in the past
+        const err = new Error("Please make a booking in the future!");
+        err.status = 403;
+        return next(err);
+    }
+
+
     const newBooking = await Booking.create({
         spotId,
         userId: req.user.id,
