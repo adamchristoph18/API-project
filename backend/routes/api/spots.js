@@ -9,7 +9,19 @@ const router = express.Router();
 // Get all spots
 router.get('/', async(req, res) => {
 
-    const spots = await Spot.findAll({ raw: true });
+    const page = req.query.page === undefined ? 1 : parseInt(req.query.page);
+    const size = req.query.size === undefined ? 5 : parseInt(req.query.size);
+
+    const offset = size * (page - 1);
+
+    const pagination = {};
+    if (page >= 1 && size >= 1) {
+        pagination.limit = size;
+        pagination.offset = offset;
+    }
+
+
+    const spots = await Spot.findAll({ raw: true, ...pagination });
 
     for (let spot of spots) {
 
@@ -42,7 +54,7 @@ router.get('/', async(req, res) => {
 
     }
 
-    return res.status(200).json({ Spots: spots });
+    return res.status(200).json({ Spots: spots, page: page, size: size });
 });
 
 
