@@ -1,26 +1,24 @@
 const express = require('express');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage, ReviewImage, sequelize, User, Booking } = require('../../db/models');
+const { Spot, SpotImage, Booking } = require('../../db/models');
 
 const router = express.Router();
 
 
 // Get all of the Current User's Bookings
 router.get('/current', requireAuth, async(req, res) => {
-    const bookings = await Booking.findAll({ where: { userId: req.user.id } });
+    const bookings = await Booking.findAll({ where: { userId: req.user.id } }); // this findAll here with return an array
 
-    const bookingsArray = [];
+    const bookingsArray = []; // this is so we're able to add properties to each booking object if need be, and key into them
     bookings.forEach(booking => {
-        booking = booking.toJSON();
+        booking = booking.toJSON(); // by looping over them by turning them into POJOs we can work with more easily
         bookingsArray.push(booking);
     });
 
     for (let booking of bookingsArray) {
 
         const spot = await Spot.findByPk(booking.spotId, {
-            attributes: [
+            attributes: [ // attributes to include in this query
                             'id',
                             'ownerId',
                             'address',
@@ -32,7 +30,7 @@ router.get('/current', requireAuth, async(req, res) => {
                             'name',
                             'price'
                         ],
-            raw: true
+            raw: true // need this so we're able to add properties below
         });
 
         booking['Spot'] = spot;
@@ -44,8 +42,8 @@ router.get('/current', requireAuth, async(req, res) => {
             }
         });
 
-        if (!spotImg) {
-            booking['Spot'].previewImage = null;
+        if (!spotImg) { // check against the possibility that a spot doesn't have a spotImage to preview
+            booking['Spot'].previewImage = null; // if not, set to null
         } else {
             booking['Spot'].previewImage = spotImg.url;
         }
@@ -57,8 +55,8 @@ router.get('/current', requireAuth, async(req, res) => {
 
 
 
-const validBooking = async(req, res, next) => {
-
+const validBooking = async(req, res, next) => { // middleware to validate that a new booking's startDate and endDate don't conflict
+                                                        // with any existing bookings, and/or the endDate is on or before the startDate
     const { bookingId } = req.params;
 
     const booking = await Booking.findByPk(bookingId);
@@ -98,14 +96,14 @@ const validBooking = async(req, res, next) => {
         bookingsArray.push(booking);
     });
 
-    const bookingConflict = {
+    const bookingConflict = { // initialize error object for a booking conflict
         message: "Sorry, this spot is already booked for the specified dates",
         errors: {}
     };
 
-    for (let booking of bookingsArray) {
+    for (let booking of bookingsArray) { // check the new booking startDate/endDate against all current bookings
 
-        const currBookingStart = new Date(booking.startDate).getTime();
+        const currBookingStart = new Date(booking.startDate).getTime(); // unix epoch time
         const currBookingEnd = new Date(booking.endDate).getTime();
 
         if (newBookingStart >= currBookingStart && newBookingStart <= currBookingEnd) {
@@ -135,7 +133,7 @@ router.put('/:bookingId', requireAuth, validBooking, async(req, res, next) => {
     const currEndDate = new Date(booking.endDate).getTime();
     const now = new Date().getTime();
 
-    if (currEndDate < now) {
+    if (currEndDate < now) { // check to make sure user isn't trying to edit a user that has already came and gone
         const err = new Error("Past bookings can't be modified");
         err.status = 403;
         return next(err);
