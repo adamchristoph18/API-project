@@ -492,6 +492,12 @@ const validBooking = async(req, res, next) => {
         const currBookingStart = new Date(booking.startDate).getTime();
         const currBookingEnd = new Date(booking.endDate).getTime();
 
+        if ((newBookingStart >= currBookingStart && newBookingStart <= currBookingEnd) && (newBookingEnd >= currBookingStart && newBookingEnd <= currBookingEnd)) {
+            bookingConflict.errors.startDate = "Start date conflicts with an existing booking"
+            bookingConflict.errors.endDate = "End date conflicts with an existing booking"
+            return res.status(403).json(bookingConflict);
+        }
+
         if (newBookingStart >= currBookingStart && newBookingStart <= currBookingEnd) {
             bookingConflict.errors.startDate = "Start date conflicts with an existing booking"
             return res.status(403).json(bookingConflict);
