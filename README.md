@@ -1,4 +1,4 @@
-# AirBnB Clone
+# Short Havens (AirBnB Clone)
 
 ## Database Schema Design
 
