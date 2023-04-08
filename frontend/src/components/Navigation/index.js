@@ -9,8 +9,8 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='nav-bar'>
-      <h1 className='short-havens-title'>Short Havens</h1>
-        <ul>
+      <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
+        <ul className='profile-nav'>
           <li>
             <NavLink exact to="/">Home</NavLink>
           </li>
