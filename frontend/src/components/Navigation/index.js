@@ -10,16 +10,18 @@ function Navigation({ isLoaded }){
   return (
     <div className='nav-bar'>
       <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
-        <ul className='profile-nav'>
-          <li>
-            <NavLink exact to="/">Home</NavLink>
-          </li>
-          {isLoaded && (
+        <div className='profile-options-container'>
+          <ul className='profile-nav'>
             <li>
-              <ProfileButton user={sessionUser} />
+              <NavLink exact to="/">Home</NavLink>
             </li>
-          )}
-        </ul>
+            {isLoaded && (
+              <li>
+                <ProfileButton user={sessionUser} />
+              </li>
+            )}
+          </ul>
+          </div>
     </div>
   );
 }

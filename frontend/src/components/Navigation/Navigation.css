@@ -5,9 +5,10 @@
 .nav-bar {
     display: flex;
     justify-content: space-between;
+    height: 100px;
     align-items: center;
     border-bottom: rgb(215, 19, 19);
-    border-bottom: 3px solid rgb(193, 193, 251);
+    border-bottom: 3px solid rgb(193, 193, 193);
 }
 
 .short-havens-title {
@@ -23,4 +24,14 @@
 .profile-nav {
     align-self: flex-end;
     margin-right: 40px;
+}
+
+.profile-options-container {
+    border: 2px solid rgb(193, 193, 193);
+    border-radius: 30px;
+    height: fit-content;
+    width: auto;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    margin-right: 60px;
 }
