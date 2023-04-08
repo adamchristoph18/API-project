@@ -16,8 +16,10 @@
     text-decoration: none;
     font-family: sans-serif;
     font-style: italic;
+    margin-left: 40px;
 }
 
 .profile-nav {
     align-self: flex-end;
+    margin-right: 40px;
 }
