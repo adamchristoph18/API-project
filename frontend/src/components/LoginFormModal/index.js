@@ -46,8 +46,8 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.credential && (
-          <p>{errors.credential}</p>
+        {errors.message && (
+          <p>{errors.message}</p>
         )}
         <button type="submit">Log In</button>
       </form>
