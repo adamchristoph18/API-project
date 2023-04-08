@@ -21,17 +21,17 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         spotId: spotIdMap['Rocks Landing'],
-        url: 'rockyRoad.url',
+        url: 'https://architizer-prod.imgix.net/mediadata/projects/072013/3be8c875.jpg?fit=max&w=1680&q=60&auto=format&auto=compress&cs=strip',
         preview: true
       },
       {
         spotId: spotIdMap['Black Bear Cove'],
-        url: 'alaskanbear.url',
+        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBr0I2GtIyhn4bmQpjyvqIQzeA6GsBzNwsfg&usqp=CAU',
         preview: false
       },
       {
         spotId: spotIdMap['Pearl overlook'],
-        url: 'pearlygates.url',
+        url: 'https://www.territorysupply.com/wp-content/uploads/2021/08/fl2-min.jpg',
         preview: true
       }
     ], {});
