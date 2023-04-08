@@ -6,12 +6,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 3px solid blue;
+    border-bottom: rgb(215, 19, 19);
+    border-bottom: 3px solid rgb(193, 193, 251);
 }
 
 .short-havens-title {
     color: #ff5A5F;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 800;
     text-decoration: none;
     font-family: sans-serif;
