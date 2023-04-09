@@ -16,20 +16,19 @@ export const getAllSpotsThunk = () => async (dispatch) => {
     const response = await csrfFetch('/api/spots');
 
     if (response.ok) {
-        const spots = response.json();
+        const spots = await response.json();
         dispatch(loadSpots(spots));
     }
 };
 
 // Spots reducer
-const initialState = { spots: {} }; // is this correct? Look at github wiki?
+const initialState = { allSpots: {}, singleSpot: {} }; // is this correct? Look at github wiki?
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_SPOTS:
-            const newState = {...state, spots: {...state.spots}};
-            newState.spots.allSpots = {};
-            action.spots.forEach(spot => { // normalizing my spots data
-                newState.spots.allSpots[spot.id] = spot
+            const newState = {...state, allSpots: {...state.allSpots}};
+            action.spots.Spots.forEach(spot => { // normalizing my spots data
+                newState.allSpots[spot.id] = spot
             });
             return newState;
         default:
