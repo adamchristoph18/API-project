@@ -66,6 +66,18 @@ module.exports = {
         name: 'Copper Sopper Beach House',
         description:'Large beach house on the sand that made Tinkletown famous',
         price: 420
+      },
+      {
+        ownerId: userIdMap['Dirk'],
+        address: '741 Murwil Ct',
+        city: 'Traverse City',
+        state: 'Michigan',
+        country: 'United States of America',
+        lat: 85.7283243,
+        lng: 24.8936233,
+        name: 'The Eagles Nest',
+        description:'Beautiful scenery to come enjoy the best of Northern Michigan',
+        price: 330
       }
     ], {});
   },

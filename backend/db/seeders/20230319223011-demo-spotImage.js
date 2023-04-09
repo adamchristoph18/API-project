@@ -38,6 +38,11 @@ module.exports = {
         spotId: spotIdMap['Copper Sopper Beach House'],
         url: 'https://a0.muscache.com/im/pictures/miso/Hosting-801458664154162658/original/d9e9c8c4-63a0-4c24-9863-2ee5db2cd660.jpeg?im_w=1200',
         preview: true
+      },
+      {
+        spotId: spotIdMap['The Eagles Nest'],
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-49457568/original/7be97498-45f6-413d-9d05-84c60da2cdba.jpeg?im_w=1200',
+        preview: true
       }
     ], {});
   },
