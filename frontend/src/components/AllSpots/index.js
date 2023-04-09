@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 import SpotCard from "../SpotCard";
+import './AllSpots.css';
 
 
 const AllSpots = () => {
@@ -17,14 +18,12 @@ const AllSpots = () => {
 
     return (
         <div className="all-spots">
-            <div>
-                {spots.map(spot => (
-                    <SpotCard
-                        spot={spot}
-                        key={spot.id}
-                    />
-                ))}
-            </div>
+            {spots.map(spot => (
+                <SpotCard
+                    spot={spot}
+                    key={spot.id}
+                />
+            ))}
         </div>
     )
 };

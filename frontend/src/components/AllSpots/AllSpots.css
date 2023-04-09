@@ -1,0 +1,7 @@
+.all-spots {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    /* gap: 30px; */
+    margin: 28px 36px;
+}
