@@ -6,14 +6,23 @@
 }
 
 .spot-image {
-    height: 140px;
+    height: 155px;
     border-radius: 15px;
+}
+
+.spot-card-info {
+    display: flex;
+    flex-flow: column;
+    margin-top: 13px;
+}
+
+.spot-info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
 }
 
 .spot-name {
     font-weight: bold;
-}
-
-.spot-price {
-
 }
