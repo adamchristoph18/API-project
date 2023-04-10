@@ -1,6 +1,4 @@
 .new-spot-form {
-    /* display: flex;
-    flex-flow: column; */
     margin: 0 auto;
     width: 480px;
 }
@@ -19,7 +17,7 @@
 }
 
 input {
-    width: 460px;
+    width: 470px;
     margin-bottom: 10px;
 }
 
@@ -37,7 +35,7 @@ input {
 }
 
 .state-input {
-    width: 165px;
+    width: 175px;
 }
 
 .separating-comma {
@@ -46,12 +44,14 @@ input {
 
 .lat-lng-pair {
     display: flex;
+    border-bottom: 4px solid #ff5A5F;
 }
 
 .lat-input {
     width: 190px;
+    margin-bottom: 25px;
 }
 
 .lng-input {
-    width: 245px;
+    width: 255px;
 }
