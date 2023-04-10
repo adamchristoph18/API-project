@@ -7,6 +7,8 @@ function CreateNewSpotForm() {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [description, setDescription] = useState('');
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({});
@@ -76,6 +78,33 @@ function CreateNewSpotForm() {
                             placeholder="STATE"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div className="lat-lng-pair">
+                    <label>
+                        Latitude
+                        <br/>
+                        <input
+                            className="lat-input"
+                            type="number"
+                            name="latitude"
+                            value={latitude}
+                            onChange={(e) => setLatitude(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <p className="separating-comma">,</p>
+                    <label>
+                        Longitude
+                        <br/>
+                        <input
+                            className="lng-input"
+                            type="number"
+                            name="longitude"
+                            value={longitude}
+                            onChange={(e) => setLongitude(e.target.value)}
                             required
                         />
                     </label>
