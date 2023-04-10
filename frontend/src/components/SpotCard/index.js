@@ -5,7 +5,7 @@ const SpotCard = ({ spot }) => {
     return (
         <div className="spot-card">
             <img
-                className="spot-image"
+                className="spot-image clickable"
                 src={spot.previewImage}
                 alt="{spot.name}image"
             />
