@@ -19,7 +19,7 @@ function Navigation({ isLoaded }){
               {isLoaded && (
                 <>
                   <i className="fa-solid fa-bars icon icon-large clickable" />
-                  <a>
+                  <a href=''>
                     <ProfileButton user={sessionUser} />
                   </a>
                 </>

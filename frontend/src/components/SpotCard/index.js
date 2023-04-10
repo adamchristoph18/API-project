@@ -6,7 +6,7 @@ const SpotCard = ({ spot }) => {
         <div className="spot-card">
             <img
                 className="spot-image clickable"
-                src={spot.previewImage}
+                src={spot.previewImage || "https://onlyusedtesla.com/images/no-image.png"}
                 alt="{spot.name} preview"
             />
             <div className='spot-card-info'>
