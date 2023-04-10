@@ -27,4 +27,6 @@ button {
 
 .demo-user-link {
     margin-bottom: 30px;
+    text-decoration: underline;
+    color: purple;
 }
