@@ -139,3 +139,9 @@ input {
 .last-image-input {
     margin-bottom: 25px;
 }
+
+.create-spot-button {
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10%;
+}

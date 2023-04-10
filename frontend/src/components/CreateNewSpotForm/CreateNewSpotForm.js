@@ -200,6 +200,12 @@ function CreateNewSpotForm() {
                         />
                 </div>
             </div>
+            <button
+                className="create-spot-button"
+                type="submit"
+            >
+                Create Spot
+            </button>
         </form>
     )
 }
