@@ -10,18 +10,26 @@ function Navigation({ isLoaded }){
   return (
     <div className='nav-bar'>
       <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
-        <div className='profile-options-container'>
-          <ul className='profile-nav'>
-            <li>
-              <NavLink exact to="/">Home</NavLink>
-            </li>
-            {isLoaded && (
-              <li>
-                <ProfileButton user={sessionUser} />
-              </li>
-            )}
-          </ul>
+
+        <div className='nav-bar-right'>
+
+          <NavLink className='create-new-spot' to="/">Create a New Spot</NavLink>
+          <div className='profile-options-container'>
+            <div className='profile-nav'>
+              {isLoaded && (
+                <>
+                  <i className="fa-solid fa-bars icon icon-large clickable" />
+                  <a>
+                    <ProfileButton user={sessionUser} />
+                  </a>
+                </>
+              )}
+            </div>
           </div>
+
+
+        </div>
+
     </div>
   );
 }

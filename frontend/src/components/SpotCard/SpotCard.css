@@ -2,11 +2,12 @@
     display: flex;
     flex-flow: column;
     width: 24%;
-    object-fit: cover;
 }
 
 .spot-image {
+    /* min-height: 155px; */
     height: 155px;
+    object-fit: cover;
     border-radius: 15px;
 }
 
