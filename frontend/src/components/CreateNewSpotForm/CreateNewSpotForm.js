@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+
 import './CreateNewSpotForm.css';
 
 function CreateNewSpotForm() {
@@ -16,11 +19,23 @@ function CreateNewSpotForm() {
     const [prevImgUrlThree, setPrevImgUrlThree] = useState(''); // these aren't required
     const [prevImgUrlFour, setPrevImgUrlFour] = useState(''); // turn these into an array?
     const [errors, setErrors] = useState({});
+    const history = useHistory();
 
     useEffect(() => {
         const err = {};
+
+        if (latitude > 90 || latitude < -90) {
+            err.latitude = "Latitude values are between -90 and 90"
+        }
+        if (longitude > 180 || longitude < -180) {
+            err.longitude = "Longitude values are between -180 and 180"
+        }
+        if (description.length < 30) {
+            err.description = "Description needs a minimum of 30 characters"
+        }
+
         setErrors(err);
-    }, [country, address, city, state, description, title, price]);
+    }, [latitude, longitude, description]);
 
     return (
         <form
@@ -98,6 +113,7 @@ function CreateNewSpotForm() {
                             onChange={(e) => setLatitude(e.target.value)}
                             required
                         />
+                            <p className="errors">{errors.latitude}</p>
                     </label>
                     <p className="separating-comma">,</p>
                     <label>
@@ -111,6 +127,7 @@ function CreateNewSpotForm() {
                             onChange={(e) => setLongitude(e.target.value)}
                             required
                         />
+                            <p className="errors">{errors.longitude}</p>
                     </label>
                 </div>
                 <div>
@@ -126,6 +143,7 @@ function CreateNewSpotForm() {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
+                        <p className="errors">{errors.description}</p>
                 </div>
                 <div className="title-div">
                     <p><span className="spot-title-title">Create a title for your spot</span>
@@ -202,6 +220,7 @@ function CreateNewSpotForm() {
             </div>
             <button
                 className="create-spot-button clickable"
+                disabled={Object.keys(errors).length > 0}
                 type="submit"
             >
                 Create Spot
