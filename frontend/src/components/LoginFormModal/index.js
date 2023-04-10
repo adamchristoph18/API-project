@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { Link } from 'react-router-dom';
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -55,6 +56,9 @@ function LoginFormModal() {
           type="submit"
           >Log In</button>
       </form>
+      <Link
+        className="demo-user-link"
+      >Demo User</Link>
     </div>
   );
 }
