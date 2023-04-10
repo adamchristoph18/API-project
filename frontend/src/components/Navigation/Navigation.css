@@ -11,6 +11,11 @@
     border-bottom: 2px solid rgb(193, 193, 193);
 }
 
+.nav-bar-right {
+    display: flex;
+    align-items: center;
+}
+
 .short-havens-title {
     color: #ff5A5F;
     font-size: 36px;
@@ -19,6 +24,11 @@
     font-family: sans-serif;
     font-style: italic;
     margin-left: 40px;
+}
+
+.create-new-spot {
+    text-decoration: none;
+    margin-right: 40px;
 }
 
 .profile-nav {
