@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './CreateNewSpotForm.css';
 
 function CreateNewSpotForm() {
     const [country, setCountry] = useState('');
@@ -10,8 +11,41 @@ function CreateNewSpotForm() {
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({});
 
+    useEffect(() => {
+        const err = {};
+        setErrors(err);
+    }, [country, address, city, state, description, title, price]);
+
     return (
-        <div>Hello!</div>
+        <form
+            className="new-spot-form"
+        >
+            <h2>Create a new Spot</h2>
+            <label>
+                Country
+                <br/>
+                <input
+                    type="text"
+                    name="country"
+                    placeholder="Country"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    required
+                />
+            </label>
+            <label>
+                Street Address
+                <br/>
+                <input
+                    type="text"
+                    name="address"
+                    placeholder="Street Address"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    required
+                />
+            </label>
+        </form>
     )
 }
 
