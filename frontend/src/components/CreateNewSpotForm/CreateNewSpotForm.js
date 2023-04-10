@@ -115,13 +115,19 @@ function CreateNewSpotForm() {
                         <span className="describe-tips">Mention the best features of your space, any special amenities
                             like fast wifi or<br/> parking, and what you love about the neighborhood.</span></p>
                 </div>
-                <div>
+                <div className="description-div">
                     <textarea
                         className="description-text-area"
                         placeholder="Please write at least 30 characters"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
+                </div>
+                <div>
+                    <p><span className="describe-title">Create a title for your spot</span>
+                        <br/>
+                        <span className="describe-tips">Catch guests' attention with a spot title that highlights
+                            what makes your place special.</span></p>
                 </div>
             </div>
         </form>
