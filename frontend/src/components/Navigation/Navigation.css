@@ -23,15 +23,11 @@
 
 .profile-nav {
     align-self: flex-end;
-    margin-right: 40px;
 }
 
 .profile-options-container {
     border: 2px solid rgb(193, 193, 193);
     border-radius: 30px;
-    height: fit-content;
-    width: auto;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    padding: 8px;
     margin-right: 60px;
 }

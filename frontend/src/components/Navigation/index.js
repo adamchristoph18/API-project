@@ -11,16 +11,19 @@ function Navigation({ isLoaded }){
     <div className='nav-bar'>
       <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
         <div className='profile-options-container'>
-          <ul className='profile-nav'>
-            <li>
+          <div className='profile-nav'>
+            {/* <a>
               <NavLink exact to="/">Home</NavLink>
-            </li>
+            </a> */}
             {isLoaded && (
-              <li>
-                <ProfileButton user={sessionUser} />
-              </li>
+              <>
+                <i className="fa-solid fa-bars icon icon-large clickable" />
+                <a>
+                  <ProfileButton user={sessionUser} />
+                </a>
+              </>
             )}
-          </ul>
+          </div>
           </div>
     </div>
   );

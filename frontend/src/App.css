@@ -1,0 +1,12 @@
+.icon {
+    font-size: 14px;
+    padding: 0 5px;
+}
+
+.icon-large {
+    font-size: 20px;
+}
+
+.clickable {
+    cursor: pointer;
+}
