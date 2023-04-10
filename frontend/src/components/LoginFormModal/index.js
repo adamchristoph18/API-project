@@ -23,7 +23,14 @@ function LoginFormModal() {
           setErrors(data.errors);
         }
       });
-  };
+    };
+
+    const demoUser = () => {
+      setCredential("demoUser");
+      setPassword("password");
+      return dispatch(sessionActions.login({ credential, password }))
+        .then(closeModal)
+    }
 
   return (
     <div className="login-form">
@@ -55,6 +62,12 @@ function LoginFormModal() {
           type="submit"
           >Log In</button>
       </form>
+      <div
+        className="demo-user-link clickable"
+        onClick={() => demoUser()}
+      >
+        Demo User
+      </div>
     </div>
   );
 }

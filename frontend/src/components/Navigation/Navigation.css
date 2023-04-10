@@ -21,7 +21,6 @@
     font-size: 36px;
     font-weight: 800;
     text-decoration: none;
-    font-family: sans-serif;
     font-style: italic;
     margin-left: 40px;
 }
@@ -29,6 +28,10 @@
 .create-new-spot {
     text-decoration: none;
     margin-right: 40px;
+}
+
+.create-new-spot:hover {
+    text-decoration: underline;
 }
 
 .profile-nav {
@@ -72,6 +75,10 @@
 .non-user-option {
     padding: 4px 55px 7px 10px;
     border: 1px solid black;
+}
+
+.non-user-option:hover {
+    background-color: rgb(253, 93, 75);
 }
 
 .log-out {

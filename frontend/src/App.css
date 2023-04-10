@@ -10,3 +10,7 @@
 .clickable {
     cursor: pointer;
 }
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
