@@ -74,6 +74,10 @@
     border: 1px solid black;
 }
 
+.non-user-option:hover {
+    background-color: rgb(253, 93, 75);
+}
+
 .log-out {
     margin: 5px 25px;
     padding: 10px 13px;
