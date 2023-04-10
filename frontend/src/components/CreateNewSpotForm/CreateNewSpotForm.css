@@ -1,13 +1,29 @@
 .new-spot-form {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
+    /* display: flex;
+    flex-flow: column; */
     margin: 0 auto;
     width: 400px;
-    border: 3px solid green;
+}
+
+.form-title {
+    height: fit-content;
+}
+
+.subtitle {
+    font-style: italic;
+    font-size: 18px;
+}
+
+.disclaim {
+    font-size: 12px;
 }
 
 input {
     width: 375px;
     margin-bottom: 15px;
+}
+
+.form-info {
+    display: flex;
+    flex-flow: column;
 }
