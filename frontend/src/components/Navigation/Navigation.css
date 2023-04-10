@@ -31,3 +31,8 @@
     padding: 8px;
     margin-right: 60px;
 }
+
+.profile-options-container:hover {
+    box-shadow: 0px 2px 2px gray;
+    transition: ease-in .15s;
+}
