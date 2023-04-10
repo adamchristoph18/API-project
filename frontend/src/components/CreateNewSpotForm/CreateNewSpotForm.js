@@ -24,7 +24,7 @@ function CreateNewSpotForm() {
                 <h2 className="form-title">Create a new Spot</h2>
                 <p><span className="subtitle">Where's your place located?</span>
                     <br/>
-                    <span className="disclaim">Guests will only get your exact address once they have booked a reservation.</span></p>
+                    <span className="disclaim">*Guests will only get your exact address once they have booked a reservation.</span></p>
             </div>
             <div className="form-info">
                 <label>
@@ -51,6 +51,35 @@ function CreateNewSpotForm() {
                         required
                     />
                 </label>
+                <div className="city-state-pair">
+                    <label>
+                        City
+                        <br/>
+                        <input
+                            className="city-input"
+                            type="text"
+                            name="city"
+                            placeholder="City"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <p className="separating-comma">,</p>
+                    <label>
+                        State
+                        <br/>
+                        <input
+                            className="state-input"
+                            type="text"
+                            name="state"
+                            placeholder="STATE"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
             </div>
         </form>
     )

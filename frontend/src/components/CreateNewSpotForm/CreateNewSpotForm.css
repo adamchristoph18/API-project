@@ -2,7 +2,7 @@
     /* display: flex;
     flex-flow: column; */
     margin: 0 auto;
-    width: 400px;
+    width: 480px;
 }
 
 .form-title {
@@ -19,11 +19,27 @@
 }
 
 input {
-    width: 375px;
-    margin-bottom: 15px;
+    width: 460px;
+    margin-bottom: 10px;
 }
 
 .form-info {
     display: flex;
     flex-flow: column;
+}
+
+.city-state-pair {
+    display: flex;
+}
+
+.city-input {
+    width: 270px;
+}
+
+.state-input {
+    width: 165px;
+}
+
+.separating-comma {
+    margin: 33px 10px 0 5px;
 }
