@@ -5,11 +5,12 @@ import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
 
 function LoginFormModal() {
-  const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,33 +26,36 @@ function LoginFormModal() {
   };
 
   return (
-    <>
+    <div className="login-form">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username or Email
+        <div className="credential-input">
           <input
             type="text"
+            placeholder="Username or Email"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
+        </div>
+        <div className="password-input">
           <input
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
+        </div>
+
         {errors.message && (
           <p>{errors.message}</p>
         )}
-        <button type="submit">Log In</button>
+        <button
+          type="submit"
+          >Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 
