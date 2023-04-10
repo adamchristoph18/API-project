@@ -109,6 +109,12 @@ function CreateNewSpotForm() {
                         />
                     </label>
                 </div>
+                <div>
+                <p><span className="describe-title">Describe your place to guests!</span>
+                    <br/>
+                    <span className="describe-tips">Mention the best features of your space, any special amenities
+                        like fast wifi or parking, and what you love about the neighborhood.</span></p>
+            </div>
             </div>
         </form>
     )

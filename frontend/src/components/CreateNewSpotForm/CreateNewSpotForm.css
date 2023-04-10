@@ -55,3 +55,7 @@ input {
 .lng-input {
     width: 255px;
 }
+
+.describe-tips {
+    font-size: 12px;
+}
