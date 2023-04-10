@@ -30,6 +30,10 @@
     margin-right: 40px;
 }
 
+.create-new-spot:hover {
+    text-decoration: underline;
+}
+
 .profile-nav {
     align-self: flex-end;
 }

@@ -16,7 +16,10 @@ function Navigation({ isLoaded }){
 
         <div className='nav-bar-right'>
           {sessionUser && sessionUser.firstName !== 'Demo' ? // only render the 'Create a New Spot' if there is a current user
-            <NavLink className='create-new-spot' to="/">Create a New Spot</NavLink>
+            <NavLink
+              className='create-new-spot'
+              to="/"
+            >Create a New Spot</NavLink>
           : null}
 
           <div className='profile-options-container'>
