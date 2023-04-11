@@ -79,6 +79,7 @@
 .non-user-option {
     padding: 4px 55px 7px 10px;
     border: 1px solid black;
+    width: 120px;
 }
 
 .non-user-option:hover {
