@@ -9,16 +9,20 @@
     margin-left: 70px;
     margin-bottom: 10px;
     width: 340px;
+    background-color: rgb(197, 223, 254);
 }
 
 .password-input {
     margin-left: 70px;
     margin-bottom: 20px;
     width: 340px;
+    background-color: rgb(197, 223, 254);
 }
 
 .login-errors {
     margin-left: 170px;
+    color: red;
+    font-style: italic;
 }
 
 .log-in-button {
