@@ -2,7 +2,7 @@ import './SpotCard.css';
 
 const SpotCard = ({ spot }) => {
 
-    const roundRating = (spot) => spot.avgRating ? (spot.avgRating).toFixed(1) : null;
+    // const roundRating = (spot) => spot.avgRating ? (spot.avgRating).toFixed(1) : null;
 
     return (
         <div className="spot-card">
@@ -15,7 +15,7 @@ const SpotCard = ({ spot }) => {
                 <div className='spot-info-top'>
                     <p className='spot-name'>{spot.city}, {spot.state}</p>
                     <div>
-                        <i className="fa-solid fa-star icon" />{spot.avgRating ? (roundRating(spot)) : " New"}
+                        <i className="fa-solid fa-star icon" />{spot.avgRating ? spot.avgRating : " New"}
                     </div>
                 </div>
                 <p className='spot-price'>${spot.price}/night</p>
