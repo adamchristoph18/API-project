@@ -2,11 +2,18 @@ import { csrfFetch } from "./csrf";
 
 // Action type constants
 const LOAD_SPOTS = 'spots/LOAD_SPOTS';
+const CREATE_SPOT = 'reports/CREATE_SPOT';
+
 
 // Action creators
 export const loadSpots = (spots) => ({
     type: LOAD_SPOTS,
     spots
+});
+
+export const createSpot = (spot) => ({
+    type: CREATE_SPOT,
+    spot
 });
 
 
@@ -21,16 +28,44 @@ export const getAllSpotsThunk = () => async (dispatch) => {
     }
 };
 
+// Create a spot thunk
+export const createNewSpotThunk = (newSpot) => async (dispatch) => {
+    const response = await csrfFetch('/api/spots', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newSpot)
+    });
+
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(createSpot(spot)); // this line updates the state
+
+        return spot; // this sends the new spot to the frontend
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+};
+
 // Spots reducer
 const initialState = { allSpots: {}, singleSpot: {} }; // is this correct? Look at github wiki?
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD_SPOTS:
+        case LOAD_SPOTS: {
             const newState = {...state, allSpots: {...state.allSpots}};
             action.spots.Spots.forEach(spot => { // normalizing my spots data
                 newState.allSpots[spot.id] = spot
             });
             return newState;
+        }
+        case CREATE_SPOT: {
+            const newState = {...state, allSpots: {...state.allSpots}};
+            newState.allSpots[action.spot.id] = action.spot;
+            console.log("this is my state ----> ", newState);
+            return newState;
+        }
         default:
             return state;
     }

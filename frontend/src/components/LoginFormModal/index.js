@@ -25,10 +25,9 @@ function LoginFormModal() {
       });
     };
 
-    const demoUser = () => {
-      setCredential("demoUser");
-      setPassword("password");
-      return dispatch(sessionActions.login({ credential, password }))
+    const demoUser = (e) => {
+      e.preventDefault();
+      return dispatch(sessionActions.login({ credential: "demoUser", password: "password" }))
         .then(closeModal)
     }
 
@@ -64,7 +63,7 @@ function LoginFormModal() {
       </form>
       <div
         className="demo-user-link clickable"
-        onClick={() => demoUser()}
+        onClick={demoUser}
       >
         Demo User
       </div>

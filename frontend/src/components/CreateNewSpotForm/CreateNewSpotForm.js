@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-
-import './CreateNewSpotForm.css';
+import { useDispatch, useSelector } from "react-redux";
+import { createNewSpotThunk } from "../../store/spots";
+import "./CreateNewSpotForm.css";
 
 function CreateNewSpotForm() {
     const [country, setCountry] = useState('');
@@ -19,7 +19,12 @@ function CreateNewSpotForm() {
     const [prevImgUrlThree, setPrevImgUrlThree] = useState(''); // these aren't required
     const [prevImgUrlFour, setPrevImgUrlFour] = useState(''); // turn these into an array?
     const [errors, setErrors] = useState({});
+
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    const sessionUser = useSelector(state => state.session.user);
+
 
     useEffect(() => {
         const err = {};
@@ -37,8 +42,35 @@ function CreateNewSpotForm() {
         setErrors(err);
     }, [latitude, longitude, description]);
 
+    const handleSubmit = async event => {
+        event.preventDefault();
+
+        const newSpot = {
+            ownerId: sessionUser.id,
+            address,
+            city,
+            state,
+            country,
+            lat: latitude,
+            lng: longitude,
+            name: title,
+            description,
+            price
+        };
+        console.log('this is my new spot ------> ', newSpot);
+        const spot = await dispatch(createNewSpotThunk(newSpot));
+        console.log('this is my spot ------> ', spot);
+        if (spot.errors) {
+            setErrors(spot.errors);
+            return; // just so it doesn't hit the redirect
+        }
+
+        history.push(`/spots/${spot.id}`);
+    }
+
     return (
         <form
+            onSubmit={handleSubmit}
             className="new-spot-form"
         >
             <div>
