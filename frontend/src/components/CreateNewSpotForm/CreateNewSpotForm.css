@@ -16,10 +16,10 @@
     font-size: 12px;
 }
 
-/* input {
+.form-input {
     width: 470px;
     margin-bottom: 10px;
-} */
+}
 
 .form-info {
     display: flex;
@@ -32,10 +32,12 @@
 
 .city-input {
     width: 270px;
+    margin-bottom: 15px;
 }
 
 .state-input {
     width: 175px;
+    margin-bottom: 10px;
 }
 
 .separating-comma {
@@ -44,7 +46,7 @@
 
 .lat-lng-pair {
     display: flex;
-    border-bottom: 4px solid #ff5A5F;
+    border-bottom: 3px solid #ff5A5F;
 }
 
 .lat-input {
@@ -72,7 +74,7 @@
 }
 
 .description-div {
-    border-bottom: 4px solid #ff5A5F;
+    border-bottom: 3px solid #ff5A5F;
 }
 
 .spot-title-title {
@@ -85,11 +87,12 @@
 }
 
 .title-div {
-    border-bottom: 4px solid #ff5A5F;
+    border-bottom: 3px solid #ff5A5F;
 }
 
 .title-input {
     margin-bottom: 20px;
+    width: 470px;
 }
 
 .price-tips {
@@ -107,7 +110,7 @@
 }
 
 .dolla {
-    margin-top: 7px;
+    margin-top: 15px;
 }
 
 .price-input {
@@ -120,7 +123,7 @@
 }
 
 .photos-div {
-    border-bottom: 4px solid #ff5A5F;
+    border-bottom: 3px solid #ff5A5F;
 }
 
 .photo-title {
@@ -134,10 +137,14 @@
 
 .image-input {
     margin-bottom: 15px;
+    width: 470px;
+    margin-bottom: 10px;
 }
 
 .last-image-input {
     margin-bottom: 25px;
+    width: 470px;
+    margin-bottom: 40px;
 }
 
 .create-spot-button {
@@ -154,4 +161,5 @@
 
 .errors {
     color: blue;
+    font-style: italic;
 }

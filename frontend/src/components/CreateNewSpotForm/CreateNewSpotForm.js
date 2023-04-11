@@ -84,6 +84,7 @@ function CreateNewSpotForm() {
                     Country
                     <br/>
                     <input
+                        className="form-input"
                         type="text"
                         name="country"
                         placeholder="Country"
@@ -96,6 +97,7 @@ function CreateNewSpotForm() {
                     Street Address
                     <br/>
                     <input
+                        className="form-input"
                         type="text"
                         name="address"
                         placeholder="Street Address"
