@@ -2,7 +2,8 @@ import { csrfFetch } from "./csrf";
 
 // Action type constants
 const LOAD_SPOTS = 'spots/LOAD_SPOTS';
-const CREATE_SPOT = 'reports/CREATE_SPOT';
+const CREATE_SPOT = 'spots/CREATE_SPOT';
+const DISPLAY_SPOT = 'spots/DISPLAY_SPOT';
 
 
 // Action creators
@@ -13,6 +14,11 @@ export const loadSpots = (spots) => ({
 
 export const createSpot = (spot) => ({
     type: CREATE_SPOT,
+    spot
+});
+
+export const displaySpot = (spot) => ({
+    type: DISPLAY_SPOT,
     spot
 });
 
@@ -88,6 +94,20 @@ export const createNewSpotThunk = (payload) => async (dispatch) => {
     }
 };
 
+// Display a spot's details
+export const displaySpotThunk = (spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}`);
+
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(displaySpot(spot));
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+};
+
+
 // Spots reducer
 const initialState = { allSpots: {}, singleSpot: {} }; // is this correct? Look at github wiki?
 const spotsReducer = (state = initialState, action) => {
@@ -102,7 +122,11 @@ const spotsReducer = (state = initialState, action) => {
         case CREATE_SPOT: {
             const newState = {...state, allSpots: {...state.allSpots}};
             newState.allSpots[action.spot.id] = action.spot;
-            // console.log("this is my state ----> ", newState);
+            return newState;
+        }
+        case DISPLAY_SPOT: {
+            const newState = {...state, singleSpot: {...state.singleSpot}};
+            newState.singleSpot = action.spot;
             return newState;
         }
         default:
