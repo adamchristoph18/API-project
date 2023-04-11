@@ -14,11 +14,10 @@ function CreateNewSpotForm() {
     const [longitude, setLongitude] = useState(0);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
-    const [imageUrls, setImageUrls] = useState([{}, {}, {}, {}]);
-    // const [urlTwo, setPrevImgUrl] = useState(''); // only one that is required
-    // const [prevImgUrlTwo, setPrevImgUrlTwo] = useState(''); // these aren't required
-    // const [prevImgUrlThree, setPrevImgUrlThree] = useState(''); // these aren't required
-    // const [prevImgUrlFour, setPrevImgUrlFour] = useState(''); // turn these into an array?
+    const [previewImage, setPreviewImage] = useState('');
+    const [urlTwo, setUrlTwo] = useState('');
+    const [urlThree, setUrlThree] = useState('');
+    const [urlFour, setUrlFour] = useState('');
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
@@ -39,16 +38,22 @@ function CreateNewSpotForm() {
         if (description.length < 30) {
             err.description = "Description needs a minimum of 30 characters"
         }
-
-        if (imageUrls[0] !== "") {
+        if (previewImage === "") {
             err.previewImage = "A preview image is required!"
         }
 
         setErrors(err);
-    }, [latitude, longitude, description]);
+    }, [latitude, longitude, description, previewImage]);
 
     const handleSubmit = async event => {
         event.preventDefault();
+
+        const imageUrls = [ {url: previewImage, preview: true } ];
+
+        if (urlTwo.length > 0) imageUrls.push({url: urlTwo, preview: false});
+        if (urlThree.length > 0) imageUrls.push({url: urlThree, preview: false});
+        if (urlFour.length > 0) imageUrls.push({url: urlFour, preview: false});
+
 
         const newSpot = {
             ownerId: sessionUser.id,
@@ -227,8 +232,9 @@ function CreateNewSpotForm() {
                             className="image-input"
                             type="text"
                             name="image-url-one"
-                            value={imageUrls[2] === {} ? imageUrls[2] : "Preview Image URL"}
-                            onChange={(e) => setImageUrls(imageUrls[0] = e.target.value)} // replacing the object
+                            placeholder="Image URL"
+                            value={previewImage}
+                            onChange={(e) => setPreviewImage(e.target.value)}
                             required
                         />
                         <p className="errors">{errors.previewImage}</p>
@@ -237,22 +243,24 @@ function CreateNewSpotForm() {
                             type="text"
                             name="image-url-two"
                             placeholder="Image URL"
-                            value={imageUrls[1] === {} ? imageUrls[2] : "Image URL"}
-                            onChange={(e) => setImageUrls(imageUrls[1] = e.target.value)} // replacing the object
+                            value={urlTwo}
+                            onChange={(e) => setUrlTwo(e.target.value)}
                         />
                         <input
                             className="image-input"
                             type="text"
                             name="image-url-three"
-                            value={imageUrls[2] === {} ? imageUrls[2] : "Image URL"}
-                            onChange={(e) => setImageUrls(imageUrls[2] = e.target.value)} // replacing the object
+                            placeholder="Image URL"
+                            value={urlThree}
+                            onChange={(e) => setUrlThree(e.target.value)}
                         />
                         <input
                             className="last-image-input"
                             type="text"
                             name="image-url-four"
-                            value={imageUrls[3] === {} ? imageUrls[2] : "Image URL"}
-                            onChange={(e) => setImageUrls(imageUrls[4] = e.target.value)} // replacing the object
+                            placeholder="Image URL"
+                            value={urlFour}
+                            onChange={(e) => setUrlFour(e.target.value)}
                         />
                 </div>
             </div>
