@@ -14,7 +14,7 @@ function CreateNewSpotForm() {
     const [longitude, setLongitude] = useState(0);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
-    const [imageUrls, setImageUrls] = useState([]);
+    const [imageUrls, setImageUrls] = useState([{}, {}, {}, {}]);
     // const [urlTwo, setPrevImgUrl] = useState(''); // only one that is required
     // const [prevImgUrlTwo, setPrevImgUrlTwo] = useState(''); // these aren't required
     // const [prevImgUrlThree, setPrevImgUrlThree] = useState(''); // these aren't required
@@ -60,7 +60,8 @@ function CreateNewSpotForm() {
             lng: longitude,
             name: title,
             description,
-            price
+            price,
+            spotImages: imageUrls
         };
         // console.log('this is my new spot ------> ', newSpot);
         const spot = await dispatch(createNewSpotThunk(newSpot));
@@ -226,9 +227,8 @@ function CreateNewSpotForm() {
                             className="image-input"
                             type="text"
                             name="image-url-one"
-                            placeholder="Preview Image URL"
-                            value={imageUrls[0]}
-                            onChange={(e) => setImageUrls(imageUrls.push(e.target.value))}
+                            value={imageUrls[2] === {} ? imageUrls[2] : "Preview Image URL"}
+                            onChange={(e) => setImageUrls(imageUrls[0] = e.target.value)} // replacing the object
                             required
                         />
                         <p className="errors">{errors.previewImage}</p>
@@ -237,24 +237,22 @@ function CreateNewSpotForm() {
                             type="text"
                             name="image-url-two"
                             placeholder="Image URL"
-                            value={imageUrls[1]}
-                            onChange={(e) => setImageUrls(imageUrls.push(e.target.value))}
+                            value={imageUrls[1] === {} ? imageUrls[2] : "Image URL"}
+                            onChange={(e) => setImageUrls(imageUrls[1] = e.target.value)} // replacing the object
                         />
                         <input
                             className="image-input"
                             type="text"
                             name="image-url-three"
-                            placeholder="Image URL"
-                            value={imageUrls[2]}
-                            onChange={(e) => setImageUrls(imageUrls.push(e.target.value))}
+                            value={imageUrls[2] === {} ? imageUrls[2] : "Image URL"}
+                            onChange={(e) => setImageUrls(imageUrls[2] = e.target.value)} // replacing the object
                         />
                         <input
                             className="last-image-input"
                             type="text"
                             name="image-url-four"
-                            placeholder="Image URL"
-                            value={imageUrls[3]}
-                            onChange={(e) => setImageUrls(imageUrls.push(e.target.value))}
+                            value={imageUrls[3] === {} ? imageUrls[2] : "Image URL"}
+                            onChange={(e) => setImageUrls(imageUrls[4] = e.target.value)} // replacing the object
                         />
                 </div>
             </div>
