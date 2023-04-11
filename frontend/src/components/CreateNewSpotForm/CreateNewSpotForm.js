@@ -14,10 +14,11 @@ function CreateNewSpotForm() {
     const [longitude, setLongitude] = useState(0);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
-    const [prevImgUrl, setPrevImgUrl] = useState('');
-    const [prevImgUrlTwo, setPrevImgUrlTwo] = useState(''); // these aren't required
-    const [prevImgUrlThree, setPrevImgUrlThree] = useState(''); // these aren't required
-    const [prevImgUrlFour, setPrevImgUrlFour] = useState(''); // turn these into an array?
+    const [imageUrls, setImageUrls] = useState([]);
+    // const [urlTwo, setPrevImgUrl] = useState(''); // only one that is required
+    // const [prevImgUrlTwo, setPrevImgUrlTwo] = useState(''); // these aren't required
+    // const [prevImgUrlThree, setPrevImgUrlThree] = useState(''); // these aren't required
+    // const [prevImgUrlFour, setPrevImgUrlFour] = useState(''); // turn these into an array?
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
@@ -37,6 +38,10 @@ function CreateNewSpotForm() {
         }
         if (description.length < 30) {
             err.description = "Description needs a minimum of 30 characters"
+        }
+
+        if (imageUrls[0] !== "") {
+            err.previewImage = "A preview image is required!"
         }
 
         setErrors(err);
@@ -222,33 +227,34 @@ function CreateNewSpotForm() {
                             type="text"
                             name="image-url-one"
                             placeholder="Preview Image URL"
-                            value={prevImgUrl}
-                            onChange={(e) => setPrevImgUrl(e.target.value)}
+                            value={imageUrls[0]}
+                            onChange={(e) => setImageUrls(imageUrls.push(e.target.value))}
                             required
                         />
+                        <p className="errors">{errors.previewImage}</p>
                         <input
                             className="image-input"
                             type="text"
                             name="image-url-two"
                             placeholder="Image URL"
-                            value={prevImgUrlTwo}
-                            onChange={(e) => setPrevImgUrlTwo(e.target.value)}
+                            value={imageUrls[1]}
+                            onChange={(e) => setImageUrls(imageUrls.push(e.target.value))}
                         />
                         <input
                             className="image-input"
                             type="text"
                             name="image-url-three"
                             placeholder="Image URL"
-                            value={prevImgUrlThree}
-                            onChange={(e) => setPrevImgUrlThree(e.target.value)}
+                            value={imageUrls[2]}
+                            onChange={(e) => setImageUrls(imageUrls.push(e.target.value))}
                         />
                         <input
                             className="last-image-input"
                             type="text"
                             name="image-url-four"
                             placeholder="Image URL"
-                            value={prevImgUrlFour}
-                            onChange={(e) => setPrevImgUrlFour(e.target.value)}
+                            value={imageUrls[3]}
+                            onChange={(e) => setImageUrls(imageUrls.push(e.target.value))}
                         />
                 </div>
             </div>

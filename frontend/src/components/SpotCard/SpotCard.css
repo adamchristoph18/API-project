@@ -1,7 +1,8 @@
 .spot-card {
     display: flex;
     flex-flow: column;
-    width: 24%;
+    width: 23%;
+    margin-right: 15px;
     margin-bottom: 20px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
