@@ -35,8 +35,9 @@ function LoginFormModal() {
     <div className="login-form">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
-        <div className="credential-input">
+        <div>
           <input
+            className="credential-input"
             type="text"
             placeholder="Username or Email"
             value={credential}
@@ -44,9 +45,10 @@ function LoginFormModal() {
             required
           />
         </div>
-        <div className="password-input">
+        <div>
           <input
             type="password"
+            className="password-input"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -59,6 +61,7 @@ function LoginFormModal() {
         )}
         <button
           type="submit"
+          className="log-in-button clickable"
           >Log In</button>
       </form>
       <div
