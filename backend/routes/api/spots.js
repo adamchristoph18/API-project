@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/', async(req, res) => {
 
     const page = req.query.page === undefined ? 1 : parseInt(req.query.page);
-    const size = req.query.size === undefined ? 5 : parseInt(req.query.size);
+    const size = req.query.size === undefined ? 20 : parseInt(req.query.size);
 
     const offset = size * (page - 1);
 

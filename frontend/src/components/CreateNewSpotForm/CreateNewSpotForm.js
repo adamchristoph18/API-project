@@ -57,9 +57,9 @@ function CreateNewSpotForm() {
             description,
             price
         };
-        console.log('this is my new spot ------> ', newSpot);
+        // console.log('this is my new spot ------> ', newSpot);
         const spot = await dispatch(createNewSpotThunk(newSpot));
-        console.log('this is my spot ------> ', spot);
+        // console.log('this is my spot ------> ', spot);
         if (spot.errors) {
             setErrors(spot.errors);
             return; // just so it doesn't hit the redirect
