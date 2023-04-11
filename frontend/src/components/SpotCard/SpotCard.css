@@ -2,10 +2,17 @@
     display: flex;
     flex-flow: column;
     width: 24%;
+    margin-bottom: 30px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.spot-card:hover {
+    box-shadow: 4px 3px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
 }
 
 .spot-image {
-    /* min-height: 155px; */
     height: 155px;
     object-fit: cover;
     border-radius: 15px;
@@ -24,6 +31,6 @@
     height: 20px;
 }
 
-.spot-name {
+.spot-local {
     font-weight: bold;
 }

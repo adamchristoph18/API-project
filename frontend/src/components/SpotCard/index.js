@@ -2,8 +2,6 @@ import './SpotCard.css';
 
 const SpotCard = ({ spot }) => {
 
-    // const roundRating = (spot) => spot.avgRating ? (spot.avgRating).toFixed(1) : null;
-
     return (
         <div className="spot-card">
             <img
@@ -11,11 +9,11 @@ const SpotCard = ({ spot }) => {
                 src={spot.previewImage || "https://onlyusedtesla.com/images/no-image.png"}
                 alt="{spot.name} preview"
             />
-            <div className='spot-card-info'>
+            <div className='spot-card-info clickable'>
                 <div className='spot-info-top'>
-                    <p className='spot-name'>{spot.city}, {spot.state}</p>
+                    <p className='spot-local'>{spot.city}, {spot.state}</p>
                     <div>
-                        <i className="fa-solid fa-star icon" />{spot.avgRating ? spot.avgRating : " New"}
+                        <i className="fa-solid fa-star icon" />{Number(spot.avgRating) ? Number(spot.avgRating).toFixed(1) : " New"}
                     </div>
                 </div>
                 <p className='spot-price'>${spot.price}/night</p>
