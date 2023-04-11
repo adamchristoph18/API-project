@@ -8,7 +8,7 @@
 }
 
 .spot-card:hover {
-    box-shadow: 4px 3px 2px rgba(128, 128, 128, .3);
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
     transition: ease-in .15s;
 }
 
