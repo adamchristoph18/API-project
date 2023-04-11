@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllSpots from "./components/AllSpots";
+import CreateNewSpotForm from "./components/CreateNewSpotForm/CreateNewSpotForm";
 import './App.css';
 
 function App() {
@@ -17,7 +18,13 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && <Switch>
-          <Route exact path="/"><AllSpots /></Route>
+          <Route exact path="/">
+            <AllSpots />
+          </Route>
+          <Route path="/spots/new">
+            <CreateNewSpotForm />
+          </Route>
+          <p>Page Not Found</p>
         </Switch>}
     </>
   );

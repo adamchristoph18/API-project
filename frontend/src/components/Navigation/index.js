@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import * as sessionActions from '../../store/session';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
@@ -18,7 +17,7 @@ function Navigation({ isLoaded }){
           {sessionUser && sessionUser.firstName !== 'Demo' ? // only render the 'Create a New Spot' if there is a current user
             <NavLink
               className='create-new-spot'
-              to="/"
+              to="/spots/new"
             >Create a New Spot</NavLink>
           : null}
 
