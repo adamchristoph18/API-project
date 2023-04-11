@@ -17,6 +17,10 @@
     width: 340px;
 }
 
+.login-errors {
+    margin-left: 170px;
+}
+
 .log-in-button {
     width: 350px;
     height: 60px;

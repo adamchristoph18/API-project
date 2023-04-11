@@ -57,7 +57,7 @@ function LoginFormModal() {
         </div>
 
         {errors.message && (
-          <p>{errors.message}</p>
+          <p className="login-errors">{errors.message}</p>
         )}
         <button
           type="submit"
