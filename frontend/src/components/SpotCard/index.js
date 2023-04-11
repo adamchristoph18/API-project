@@ -11,7 +11,7 @@ const SpotCard = ({ spot }) => {
                 src={spot.previewImage || "https://onlyusedtesla.com/images/no-image.png"}
                 alt="{spot.name} preview"
             />
-            <div className='spot-card-info'>
+            <div className='spot-card-info clickable'>
                 <div className='spot-info-top'>
                     <p className='spot-name'>{spot.city}, {spot.state}</p>
                     <div>
