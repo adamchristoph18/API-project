@@ -14,7 +14,7 @@ function Navigation({ isLoaded }){
       <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
 
         <div className='nav-bar-right'>
-          {sessionUser && sessionUser.firstName !== 'Demo' ? // only render the 'Create a New Spot' if there is a current user
+          {sessionUser ? // only render the 'Create a New Spot' if there is a current user
             <NavLink
               className='create-new-spot'
               to="/spots/new"
