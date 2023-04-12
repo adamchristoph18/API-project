@@ -1,0 +1,90 @@
+.spot-details-page {
+    margin-left: 40px;
+}
+
+.spot-images {
+    display: flex;
+}
+
+.preview-image {
+    height: 420px;
+}
+
+.extra-images {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.extra-image {
+    height: 200px;
+    width: 40%;
+    object-fit: cover;
+}
+
+.x-image-one {
+    margin: 0px 5px 0px 10px;
+}
+
+.x-image-two {
+    margin: 0px 0px 5px 10px;
+}
+
+.x-image-three {
+    margin: 0px 0px -15px 10px;
+}
+
+.reserve-box {
+    display: flex;
+    flex-flow: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 450px;
+    height: 200px;
+    margin: 30px 0 0 30px;
+    margin-bottom: 40px;
+}
+
+.spot-info-above-reserve {
+    display: flex;
+    height: 100px;
+    width: 450px;
+}
+
+.dolla-sign {
+    margin: 50px -40px 0 40px;
+}
+
+.star-icon {
+    margin: 60px 0 0 60px;
+}
+
+.price {
+    font-size: 50px;
+    margin: 30px 0 0 40px;
+}
+
+.avg-rating {
+    margin-top: 55px;
+}
+
+.num-reviews {
+    margin: 55px 8px 0 50px;
+}
+
+.reviews-word {
+    margin-top: 55px;
+}
+
+.reserve-button {
+    margin: 0 auto;
+    height: 60px;
+    width: 400px;
+    border-radius: 15px;
+    color: white;
+    background-color: rgb(253, 93, 75);
+}
+
+.spot-details {
+    display: flex;
+    border-bottom: 2px solid black;
+}

@@ -2,7 +2,8 @@ import { csrfFetch } from "./csrf";
 
 // Action type constants
 const LOAD_SPOTS = 'spots/LOAD_SPOTS';
-const CREATE_SPOT = 'reports/CREATE_SPOT';
+const CREATE_SPOT = 'spots/CREATE_SPOT';
+const DISPLAY_SPOT = 'spots/DISPLAY_SPOT';
 
 
 // Action creators
@@ -13,6 +14,11 @@ export const loadSpots = (spots) => ({
 
 export const createSpot = (spot) => ({
     type: CREATE_SPOT,
+    spot
+});
+
+export const displaySpot = (spot) => ({
+    type: DISPLAY_SPOT,
     spot
 });
 
@@ -29,7 +35,34 @@ export const getAllSpotsThunk = () => async (dispatch) => {
 };
 
 // Create a spot thunk
-export const createNewSpotThunk = (newSpot) => async (dispatch) => {
+export const createNewSpotThunk = (payload) => async (dispatch) => {
+    const {
+        ownerId,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price,
+        spotImages
+    } = payload;
+
+    const newSpot = {
+        ownerId,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    };
+
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: {
@@ -40,14 +73,40 @@ export const createNewSpotThunk = (newSpot) => async (dispatch) => {
 
     if (response.ok) {
         const spot = await response.json();
-        dispatch(createSpot(spot)); // this line updates the state
 
+        for (let i = 0; i < spotImages.length; i++) {
+            const image = spotImages[i];
+            await csrfFetch(`/api/spots/${spot.id}/images`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(image)
+            });
+        }
+
+        dispatch(createSpot(spot)); // this line updates the state
         return spot; // this sends the new spot to the frontend
+
     } else {
         const errors = await response.json();
         return errors;
     }
 };
+
+// Display a spot's details
+export const displaySpotThunk = (spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}`);
+
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(displaySpot(spot));
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+};
+
 
 // Spots reducer
 const initialState = { allSpots: {}, singleSpot: {} }; // is this correct? Look at github wiki?
@@ -63,7 +122,11 @@ const spotsReducer = (state = initialState, action) => {
         case CREATE_SPOT: {
             const newState = {...state, allSpots: {...state.allSpots}};
             newState.allSpots[action.spot.id] = action.spot;
-            console.log("this is my state ----> ", newState);
+            return newState;
+        }
+        case DISPLAY_SPOT: {
+            const newState = {...state, singleSpot: {...state.singleSpot}};
+            newState.singleSpot = action.spot;
             return newState;
         }
         default:

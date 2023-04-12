@@ -46,7 +46,7 @@
 
 .lat-lng-pair {
     display: flex;
-    border-bottom: 3px solid #ff5A5F;
+    border-bottom: 3px solid rgb(197, 223, 254);
 }
 
 .lat-input {
@@ -74,7 +74,7 @@
 }
 
 .description-div {
-    border-bottom: 3px solid #ff5A5F;
+    border-bottom: 3px solid rgb(197, 223, 254);
 }
 
 .spot-title-title {
@@ -87,7 +87,7 @@
 }
 
 .title-div {
-    border-bottom: 3px solid #ff5A5F;
+    border-bottom: 3px solid rgb(197, 223, 254);
 }
 
 .title-input {
@@ -123,7 +123,7 @@
 }
 
 .photos-div {
-    border-bottom: 3px solid #ff5A5F;
+    border-bottom: 3px solid rgb(197, 223, 254);
 }
 
 .photo-title {
@@ -160,6 +160,8 @@
 }
 
 .errors {
-    color: blue;
+    color: red;
     font-style: italic;
+    font-size: 12px;
+    margin-top: -10px;
 }
