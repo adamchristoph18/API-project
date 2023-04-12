@@ -18,7 +18,7 @@ const SpotCard = ({ spot }) => {
             <div className='spot-card-info clickable'>
                 <div className='spot-info-top'>
                     <p className='spot-local'>{spot.city}, {spot.state}</p>
-                    <div>
+                    <div className='rating-or-new'>
                         <i className="fa-solid fa-star icon" />{Number(spot.avgRating) ? Number(spot.avgRating).toFixed(1) : " New"}
                     </div>
                 </div>
