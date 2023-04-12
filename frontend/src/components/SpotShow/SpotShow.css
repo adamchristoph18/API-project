@@ -1,7 +1,34 @@
 .spot-details-page {
-
+    margin-left: 40px;
 }
 
-.spot-details-header {
+.spot-images {
+    display: flex;
+}
 
+.preview-image {
+    height: 420px;
+}
+
+.extra-images {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.extra-image {
+    height: 200px;
+    width: 40%;
+    object-fit: cover;
+}
+
+.x-image-one {
+    margin: 0px 5px 0px 10px;
+}
+
+.x-image-two {
+    margin: 0px 0px 5px 10px;
+}
+
+.x-image-three {
+    margin: 0px 0px -15px 10px;
 }
