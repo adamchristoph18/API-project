@@ -18,6 +18,7 @@ function CreateNewSpotForm() {
     const [urlTwo, setUrlTwo] = useState('');
     const [urlThree, setUrlThree] = useState('');
     const [urlFour, setUrlFour] = useState('');
+    const [urlFive, setUrlFive] = useState('');
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
@@ -53,6 +54,7 @@ function CreateNewSpotForm() {
         if (urlTwo.length > 0) imageUrls.push({url: urlTwo, preview: false});
         if (urlThree.length > 0) imageUrls.push({url: urlThree, preview: false});
         if (urlFour.length > 0) imageUrls.push({url: urlFour, preview: false});
+        if (urlFive.length > 0) imageUrls.push({url: urlFive, preview: false});
 
 
         const newSpot = {
@@ -68,9 +70,9 @@ function CreateNewSpotForm() {
             price,
             spotImages: imageUrls
         };
-        // console.log('this is my new spot ------> ', newSpot);
+
         const spot = await dispatch(createNewSpotThunk(newSpot));
-        // console.log('this is my spot ------> ', spot);
+
         if (spot.errors) {
             setErrors(spot.errors);
             return; // just so it doesn't hit the redirect
@@ -255,12 +257,20 @@ function CreateNewSpotForm() {
                             onChange={(e) => setUrlThree(e.target.value)}
                         />
                         <input
-                            className="last-image-input"
+                            className="image-input"
                             type="text"
                             name="image-url-four"
                             placeholder="Image URL"
                             value={urlFour}
                             onChange={(e) => setUrlFour(e.target.value)}
+                        />
+                        <input
+                            className="last-image-input"
+                            type="text"
+                            name="image-url-five"
+                            placeholder="Image URL"
+                            value={urlFive}
+                            onChange={(e) => setUrlFive(e.target.value)}
                         />
                 </div>
             </div>
