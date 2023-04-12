@@ -22,18 +22,22 @@
 }
 
 .x-image-one {
-    margin: 5px 0px 0px 10px;
+    height: 200px;
+    margin: 0px 0px 0px 10px;
 }
 
 .x-image-two {
-    margin: 5px 0px 5px 10px;
+    height: 200px;
+    margin: 0px 0px 5px 10px;
 }
 
 .x-image-three {
+    height: 200px;
     margin: 0px 0px -15px 10px;
 }
 
 .x-image-four {
+    height: 200px;
     margin: 0px 0px 0px 10px;
 }
 
