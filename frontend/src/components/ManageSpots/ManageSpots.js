@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllSpotsThunk } from "../../store/spots";
+import { getAllSpotsThunk, deleteSpotThunk } from "../../store/spots";
 import { useHistory } from "react-router-dom";
 import SpotCard from "../SpotCard";
 import "./ManageSpots.css";
