@@ -1,5 +1,5 @@
 .manage-spots-header {
-    border: 2px solid blue;
+    margin-bottom: -20px;
 }
 
 .manage-spots-title {
@@ -21,7 +21,6 @@
 }
 
 .curr-user-spots {
-    border: 2px solid green;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;

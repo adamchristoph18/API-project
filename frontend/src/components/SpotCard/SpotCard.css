@@ -50,7 +50,6 @@
 }
 
 .update-delete-btns {
-    border: 2px solid green;
     display: flex;
 }
 
@@ -66,4 +65,9 @@
     color: white;
     background-color: #ff5A5F;
     border-radius: 10px;
+}
+
+.update-button:hover, .delete-button:hover {
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
 }
