@@ -2,7 +2,8 @@ import './SpotCard.css';
 import { useHistory } from "react-router-dom";
 
 
-const SpotCard = ({ spot }) => {
+const SpotCard = (props) => {
+    const { spot } = props;
     const history = useHistory();
 
     return (
@@ -23,6 +24,16 @@ const SpotCard = ({ spot }) => {
                     </div>
                 </div>
                 <p className='spot-price'>${spot.price}/night</p>
+                {props.manage ?
+                                <div className='update-delete-btns'>
+                                    <button
+                                        className='update-button'
+                                    >Update</button>
+                                    <button
+                                        className='delete-button'
+                                    >Delete</button>
+                                </div>
+                                : null}
             </div>
         </div>
     )

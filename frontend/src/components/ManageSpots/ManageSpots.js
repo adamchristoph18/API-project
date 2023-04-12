@@ -35,6 +35,7 @@ const ManageSpots = () => {
             <div className='curr-user-spots'>
                 {currentUserSpots.map(spot => (
                     <SpotCard
+                        manage={true}
                         spot={spot}
                         key={spot.id}
                     />
