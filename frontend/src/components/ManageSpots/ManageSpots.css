@@ -23,6 +23,6 @@
 .curr-user-spots {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 30px auto;
 }
