@@ -24,13 +24,21 @@ const ManageSpots = () => {
     return (
         <div>
             <div className='manage-spots-header'>
-            <h1 className='manage-spots-title'>Manage your spots</h1>
-            <button
-                className='create-new-spot-button-ms clickable'
-                onClick={(e) => history.push("/spots/new")}
-            >
-                Create a New Spot
-            </button>
+                <h1 className='manage-spots-title'>Manage your spots</h1>
+                <button
+                    className='create-new-spot-button-ms clickable'
+                    onClick={(e) => history.push("/spots/new")}
+                >
+                    Create a New Spot
+                </button>
+            </div>
+            <div className='curr-user-spots'>
+                {currentUserSpots.map(spot => (
+                    <SpotCard
+                        spot={spot}
+                        key={spot.id}
+                    />
+                ))}
             </div>
         </div>
     );
