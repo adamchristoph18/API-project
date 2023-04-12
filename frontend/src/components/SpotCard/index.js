@@ -11,7 +11,9 @@ const SpotCard = (props) => {
     return (
         <div
             className="spot-card clickable"
-            onClick={(e) => history.push(`/spots/${spot.id}`)}
+            onClick={(e) => {
+                history.push(`/spots/${spot.id}`)
+            }}
         >
             <img
                 className="spot-image clickable"
@@ -33,7 +35,7 @@ const SpotCard = (props) => {
                                     >Update</button>
                                     <OpenModalConfirmDelete
                                         itemText="Delete"
-                                        modalComponent={<ConfirmDeleteModal />}
+                                        modalComponent={<ConfirmDeleteModal spot={spot} />}
                                     />
                                 </div>
                                 : null}
