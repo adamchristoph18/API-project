@@ -1,5 +1,7 @@
-import './SpotCard.css';
 import { useHistory } from "react-router-dom";
+import OpenModalConfirmDelete from "../ConfirmDeleteModal/OpenModalConfirmDelete";
+import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
+import './SpotCard.css';
 
 
 const SpotCard = (props) => {
@@ -25,13 +27,14 @@ const SpotCard = (props) => {
                 </div>
                 <p className='spot-price'>${spot.price}/night</p>
                 {props.manage ?
-                                <div className='update-delete-btns'>
+                                <div className="update-delete-options">
                                     <button
                                         className='update-button clickable'
                                     >Update</button>
-                                    <button
-                                        className='delete-button clickable'
-                                    >Delete</button>
+                                    <OpenModalConfirmDelete
+                                        itemText="Delete"
+                                        modalComponent={<ConfirmDeleteModal />}
+                                    />
                                 </div>
                                 : null}
             </div>

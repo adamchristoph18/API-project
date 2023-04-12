@@ -49,10 +49,6 @@
     margin-right: 10px;
 }
 
-.update-delete-btns {
-    display: flex;
-}
-
 .update-button {
     margin-left: 10px;
     color: white;
@@ -60,14 +56,11 @@
     border-radius: 10px;
 }
 
-.delete-button {
-    margin-left: -60px;
-    color: white;
-    background-color: #ff5A5F;
-    border-radius: 10px;
-}
-
-.update-button:hover, .delete-button:hover {
+.update-button:hover {
     box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
     transition: ease-in .15s;
+}
+
+.update-delete-options {
+    display: flex;
 }
