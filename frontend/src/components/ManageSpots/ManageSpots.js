@@ -20,7 +20,16 @@ const ManageSpots = () => {
     }, [dispatch]);
 
     return (
-        <h1>Manage your spots</h1>
+        <div>
+            <div className='manage-spots-header'>
+            <h1 className='manage-spots-title'>Manage your spots</h1>
+            <button
+                className='create-new-spot-button-ms'
+            >
+                Create a New Spot
+            </button>
+            </div>
+        </div>
     );
 };
 

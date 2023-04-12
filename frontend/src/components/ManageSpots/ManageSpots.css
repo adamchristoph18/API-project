@@ -1,0 +1,17 @@
+.manage-spots-header {
+    border: 2px solid blue;
+}
+
+.manage-spots-title {
+    border: 2px solid blue;
+    width: fit-content;
+    margin: 40px;
+    margin-bottom: -5px;
+}
+
+.create-new-spot-button-ms {
+    border: 2px solid blue;
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10px;
+}
