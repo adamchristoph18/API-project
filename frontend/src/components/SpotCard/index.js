@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import OpenModalConfirmDelete from "../ConfirmDeleteModal/OpenModalConfirmDelete";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 import './SpotCard.css';
@@ -7,6 +8,8 @@ import './SpotCard.css';
 const SpotCard = (props) => {
     const { spot } = props;
     const history = useHistory();
+
+    const sessionUser = useSelector(state => state.session.user);
 
     return (
         <div
@@ -24,7 +27,9 @@ const SpotCard = (props) => {
                 <div className='spot-info-top'>
                     <p className='spot-local'>{spot.city}, {spot.state}</p>
                     <div className='rating-or-new'>
-                        <i className="fa-solid fa-star icon" />{Number(spot.avgRating) ? Number(spot.avgRating).toFixed(1) : " New"}
+                        <i className="fa-solid fa-star icon" />{Number(spot.avgRating) ?
+                                                                                        Number(spot.avgRating).toFixed(1)
+                                                                                        : "New"}
                     </div>
                 </div>
                 <p className='spot-price'>${spot.price}/night</p>
