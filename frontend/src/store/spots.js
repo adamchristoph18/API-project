@@ -4,7 +4,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_SPOTS = 'spots/LOAD_SPOTS';
 const CREATE_SPOT = 'spots/CREATE_SPOT';
 const DISPLAY_SPOT = 'spots/DISPLAY_SPOT';
-// const CURRENT_USER_SPOTS = 'spots/CURRENT_USER_SPOTS';
+const DELETE_SPOT = 'spots/DELETE_SPOT';
 
 
 // Action creators
@@ -23,9 +23,10 @@ export const displaySpot = (spot) => ({
     spot
 });
 
-// export const currentUserSpots = () => ({
-
-// });
+export const deleteSpot = (spotId) => ({
+    type: DELETE_SPOT,
+    spotId
+});
 
 // Thunk action creators
 // Get all spots thunk
