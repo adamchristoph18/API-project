@@ -20,8 +20,8 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && <Switch>
           <Route exact path="/"><AllSpots /></Route>
-          <Route exact path="/spots/:spotId"><SpotShow /></Route>
           <Route path="/spots/new"><CreateNewSpotForm /></Route>
+          <Route path="/spots/:spotId"><SpotShow /></Route>
           <p>Page Not Found</p>
         </Switch>}
     </>
