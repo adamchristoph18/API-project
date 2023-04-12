@@ -4,8 +4,7 @@
     width: 23%;
     margin-right: 15px;
     margin-bottom: 20px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
     background-color: white;
     transition: transform .2s;
 }
