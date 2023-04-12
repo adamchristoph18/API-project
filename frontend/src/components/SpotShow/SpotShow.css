@@ -22,15 +22,19 @@
 }
 
 .x-image-one {
-    margin: 0px 5px 0px 10px;
+    margin: 5px 0px 0px 10px;
 }
 
 .x-image-two {
-    margin: 0px 0px 5px 10px;
+    margin: 5px 0px 5px 10px;
 }
 
 .x-image-three {
     margin: 0px 0px -15px 10px;
+}
+
+.x-image-four {
+    margin: 0px 0px 0px 10px;
 }
 
 .reserve-box {
