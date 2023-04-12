@@ -9,7 +9,22 @@ function ConfirmDeleteModal() {
     const dispatch = useDispatch();
 
     return (
-        <h2>Hello world!</h2>
+        <div className="confirm-delete-mdl">
+            <h2 className="c-delete-title">Confirm Delete</h2>
+            <p className="warning">
+                Are you sure you want to remove this spot from the images?
+            </p>
+            <button
+                className="yes-delete-button"
+            >
+                Yes (Delete Spot)
+            </button>
+            <button
+                className="no-keep-button"
+            >
+                No (Keep Spot)
+            </button>
+        </div>
     )
 
 }
