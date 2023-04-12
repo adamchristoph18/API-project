@@ -112,6 +112,17 @@ export const displaySpotThunk = (spotId) => async (dispatch) => {
     }
 };
 
+// Delete a spot
+export const deleteSpotThunk = (spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        dispatch(deleteSpot(spotId));
+    }
+};
+
 
 // Spots reducer
 const initialState = { allSpots: {}, singleSpot: {} }; // is this correct? Look at github wiki?
