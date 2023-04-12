@@ -14,10 +14,11 @@ function CreateNewSpotForm() {
     const [longitude, setLongitude] = useState(0);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
-    const [prevImgUrl, setPrevImgUrl] = useState('');
-    const [prevImgUrlTwo, setPrevImgUrlTwo] = useState(''); // these aren't required
-    const [prevImgUrlThree, setPrevImgUrlThree] = useState(''); // these aren't required
-    const [prevImgUrlFour, setPrevImgUrlFour] = useState(''); // turn these into an array?
+    const [previewImage, setPreviewImage] = useState('');
+    const [urlTwo, setUrlTwo] = useState('');
+    const [urlThree, setUrlThree] = useState('');
+    const [urlFour, setUrlFour] = useState('');
+    const [urlFive, setUrlFive] = useState('');
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
@@ -38,12 +39,23 @@ function CreateNewSpotForm() {
         if (description.length < 30) {
             err.description = "Description needs a minimum of 30 characters"
         }
+        if (previewImage === "") {
+            err.previewImage = "A preview image is required!"
+        }
 
         setErrors(err);
-    }, [latitude, longitude, description]);
+    }, [latitude, longitude, description, previewImage]);
 
     const handleSubmit = async event => {
         event.preventDefault();
+
+        const imageUrls = [ {url: previewImage, preview: true } ];
+
+        if (urlTwo.length > 0) imageUrls.push({url: urlTwo, preview: false});
+        if (urlThree.length > 0) imageUrls.push({url: urlThree, preview: false});
+        if (urlFour.length > 0) imageUrls.push({url: urlFour, preview: false});
+        if (urlFive.length > 0) imageUrls.push({url: urlFive, preview: false});
+
 
         const newSpot = {
             ownerId: sessionUser.id,
@@ -55,11 +67,12 @@ function CreateNewSpotForm() {
             lng: longitude,
             name: title,
             description,
-            price
+            price,
+            spotImages: imageUrls
         };
-        console.log('this is my new spot ------> ', newSpot);
+
         const spot = await dispatch(createNewSpotThunk(newSpot));
-        console.log('this is my spot ------> ', spot);
+
         if (spot.errors) {
             setErrors(spot.errors);
             return; // just so it doesn't hit the redirect
@@ -221,34 +234,43 @@ function CreateNewSpotForm() {
                             className="image-input"
                             type="text"
                             name="image-url-one"
-                            placeholder="Preview Image URL"
-                            value={prevImgUrl}
-                            onChange={(e) => setPrevImgUrl(e.target.value)}
+                            placeholder="Image URL"
+                            value={previewImage}
+                            onChange={(e) => setPreviewImage(e.target.value)}
                             required
                         />
+                        <p className="errors">{errors.previewImage}</p>
                         <input
                             className="image-input"
                             type="text"
                             name="image-url-two"
                             placeholder="Image URL"
-                            value={prevImgUrlTwo}
-                            onChange={(e) => setPrevImgUrlTwo(e.target.value)}
+                            value={urlTwo}
+                            onChange={(e) => setUrlTwo(e.target.value)}
                         />
                         <input
                             className="image-input"
                             type="text"
                             name="image-url-three"
                             placeholder="Image URL"
-                            value={prevImgUrlThree}
-                            onChange={(e) => setPrevImgUrlThree(e.target.value)}
+                            value={urlThree}
+                            onChange={(e) => setUrlThree(e.target.value)}
+                        />
+                        <input
+                            className="image-input"
+                            type="text"
+                            name="image-url-four"
+                            placeholder="Image URL"
+                            value={urlFour}
+                            onChange={(e) => setUrlFour(e.target.value)}
                         />
                         <input
                             className="last-image-input"
                             type="text"
-                            name="image-url-four"
+                            name="image-url-five"
                             placeholder="Image URL"
-                            value={prevImgUrlFour}
-                            onChange={(e) => setPrevImgUrlFour(e.target.value)}
+                            value={urlFive}
+                            onChange={(e) => setUrlFive(e.target.value)}
                         />
                 </div>
             </div>
