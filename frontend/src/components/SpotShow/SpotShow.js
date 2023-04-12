@@ -10,7 +10,6 @@ const SpotShow = () => {
     const spotObj = useSelector(state => state.spots.singleSpot);
     const imagesArr = spotObj.SpotImages;
 
-    console.log('first image ----------> ', spotId);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -67,7 +66,31 @@ const SpotShow = () => {
                                         }
                 </div>
             </div>
-
+            <div className='spot-details'>
+                <div>
+                    <h2>Hosted by {spotObj.Owner.firstName} {spotObj.Owner.lastName}</h2>
+                    <p>{spotObj.description}</p>
+                </div>
+                <div className='reserve-box'>
+                    <div className='spot-info-above-reserve'>
+                        <i className="fa-solid fa-dollar-sign icon dolla-sign icon-large" />
+                        <p className='price'>{spotObj.price}</p>
+                        <i className="fa-solid fa-star icon star-icon" />
+                        <span
+                            className='avg-rating'
+                        >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "0.0"}</span>
+                        <span
+                            className='num-reviews'
+                        >{spotObj.numReviews}</span>
+                        <p
+                            className='reviews-word'
+                        >reviews</p>
+                    </div>
+                    <button
+                        className='reserve-button'
+                    >Reserve</button>
+                </div>
+            </div>
         </div>
     )
 
