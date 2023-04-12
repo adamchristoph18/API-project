@@ -56,9 +56,14 @@
 
 .update-button {
     margin-left: 10px;
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10px;
 }
 
 .delete-button {
-    border: 3px solid red;
     margin-left: -60px;
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10px;
 }

@@ -27,10 +27,10 @@ const SpotCard = (props) => {
                 {props.manage ?
                                 <div className='update-delete-btns'>
                                     <button
-                                        className='update-button'
+                                        className='update-button clickable'
                                     >Update</button>
                                     <button
-                                        className='delete-button'
+                                        className='delete-button clickable'
                                     >Delete</button>
                                 </div>
                                 : null}
