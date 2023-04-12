@@ -234,7 +234,7 @@ function CreateNewSpotForm() {
                             className="image-input"
                             type="text"
                             name="image-url-one"
-                            placeholder="Image URL"
+                            placeholder="Preview Image URL"
                             value={previewImage}
                             onChange={(e) => setPreviewImage(e.target.value)}
                             required
