@@ -3,5 +3,5 @@
     flex-flow: row wrap;
     /* justify-content: space-between; */
     margin: 28px auto;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
 }
