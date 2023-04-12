@@ -1,9 +1,15 @@
 import './SpotCard.css';
+import { useHistory } from "react-router-dom";
+
 
 const SpotCard = ({ spot }) => {
+    const history = useHistory();
 
     return (
-        <div className="spot-card">
+        <div
+            className="spot-card clickable"
+            onClick={(e) => history.push(`/spots/${spot.id}`)}
+        >
             <img
                 className="spot-image clickable"
                 src={spot.previewImage || "https://onlyusedtesla.com/images/no-image.png"}
