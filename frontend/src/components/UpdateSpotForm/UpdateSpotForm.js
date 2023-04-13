@@ -12,7 +12,7 @@ const UpdateSpotForm = () => {
 
     useEffect(() => {
         dispatch(displaySpotThunk(spotId))
-            .then((res) => setSpotObj(res));
+            .then((res) => setSpotObj(res)); // the thunk on the line before this returns a spot
     }, [dispatch, spotId]);
 
     if (!spotObj) return null; // guard clause
