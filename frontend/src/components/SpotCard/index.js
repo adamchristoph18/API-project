@@ -9,8 +9,6 @@ const SpotCard = (props) => {
     const { spot } = props;
     const history = useHistory();
 
-    const sessionUser = useSelector(state => state.session.user);
-
     return (
         <div
             className="spot-card clickable"
@@ -37,6 +35,10 @@ const SpotCard = (props) => {
                                 <div className="update-delete-options">
                                     <button
                                         className='update-button clickable'
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            history.push(`/spots/${spot.id}/edit`)
+                                        }}
                                     >Update</button>
                                     <OpenModalConfirmDelete
                                         itemText="Delete"

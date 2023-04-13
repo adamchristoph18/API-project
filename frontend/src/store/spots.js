@@ -99,8 +99,8 @@ export const createNewSpotThunk = (payload) => async (dispatch) => {
         return spot; // this sends the new spot to the frontend
 
     } else {
-        const errors = await response.json();
-        return errors;
+        const response = await response.json();
+        return response; //
     }
 };
 
@@ -129,30 +129,70 @@ export const deleteSpotThunk = (spotId) => async (dispatch) => {
 };
 
 // Edit a spot thunk
-export const editSpotThunk = (spot) => async (dispatch) => {
-    const response = await csrfFetch(`/api/spots/${spot.id}`, {
+export const editSpotThunk = (payload) => async (dispatch) => {
+    const {
+        id,
+        ownerId,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price,
+        spotImages
+    } = payload;
+
+    const newSpot = {
+        id,
+        ownerId,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    };
+
+    const response = await csrfFetch(`/api/spots/${id}`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(spot)
+        body: JSON.stringify(newSpot)
     });
 
     if (response.ok) {
-        const updatedSpot = await response.json();
-        dispatch(editSpot(updatedSpot));
+        const spot = await response.json();
 
-        return updatedSpot;
+        for (let i = 0; i < spotImages.length; i++) {
+            const image = spotImages[i];
+            await csrfFetch(`/api/spots/${spot.id}/images`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(image)
+            });
+        }
+
+        dispatch(editSpot(spot)); // this line updates the state
+        return spot; // this sends the new spot to the frontend
+
     } else {
         const errors = await response.json();
-
         return errors;
     }
 };
 
 
 // Spots reducer
-const initialState = { allSpots: {}, singleSpot: {} }; // is this correct? Look at github wiki?
+const initialState = { allSpots: {}, singleSpot: null }; // is this correct? Look at github wiki?
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_SPOTS: {
