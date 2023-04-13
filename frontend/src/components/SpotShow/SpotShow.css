@@ -92,6 +92,11 @@
     background-color: rgb(253, 93, 75);
 }
 
+.reserve-button:hover {
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
+}
+
 .spot-details {
     display: flex;
     border-bottom: 2px solid black;
