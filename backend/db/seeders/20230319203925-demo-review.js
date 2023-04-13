@@ -33,7 +33,7 @@ module.exports = {
         stars: 4
       },
       {
-        spotId: spotIdMap['Rocks Landing'],
+        spotId: spotIdMap['Beaver Island Cove'],
         userId: userIdMap.Dirk,
         review: 'So much fun. Brought my wife and kids. We all had fun.',
         stars: 5

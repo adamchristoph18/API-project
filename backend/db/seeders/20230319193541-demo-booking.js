@@ -27,7 +27,7 @@ module.exports = {
     options.tableName = 'Bookings';
     return queryInterface.bulkInsert(options, [
       {
-        spotId: spotIdMap['Rocks Landing'],
+        spotId: spotIdMap['Beaver Island Cove'],
         userId: userIdMap['Dirk'],
         startDate: new Date('2023-09-14'),
         endDate: new Date('2023-10-03')

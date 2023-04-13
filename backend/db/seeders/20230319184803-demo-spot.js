@@ -27,7 +27,7 @@ module.exports = {
         country: 'United States of America',
         lat: 78.5840543,
         lng: 83.6932054,
-        name: 'Rocks Landing',
+        name: 'Beaver Island Cove',
         description:'Rocky beach with lake view',
         price: 240.0
       },
