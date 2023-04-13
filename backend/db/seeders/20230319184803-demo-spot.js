@@ -78,6 +78,18 @@ module.exports = {
         name: 'The Eagles Nest',
         description:'Beautiful scenery to come enjoy the best of Northern Michigan',
         price: 330
+      },
+      {
+        ownerId: userIdMap.John,
+        address: '444 Timberview Rd',
+        city: 'Las Vegas',
+        state: 'Nevada',
+        country: 'United States of America',
+        lat: 38.5940341,
+        lng: 61.6932674,
+        name: 'Mountain Valley View',
+        description:'Spending the night in a castle? You can! You are staying in a quiet, fairy tale environment.',
+        price: 1240.0
       }
     ], {});
   },

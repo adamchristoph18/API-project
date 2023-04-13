@@ -31,17 +31,22 @@ module.exports = {
       },
       {
         spotId: spotIdMap['Pearl overlook'],
-        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-779486252857801661/original/650a900c-e568-4bba-ad1a-9599bccdc0a7.jpeg?im_w=1200',
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-779486252857801661/original/650a900c-e568-4bba-ad1a-9599bccdc0a7.jpeg',
         preview: true
       },
       {
         spotId: spotIdMap['Copper Sopper Beach House'],
-        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-801458664154162658/original/d9e9c8c4-63a0-4c24-9863-2ee5db2cd660.jpeg?im_w=1200',
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-801458664154162658/original/d9e9c8c4-63a0-4c24-9863-2ee5db2cd660.jpeg',
         preview: true
       },
       {
         spotId: spotIdMap['The Eagles Nest'],
-        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-49457568/original/7be97498-45f6-413d-9d05-84c60da2cdba.jpeg?im_w=1200',
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-49457568/original/7be97498-45f6-413d-9d05-84c60da2cdba.jpeg',
+        preview: true
+      },
+      {
+        spotId: spotIdMap['Mountain Valley View'],
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-630058522819373033/original/130dec7e-4b9d-4714-86d3-ba10a96303ea.jpeg',
         preview: true
       }
     ], {});
