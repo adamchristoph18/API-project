@@ -11,6 +11,7 @@ const SpotCard = (props) => {
 
     return (
         <div
+            title={spot.name}
             className="spot-card clickable"
             onClick={(e) => {
                 history.push(`/spots/${spot.id}`)
