@@ -93,7 +93,10 @@ function SpotForm({ spot, formType }) {
             className="new-spot-form"
         >
             <div>
-                <h2 className="form-title">Create a new Spot</h2>
+                <h2
+                    className="form-title">
+                        {formType === "update" ? "Update Your Spot" : "Create a new Spot"}
+                </h2>
                 <p><span className="subtitle">Where's your place located?</span>
                     <br/>
                     <span className="disclaim">*Guests will only get your exact address once they have booked a reservation.</span></p>
