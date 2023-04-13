@@ -111,6 +111,8 @@ export const displaySpotThunk = (spotId) => async (dispatch) => {
     if (response.ok) {
         const spot = await response.json();
         dispatch(displaySpot(spot));
+
+        return spot;
     } else {
         const errors = await response.json();
         return errors;
