@@ -6,15 +6,16 @@ import SpotForm from "../SpotForm/SpotForm";
 
 const UpdateSpotForm = () => {
     const { spotId } = useParams();
-
-    const spotObj = useSelector(state => state.spots.singleSpot);
+    const [spotObj, setSpotObj] = useState(null); // this needs to be null to first hit the guard clause, then
+                                            // hit the useEffect/dispatch to update
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(displaySpotThunk(spotId));
+        dispatch(displaySpotThunk(spotId))
+            .then((res) => setSpotObj(res)); // the thunk on the line before this returns a spot
     }, [dispatch, spotId]);
 
-    if (!spotObj) return null;
+    if (!spotObj) return null; // guard clause
 
     return (
         <SpotForm

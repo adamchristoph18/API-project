@@ -87,7 +87,8 @@ const SpotShow = () => {
                         >reviews</p>
                     </div>
                     <button
-                        className='reserve-button'
+                        onClick={() => alert("Feature coming soon!")}
+                        className='reserve-button clickable'
                     >Reserve</button>
                 </div>
             </div>

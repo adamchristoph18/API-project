@@ -13,8 +13,8 @@ function SpotForm({ spot, formType }) {
     const [city, setCity] = useState(spot?.city || "");
     const [state, setState] = useState(spot?.state || "");
     const [description, setDescription] = useState(spot?.description || "");
-    const [latitude, setLatitude] = useState(spot?.lat || 0);
-    const [longitude, setLongitude] = useState(spot?.lng || 0);
+    const [latitude, setLatitude] = useState(spot?.lat || "");
+    const [longitude, setLongitude] = useState(spot?.lng || "");
     const [title, setTitle] = useState(spot?.name || "");
     const [price, setPrice] = useState(spot?.price || 0);
     const [previewImage, setPreviewImage] = useState(spot?.SpotImages?.[0]?.url || "");
@@ -56,22 +56,27 @@ function SpotForm({ spot, formType }) {
 
         const err = {};
 
-        if (latitude > 90 || latitude < -90) {
-            err.latitude = "Latitude values are between -90 and 90"
-        }
-        if (longitude > 180 || longitude < -180) {
-            err.longitude = "Longitude values are between -180 and 180"
-        }
+        if (country === "") err.country = "Country is required";
+        if (address === "") err.address = "Address is required";
+        if (city === "") err.city = "City is required";
+        if (state === "") err.state = "State is required";
+        if (address === "") err.address = "Address is required";
+        if (latitude === "") err.latitude = "Latitude is required";
+        if (longitude === "") err.longitude = "Longitude is required";
+        if (title === "") err.title = "Name is required";
         if (description.length < 30) {
             err.description = "Description needs a minimum of 30 characters"
         }
+        if (price === 0) err.price = "Price is required"
         if (previewImage === "") {
             err.previewImage = "A preview image is required!"
+        }
+        if (previewImage && (!(previewImage.endsWith(".png")) || !(previewImage.endsWith(".jpg")) || !(previewImage.endsWith(".jpeg")))) {
+            err.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
         }
 
         setErrors(err); // this is asynchronous
         if (Object.keys(err).length) return; // prevents from bad request
-
 
         if (formType === "update") {
             newSpot.id = spotId;
@@ -93,14 +98,20 @@ function SpotForm({ spot, formType }) {
             className="new-spot-form"
         >
             <div>
-                <h2 className="form-title">Create a new Spot</h2>
+                <h2
+                    className="form-title">
+                        {formType === "update" ? "Update Your Spot" : "Create a new Spot"}
+                </h2>
                 <p><span className="subtitle">Where's your place located?</span>
                     <br/>
                     <span className="disclaim">*Guests will only get your exact address once they have booked a reservation.</span></p>
             </div>
             <div className="form-info">
                 <label>
-                    Country
+                    <span className="title-error">
+                        Country
+                        <p className="errors error-right">{errors.country}</p>
+                    </span>
                     <br/>
                     <input
                         className="form-input"
@@ -109,11 +120,13 @@ function SpotForm({ spot, formType }) {
                         placeholder="Country"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
-                        required
                     />
                 </label>
                 <label>
-                    Street Address
+                <span className="title-error">
+                        Street Address
+                        <p className="errors error-right">{errors.address}</p>
+                    </span>
                     <br/>
                     <input
                         className="form-input"
@@ -122,12 +135,14 @@ function SpotForm({ spot, formType }) {
                         placeholder="Street Address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
-                        required
                     />
                 </label>
                 <div className="city-state-pair">
                     <label>
+                    <span className="title-error">
                         City
+                        <p className="errors error-right">{errors.city}</p>
+                    </span>
                         <br/>
                         <input
                             className="city-input"
@@ -136,12 +151,14 @@ function SpotForm({ spot, formType }) {
                             placeholder="City"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
-                            required
                         />
                     </label>
                     <p className="separating-comma">,</p>
                     <label>
+                    <span className="title-error">
                         State
+                        <p className="errors error-right">{errors.state}</p>
+                    </span>
                         <br/>
                         <input
                             className="state-input"
@@ -150,37 +167,40 @@ function SpotForm({ spot, formType }) {
                             placeholder="STATE"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
-                            required
                         />
                     </label>
                 </div>
                 <div className="lat-lng-pair">
                     <label>
+                    <span className="title-error">
                         Latitude
+                        <p className="errors error-right">{errors.latitude}</p>
+                    </span>
                         <br/>
                         <input
                             className="lat-input"
                             type="number"
                             name="latitude"
+                            placeholder="Latitude"
                             value={latitude}
                             onChange={(e) => setLatitude(e.target.value)}
-                            required
                         />
-                            <p className="errors">{errors.latitude}</p>
                     </label>
                     <p className="separating-comma">,</p>
                     <label>
+                    <span className="title-error">
                         Longitude
+                        <p className="errors error-right">{errors.longitude}</p>
+                    </span>
                         <br/>
                         <input
                             className="lng-input"
                             type="number"
                             name="longitude"
+                            placeholder="Longitude"
                             value={longitude}
                             onChange={(e) => setLongitude(e.target.value)}
-                            required
                         />
-                            <p className="errors">{errors.longitude}</p>
                     </label>
                 </div>
                 <div>
@@ -210,8 +230,8 @@ function SpotForm({ spot, formType }) {
                         placeholder="Name of your spot"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        required
                         />
+                        <p className="errors">{errors.title}</p>
                 </div>
                 <div className="title-div">
                     <p><span className="price-title">Set a base price for your spot</span>
@@ -231,7 +251,9 @@ function SpotForm({ spot, formType }) {
                                 />
                         <p className="per-night">/ per night (USD)</p>
                     </div>
+                    <p className="errors">{errors.price}</p>
                 </div>
+                {formType === "update" ? null :
                 <div className="photos-div">
                     <p><span className="photo-title">Liven up your spot with photos!</span>
                         <br/>
@@ -278,6 +300,7 @@ function SpotForm({ spot, formType }) {
                             onChange={(e) => setUrlFive(e.target.value)}
                         />
                 </div>
+                }
             </div>
             <button
                 className="create-spot-button clickable"
