@@ -58,6 +58,13 @@ function ProfileButton({ user }) {
                 closeMenu();
               }}
             >Manage Spots</span>
+            <span
+              className="manage-spots clickable"
+              onClick={(e) => {
+                history.push("/reviews/current")
+                closeMenu();
+              }}
+            >Manage Reviews</span>
             <span className="log-out clickable" onClick={logout}>
               Log Out
             </span>
