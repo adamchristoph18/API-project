@@ -59,7 +59,7 @@ function ProfileButton({ user }) {
               }}
             >Manage Spots</span>
             <span
-              className="manage-spots clickable"
+              className="manage-reviews clickable"
               onClick={(e) => {
                 history.push("/reviews/current")
                 closeMenu();
