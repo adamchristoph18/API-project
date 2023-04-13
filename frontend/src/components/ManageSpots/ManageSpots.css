@@ -1,3 +1,8 @@
+.manage-spot-page {
+    display: flex;
+    flex-flow: column;
+}
+
 .manage-spots-header {
     margin-bottom: -20px;
 }
@@ -24,6 +29,5 @@
     display: flex;
     flex-flow: row wrap;
     margin-left: 70px;
-    justify-content: space-evenly;
-    margin: 30px auto;
+    margin-top: 40px;
 }
