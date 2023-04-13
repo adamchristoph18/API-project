@@ -24,7 +24,8 @@ const ManageSpots = () => {
     return (
         <div>
             <div className='manage-spots-header'>
-                <h1 className='manage-spots-title'>Manage your spots</h1>
+                {currentUserSpots.length ? <h1 className='manage-spots-title'>Manage your spots</h1>
+                                        : <h1 className='manage-spots-title'>You currently don't have any spots listed</h1>}
                 <button
                     className='create-new-spot-button-ms clickable'
                     onClick={(e) => history.push("/spots/new")}
