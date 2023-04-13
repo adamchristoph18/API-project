@@ -4,7 +4,8 @@ import { csrfFetch } from "./csrf";
 const LOAD_SPOTS = 'spots/LOAD_SPOTS';
 const CREATE_SPOT = 'spots/CREATE_SPOT';
 const DISPLAY_SPOT = 'spots/DISPLAY_SPOT';
-
+const DELETE_SPOT = 'spots/DELETE_SPOT';
+const UPDATE_SPOT = 'spots/UPDATE_SPOT';
 
 // Action creators
 export const loadSpots = (spots) => ({
@@ -22,6 +23,15 @@ export const displaySpot = (spot) => ({
     spot
 });
 
+export const deleteSpot = (spotId) => ({
+    type: DELETE_SPOT,
+    spotId
+});
+
+export const editSpot = (spot) => ({
+    type: UPDATE_SPOT,
+    spot
+});
 
 // Thunk action creators
 // Get all spots thunk
@@ -89,12 +99,12 @@ export const createNewSpotThunk = (payload) => async (dispatch) => {
         return spot; // this sends the new spot to the frontend
 
     } else {
-        const errors = await response.json();
-        return errors;
+        const response = await response.json();
+        return response; // need to change all the rest to this
     }
 };
 
-// Display a spot's details
+// Display a spot's details thunk
 export const displaySpotThunk = (spotId) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}`);
 
@@ -107,9 +117,82 @@ export const displaySpotThunk = (spotId) => async (dispatch) => {
     }
 };
 
+// Delete a spot thunk
+export const deleteSpotThunk = (spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        dispatch(deleteSpot(spotId));
+    }
+};
+
+// Edit a spot thunk
+export const editSpotThunk = (payload) => async (dispatch) => {
+    const {
+        id,
+        ownerId,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price,
+        spotImages
+    } = payload;
+
+    const newSpot = {
+        id,
+        ownerId,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    };
+
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newSpot)
+    });
+
+    if (response.ok) {
+        const spot = await response.json();
+
+        for (let i = 0; i < spotImages.length; i++) {
+            const image = spotImages[i];
+            await csrfFetch(`/api/spots/${spot.id}/images`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(image)
+            });
+        }
+
+        dispatch(editSpot(spot)); // this line updates the state
+        return spot; // this sends the new spot to the frontend
+
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+};
+
 
 // Spots reducer
-const initialState = { allSpots: {}, singleSpot: {} }; // is this correct? Look at github wiki?
+const initialState = { allSpots: {}, singleSpot: null };
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_SPOTS: {
@@ -127,6 +210,16 @@ const spotsReducer = (state = initialState, action) => {
         case DISPLAY_SPOT: {
             const newState = {...state, singleSpot: {...state.singleSpot}};
             newState.singleSpot = action.spot;
+            return newState;
+        }
+        case DELETE_SPOT: {
+            const newState = {...state, allSpots: {...state.allSpots}};
+            delete newState.allSpots[action.spotId];
+            return newState;
+        }
+        case UPDATE_SPOT: {
+            const newState = {...state, allSpots: {...state.allSpots}};
+            newState.allSpots[action.spot.id] = action.spot;
             return newState;
         }
         default:

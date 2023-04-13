@@ -1,0 +1,57 @@
+.delete-button {
+    margin-top: 9px;
+    margin-left: -60px;
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10px;
+    height: 23px;
+    width: 60px;
+    border: 1px solid black;
+    padding-left: 10px;
+    box-shadow: 1px 1px 2px black;
+}
+
+.confirm-delete-mdl {
+    height: 280px;
+}
+
+.c-delete-title {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.warning {
+    margin-left: 20px;
+    width: fit-content;
+    border: 2px solid white;
+}
+
+.yes-delete-button {
+    color: white;
+    width: 300px;
+    height: 50px;
+    margin-left: 50px;
+    margin-bottom: 0px;
+    border-radius: 15px;
+    background-color: rgb(253, 93, 75);
+}
+
+.yes-delete-button:hover {
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
+}
+
+.no-keep-button {
+    color: white;
+    width: 300px;
+    height: 50px;
+    margin-left: 50px;
+    border-radius: 15px;
+    background-color: rgb(146, 146, 146);
+}
+
+.no-keep-button:hover {
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
+}

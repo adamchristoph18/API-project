@@ -1,7 +1,6 @@
 .all-spots {
     display: flex;
     flex-flow: row wrap;
-    /* justify-content: space-between; */
-    margin: 28px auto;
-    /* justify-content: space-evenly; */
+    justify-content: center;
+    margin: 30px auto;
 }

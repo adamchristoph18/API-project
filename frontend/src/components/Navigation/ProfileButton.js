@@ -51,7 +51,13 @@ function ProfileButton({ user }) {
           <div className="user-menu">
             <span className="greeting">Hello, {user.firstName}!</span>
             <span>{user.email}</span>
-            <span className="manage-spots clickable">Manage Spots</span>
+            <span
+              className="manage-spots clickable"
+              onClick={(e) => {
+                history.push("/spots/current")
+                closeMenu();
+              }}
+            >Manage Spots</span>
             <span className="log-out clickable" onClick={logout}>
               Log Out
             </span>
