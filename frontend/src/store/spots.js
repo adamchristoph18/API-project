@@ -100,7 +100,7 @@ export const createNewSpotThunk = (payload) => async (dispatch) => {
 
     } else {
         const response = await response.json();
-        return response; //
+        return response; // need to change all the rest to this
     }
 };
 
@@ -192,7 +192,7 @@ export const editSpotThunk = (payload) => async (dispatch) => {
 
 
 // Spots reducer
-const initialState = { allSpots: {}, singleSpot: null }; // is this correct? Look at github wiki?
+const initialState = { allSpots: {}, singleSpot: null };
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_SPOTS: {
