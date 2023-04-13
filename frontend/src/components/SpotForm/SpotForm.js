@@ -235,6 +235,7 @@ function SpotForm({ spot, formType }) {
                         <p className="per-night">/ per night (USD)</p>
                     </div>
                 </div>
+                {formType === "update" ? null :
                 <div className="photos-div">
                     <p><span className="photo-title">Liven up your spot with photos!</span>
                         <br/>
@@ -281,6 +282,7 @@ function SpotForm({ spot, formType }) {
                             onChange={(e) => setUrlFive(e.target.value)}
                         />
                 </div>
+                }
             </div>
             <button
                 className="create-spot-button clickable"
