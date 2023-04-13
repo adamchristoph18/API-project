@@ -5,7 +5,7 @@ const LOAD_SPOTS = 'spots/LOAD_SPOTS';
 const CREATE_SPOT = 'spots/CREATE_SPOT';
 const DISPLAY_SPOT = 'spots/DISPLAY_SPOT';
 const DELETE_SPOT = 'spots/DELETE_SPOT';
-
+const UPDATE_SPOT = 'spots/UPDATE_SPOT';
 
 // Action creators
 export const loadSpots = (spots) => ({
@@ -26,6 +26,11 @@ export const displaySpot = (spot) => ({
 export const deleteSpot = (spotId) => ({
     type: DELETE_SPOT,
     spotId
+});
+
+export const editSpot = (spot) => ({
+    type: UPDATE_SPOT,
+    spot
 });
 
 // Thunk action creators
@@ -99,7 +104,7 @@ export const createNewSpotThunk = (payload) => async (dispatch) => {
     }
 };
 
-// Display a spot's details
+// Display a spot's details thunk
 export const displaySpotThunk = (spotId) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}`);
 
@@ -112,7 +117,7 @@ export const displaySpotThunk = (spotId) => async (dispatch) => {
     }
 };
 
-// Delete a spot
+// Delete a spot thunk
 export const deleteSpotThunk = (spotId) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}`, {
         method: "DELETE"
@@ -120,6 +125,28 @@ export const deleteSpotThunk = (spotId) => async (dispatch) => {
 
     if (response.ok) {
         dispatch(deleteSpot(spotId));
+    }
+};
+
+// Edit a spot thunk
+export const editSpotThunk = (spot) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spot.id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(spot)
+    });
+
+    if (response.ok) {
+        const updatedSpot = await response.json();
+        dispatch(editSpot(updatedSpot));
+
+        return updatedSpot;
+    } else {
+        const errors = await response.json();
+
+        return errors;
     }
 };
 
@@ -148,6 +175,11 @@ const spotsReducer = (state = initialState, action) => {
         case DELETE_SPOT: {
             const newState = {...state, allSpots: {...state.allSpots}};
             delete newState.allSpots[action.spotId];
+            return newState;
+        }
+        case UPDATE_SPOT: {
+            const newState = {...state, allSpots: {...state.allSpots}};
+            newState.allSpots[action.spot.id] = action.spot;
             return newState;
         }
         default:
