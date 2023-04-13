@@ -164,4 +164,15 @@
     font-style: italic;
     font-size: 12px;
     margin-top: -10px;
+    width: fit-content;
+}
+
+.title-error {
+    display: flex;
+    margin-bottom: -25px;
+}
+
+.error-right {
+    margin-top: 0px;
+    margin-left: 3px;
 }
