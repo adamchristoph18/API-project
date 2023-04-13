@@ -8,7 +8,7 @@ import './SpotShow.css';
 const SpotShow = () => {
     const { spotId } = useParams();
     const spotObj = useSelector(state => state.spots.singleSpot);
-    const imagesArr = spotObj.SpotImages;
+    const imagesArr = spotObj?.SpotImages;
 
     const dispatch = useDispatch();
 
@@ -78,7 +78,7 @@ const SpotShow = () => {
                         <i className="fa-solid fa-star icon star-icon" />
                         <span
                             className='avg-rating'
-                        >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "0.0"}</span>
+                        >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}</span>
                         <span
                             className='num-reviews'
                         >{spotObj.numReviews}</span>
@@ -87,7 +87,8 @@ const SpotShow = () => {
                         >reviews</p>
                     </div>
                     <button
-                        className='reserve-button'
+                        onClick={() => alert("Feature coming soon!")}
+                        className='reserve-button clickable'
                     >Reserve</button>
                 </div>
             </div>

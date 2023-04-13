@@ -150,7 +150,7 @@
 .create-spot-button {
     color: white;
     background-color: #ff5A5F;
-    border-radius: 10%;
+    border-radius: 10px;
     margin: 40px 0 100px 200px;
 }
 
@@ -164,4 +164,15 @@
     font-style: italic;
     font-size: 12px;
     margin-top: -10px;
+    width: fit-content;
+}
+
+.title-error {
+    display: flex;
+    margin-bottom: -25px;
+}
+
+.error-right {
+    margin-top: 0px;
+    margin-left: 3px;
 }
