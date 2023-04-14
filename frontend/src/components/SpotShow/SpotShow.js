@@ -130,12 +130,12 @@ const SpotShow = () => {
 
                 </div>
                 <div>
-                        {reviewsArr.map(review => (
+                        {moreThanZeroReviews() ? reviewsArr.map(review => (
                             <ReviewsList
                                 review={review}
                                 key={review.id}
                             />
-                        ))}
+                        )) : userOwnsSpot() ? null : <p>Be the first to post a review!</p>}
                 </div>
         </div>
     )
