@@ -101,3 +101,18 @@
     display: flex;
     border-bottom: 2px solid black;
 }
+
+.big-big-star {
+    font-size: 40px !important;
+    border: 2px solid blue;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.pillow {
+    border: 2px solid green;
+}
+
+.avg-rating-larger {
+    font-size: 40px;
+}

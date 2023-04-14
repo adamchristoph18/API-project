@@ -92,6 +92,14 @@ const SpotShow = () => {
                     >Reserve</button>
                 </div>
             </div>
+                <div>
+                    <div className='pillow'>
+                    <i className="fa-solid fa-star icon star-icon big-big-star" />
+                        <span
+                            className='avg-rating-larger'
+                        >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}</span>
+                    </div>
+                </div>
         </div>
     )
 
