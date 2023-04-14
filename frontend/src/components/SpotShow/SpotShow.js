@@ -10,11 +10,7 @@ const SpotShow = () => {
     const spotObj = useSelector(state => state.spots.singleSpot);
     const imagesArr = spotObj?.SpotImages;
 
-    const ownerOfSpotId = spotObj.Owner.id;
-
     const sessionUser = useSelector(state => state.session.user);
-    const userOwnsSpot = () => ownerOfSpotId === sessionUser.id ? true : false;
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -23,6 +19,11 @@ const SpotShow = () => {
 
     if (!spotObj) return null;
     if (!imagesArr) return null;
+
+    const ownerOfSpotId = spotObj.Owner.id;
+    const userOwnsSpot = () => ownerOfSpotId === sessionUser.id ? true : false;
+
+    const numReviews = spotObj.numReviews;
 
     return (
         <div className='spot-details-page'>
@@ -104,7 +105,11 @@ const SpotShow = () => {
                             className='avg-rating-larger'
                         >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}
                         </span>
-                        {spotObj.numReviews === 1 ? <p className='number-reviews'>1 Review</p> : <p>spotObj.numReviews reviews</p>}
+
+                        {numReviews === 1 ? <p className='number-reviews'>
+                        1 Review
+                        </p> : <p className='number-reviews'>{numReviews} Reviews</p>}
+
                     </div>
 
                     <button
