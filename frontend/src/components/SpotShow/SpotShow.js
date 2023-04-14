@@ -14,7 +14,7 @@ const SpotShow = () => {
 
     const reviewsObj = useSelector(state => state.reviews.spot);
     const reviewsArr = Object.values(reviewsObj);
-    console.log('these are the reviews ----> ', reviewsArr);
+
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
@@ -28,7 +28,9 @@ const SpotShow = () => {
     if (!imagesArr) return null;
 
     const ownerOfSpotId = spotObj.Owner.id;
-    const userOwnsSpot = () => ownerOfSpotId === sessionUser.id ? true : false;
+    const userOwnsSpot = () => ownerOfSpotId === sessionUser.id ? true : false; // helper function to check if spot belongs to logged in user
+
+
 
     const numReviews = spotObj.numReviews;
 
@@ -121,12 +123,18 @@ const SpotShow = () => {
 
                 </div>
                 <div>
-                    {reviewsArr.map(review => (
-                        <ReviewsList
-                            review={review}
-                            key={review.id}
-                        />
-                    ))}
+                    <ul>
+                        {reviewsArr.map(review => (
+                            // <ReviewsList
+                            //     review={review}
+                            //     key={review.id}
+                            // />
+                            <li>
+                                {review.review}
+                            </li>
+                        ))}
+
+                    </ul>
                 </div>
         </div>
     )
