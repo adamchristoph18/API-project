@@ -99,6 +99,11 @@ const SpotShow = () => {
                             className='avg-rating-larger'
                         >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}</span>
                     </div>
+
+                    <button
+                        className='post-your-review-btn clickable'
+                    >Post Your Review</button>
+
                 </div>
         </div>
     )
