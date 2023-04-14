@@ -10,6 +10,11 @@ const SpotShow = () => {
     const spotObj = useSelector(state => state.spots.singleSpot);
     const imagesArr = spotObj?.SpotImages;
 
+    const ownerOfSpotId = spotObj.Owner.id;
+
+    const sessionUser = useSelector(state => state.session.user);
+    const userOwnsSpot = () => ownerOfSpotId === sessionUser.id ? true : false;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
