@@ -3,7 +3,7 @@ const ReviewsList = ({ review }) => {
     return (
         <div>
             <h3>
-                {review.User.firstName}
+                {review.User?.firstName}
             </h3>
             <p>
                 {review.review}

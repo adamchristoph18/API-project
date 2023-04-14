@@ -1,10 +1,11 @@
 import { useModal } from "../../context/Modal";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { createAReviewThunk, getReviewsForSpotThunk } from "../../store/reviews";
 import "./CreateReviewModal.css";
 // import thunk here
 
-function CreateReviewModal() {
+function CreateReviewModal({ spotId }) {
     const [rating, setRating] = useState(1);
     const [activeRating, setActiveRating] = useState(1);
     const [review, setReview] = useState("");
@@ -13,10 +14,15 @@ function CreateReviewModal() {
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        getReviewsForSpotThunk();
+    }, [dispatch]);
+
     const onSubmit = async event => {
         event.preventDefault();
 
         const newReview = {
+            spotId,
             review,
             stars: rating
         };
@@ -26,6 +32,16 @@ function CreateReviewModal() {
 
         setErrors(err);
         if (Object.keys(errors).length) return;
+
+        const retReview = await dispatch(createAReviewThunk(newReview));
+
+
+        if (retReview.errors) {
+            setErrors(retReview.errors);
+        } else {
+            dispatch(getReviewsForSpotThunk(spotId));
+            closeModal();
+        }
     };
 
     return (

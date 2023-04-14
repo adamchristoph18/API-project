@@ -15,7 +15,7 @@ const SpotShow = () => {
     const imagesArr = spotObj?.SpotImages;
 
     const reviewsObj = useSelector(state => state.reviews.spot);
-    const reviewsArr = Object.values(reviewsObj);
+    const reviewsArr = Object.values(reviewsObj).reverse();
 
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
@@ -23,11 +23,12 @@ const SpotShow = () => {
     useEffect(() => {
         dispatch(getReviewsForSpotThunk(spotId));
         dispatch(displaySpotThunk(spotId));
-    }, [dispatch, spotId]);
+    }, [dispatch, spotId, reviewsArr.length]);
 
     if (!spotObj) return null;
     if (!reviewsObj) return null;
     if (!imagesArr) return null;
+    if (!reviewsArr.length) return null;
 
     const ownerOfSpotId = spotObj.Owner.id;
 
@@ -128,7 +129,7 @@ const SpotShow = () => {
 
                     {sessionUser && (userAlreadyWroteReview() || userOwnsSpot() ? null : <OpenCreateReview
                         itemText="Post Your Review"
-                        modalComponent={<CreateReviewModal />}
+                        modalComponent={<CreateReviewModal spotId={spotId} />}
                         />)}
 
                 </div>
