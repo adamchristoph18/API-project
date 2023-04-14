@@ -2,11 +2,17 @@ import { csrfFetch } from "./csrf";
 
 // Action type constants
 const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS';
+const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 
 // Action creators
 export const loadReviews = (reviews) => ({
     type: LOAD_REVIEWS,
     reviews
+});
+
+export const createReview = (review) => ({
+    type: CREATE_REVIEW,
+    review
 });
 
 // Thunk action creators
@@ -22,6 +28,15 @@ export const getReviewsForSpotThunk = (spotId) => async (dispatch) => {
         return reviews;
     }
 };
+
+// Create a review thunk
+// export const createAReviewThunk = (spotId) => async (dispatch) => {
+//     const response = await csrfFetch(`/api/spots/${spotId}/reviews`);
+
+//     if (response.ok) {
+
+//     }
+// };
 
 // Reviews reducer
 const initialState = { spot: {}, user: {} };

@@ -51,7 +51,7 @@ function SpotForm({ spot, formType }) {
             name: title,
             description,
             price,
-            spotImages: imageUrls
+            spotImages: formType === "create" ? imageUrls : spot.spotImages
         };
 
         const err = {};
@@ -68,8 +68,11 @@ function SpotForm({ spot, formType }) {
             err.description = "Description needs a minimum of 30 characters"
         }
         if (price === 0) err.price = "Price is required"
-        if (previewImage === "") {
-            err.previewImage = "A preview image is required!"
+
+        if (formType === "create") {
+            if (previewImage === "") {
+                err.previewImage = "A preview image is required!"
+            }
         }
 
 
