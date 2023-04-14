@@ -34,7 +34,7 @@ const SpotShow = () => {
     // helper function to check if the spot has any reviews
     const moreThanZeroReviews = () => numReviews > 0;
     // helper function to check if spot belongs to logged in user
-    const userOwnsSpot = () => ownerOfSpotId === sessionUser.id ? true : false;
+    const userOwnsSpot = () => ownerOfSpotId === sessionUser?.id ? true : false;
     // helper function to check if current user has already written a review for the spot or not
     const userAlreadyWroteReview = () => reviewsArr.some(review => review.userId === sessionUser.id);
 
@@ -124,9 +124,9 @@ const SpotShow = () => {
                             <p className='number-reviews'>{numReviews} Reviews</p> : null}
                     </div>
 
-                    {userOwnsSpot() ? null : <button
+                    {sessionUser && (userOwnsSpot() ? null : <button
                         className='post-your-review-btn clickable'
-                    >Post Your Review</button>}
+                    >Post Your Review</button>)}
 
                 </div>
                 <div>
