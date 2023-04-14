@@ -124,7 +124,7 @@ const SpotShow = () => {
                             <p className='number-reviews'>{numReviews} Reviews</p> : null}
                     </div>
 
-                    {sessionUser && (userOwnsSpot() ? null : <button
+                    {sessionUser && (userAlreadyWroteReview() || userOwnsSpot() ? null : <button
                         className='post-your-review-btn clickable'
                     >Post Your Review</button>)}
 
