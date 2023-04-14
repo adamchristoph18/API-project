@@ -123,18 +123,12 @@ const SpotShow = () => {
 
                 </div>
                 <div>
-                    <ul>
                         {reviewsArr.map(review => (
-                            // <ReviewsList
-                            //     review={review}
-                            //     key={review.id}
-                            // />
-                            <li>
-                                {review.review}
-                            </li>
+                            <ReviewsList
+                                review={review}
+                                key={review.id}
+                            />
                         ))}
-
-                    </ul>
                 </div>
         </div>
     )
