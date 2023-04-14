@@ -9,9 +9,7 @@ export const loadReviews = (reviews) => ({
     reviews
 });
 
-
 // Thunk action creators
-
 // Get all reviews for a spot thunk
 export const getReviewsForSpotThunk = (spotId) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`);
@@ -25,13 +23,12 @@ export const getReviewsForSpotThunk = (spotId) => async (dispatch) => {
     }
 };
 
-
 // Reviews reducer
 const initialState = { spot: {}, user: {} };
 const reviewsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_REVIEWS: {
-            const newState = {...state, spot: {...state.spot}};
+            const newState = {...state, spot: {}};
             action.reviews.forEach(review => {
                 newState.spot[review.id] = review
             });
