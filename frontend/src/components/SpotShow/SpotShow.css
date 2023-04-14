@@ -110,10 +110,22 @@
 
 .pillow {
     /* border: 2px solid green; */
+    display: flex;
 }
 
 .avg-rating-larger {
     font-size: 40px;
+    margin-top: 10px;
+    height: fit-content;
+    /* border: 2px solid blue; */
+}
+
+.number-reviews {
+    font-size: 30px;
+    padding-top: 10px;
+    width: fit-content;
+    margin: 10px 0 0 30px;
+    /* border: 2px solid red; */
 }
 
 .post-your-review-btn {

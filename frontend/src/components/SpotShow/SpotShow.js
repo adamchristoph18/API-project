@@ -102,7 +102,9 @@ const SpotShow = () => {
                     <i className="fa-solid fa-star icon star-icon big-big-star" />
                         <span
                             className='avg-rating-larger'
-                        >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}</span>
+                        >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}
+                        </span>
+                        {spotObj.numReviews === 1 ? <p className='number-reviews'>1 Review</p> : <p>spotObj.numReviews reviews</p>}
                     </div>
 
                     <button

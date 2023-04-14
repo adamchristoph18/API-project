@@ -34,6 +34,7 @@ export const editSpot = (spot) => ({
 });
 
 // Thunk action creators
+
 // Get all spots thunk
 export const getAllSpotsThunk = () => async (dispatch) => {
     const response = await csrfFetch('/api/spots');
