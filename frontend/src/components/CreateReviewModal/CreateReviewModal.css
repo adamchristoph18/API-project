@@ -25,3 +25,20 @@
     width: 350px;
     height: 100px;
 }
+
+.star-empty {
+    color: pink;
+}
+
+.star-filled {
+    color: #ff5A5F;
+}
+
+.star-average-rating-input {
+    display: flex;
+}
+
+.medium-big-star {
+    margin-top: 10px;
+    font-size: 30px;
+}
