@@ -1,3 +1,10 @@
+.create-review-mdl {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    height: 280px;
+}
+
 .post-review-btn {
     color: white;
     background-color: #ff5A5F;
@@ -12,4 +19,9 @@
 .post-review-btn:hover {
     box-shadow: 2px 2px 2px black;
     transition: ease-in .15s;
+}
+
+.new-review-text {
+    width: 350px;
+    height: 100px;
 }
