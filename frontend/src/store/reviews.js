@@ -17,8 +17,11 @@ export const getReviewsForSpotThunk = (spotId) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`);
 
     if (response.ok) {
-        const reviews = await response.json();
+        const reviewsObj = await response.json();
+        const reviews = reviewsObj.Reviews;
         dispatch(loadReviews(reviews));
+
+        return reviews;
     }
 };
 

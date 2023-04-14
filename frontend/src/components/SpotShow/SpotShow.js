@@ -1,7 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { displaySpotThunk } from '../../store/spots';
+import { getReviewsForSpotThunk } from '../../store/reviews';
 import { useEffect } from 'react';
+import ReviewsList from '../ReviewsList/ReviewsList';
 import './SpotShow.css';
 
 
@@ -10,14 +12,19 @@ const SpotShow = () => {
     const spotObj = useSelector(state => state.spots.singleSpot);
     const imagesArr = spotObj?.SpotImages;
 
+    const reviewsObj = useSelector(state => state.reviews.spot);
+    const reviewsArr = Object.values(reviewsObj);
+    console.log('these are the reviews ----> ', reviewsArr);
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(getReviewsForSpotThunk(spotId));
         dispatch(displaySpotThunk(spotId));
     }, [dispatch, spotId]);
 
     if (!spotObj) return null;
+    if (!reviewsObj) return null; // Do I need all of these ???
     if (!imagesArr) return null;
 
     const ownerOfSpotId = spotObj.Owner.id;
@@ -105,17 +112,21 @@ const SpotShow = () => {
                             className='avg-rating-larger'
                         >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}
                         </span>
-
-                        {numReviews === 1 ? <p className='number-reviews'>
-                        1 Review
-                        </p> : <p className='number-reviews'>{numReviews} Reviews</p>}
-
+                        {numReviews === 1 ? <p className='number-reviews'>1 Review</p> : <p className='number-reviews'>{numReviews} Reviews</p>}
                     </div>
 
                     <button
                         className='post-your-review-btn clickable'
                     >Post Your Review</button>
 
+                </div>
+                <div>
+                    {reviewsArr.map(review => (
+                        <ReviewsList
+                            review={review}
+                            key={review.id}
+                        />
+                    ))}
                 </div>
         </div>
     )
