@@ -24,15 +24,21 @@ const SpotShow = () => {
     }, [dispatch, spotId]);
 
     if (!spotObj) return null;
-    if (!reviewsObj) return null; // Do I need all of these ???
+    if (!reviewsObj) return null;
     if (!imagesArr) return null;
 
     const ownerOfSpotId = spotObj.Owner.id;
-    const userOwnsSpot = () => ownerOfSpotId === sessionUser.id ? true : false; // helper function to check if spot belongs to logged in user
-
 
 
     const numReviews = spotObj.numReviews;
+    // helper function to check if the spot has any reviews
+    const moreThanZeroReviews = () => numReviews > 0;
+    // helper function to check if spot belongs to logged in user
+    const userOwnsSpot = () => ownerOfSpotId === sessionUser.id ? true : false;
+    // helper function to check if current user has already written a review for the spot or not
+    const userAlreadyWroteReview = () => reviewsArr.some(review => review.userId === sessionUser.id);
+
+
 
     return (
         <div className='spot-details-page'>
@@ -114,7 +120,8 @@ const SpotShow = () => {
                             className='avg-rating-larger'
                         >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}
                         </span>
-                        {numReviews === 1 ? <p className='number-reviews'>1 Review</p> : <p className='number-reviews'>{numReviews} Reviews</p>}
+                        {moreThanZeroReviews() ? numReviews === 1 ? <p className='number-reviews'>1 Review</p> :
+                            <p className='number-reviews'>{numReviews} Reviews</p> : null}
                     </div>
 
                     {userOwnsSpot() ? null : <button
