@@ -24,6 +24,7 @@
 .new-review-text {
     width: 350px;
     height: 100px;
+    background-color: rgb(229, 253, 253);
 }
 
 .star-empty {

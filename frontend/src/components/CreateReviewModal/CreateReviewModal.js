@@ -92,6 +92,7 @@ function CreateReviewModal() {
             </div>
 
             <button
+                type="submit"
                 className="submit-your-review-btn clickable"
             >
                 Submit your review
