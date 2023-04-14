@@ -4,6 +4,8 @@ import { displaySpotThunk } from '../../store/spots';
 import { getReviewsForSpotThunk } from '../../store/reviews';
 import { useEffect } from 'react';
 import ReviewsList from '../ReviewsList/ReviewsList';
+import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
+import OpenCreateReview from '../CreateReviewModal/OpenCreateReview';
 import './SpotShow.css';
 
 
@@ -124,9 +126,10 @@ const SpotShow = () => {
                             <p className='number-reviews'>{numReviews} Reviews</p> : null}
                     </div>
 
-                    {sessionUser && (userAlreadyWroteReview() || userOwnsSpot() ? null : <button
-                        className='post-your-review-btn clickable'
-                    >Post Your Review</button>)}
+                    {sessionUser && (userAlreadyWroteReview() || userOwnsSpot() ? null : <OpenCreateReview
+                        itemText="Post Your Review"
+                        modalComponent={<CreateReviewModal />}
+                        />)}
 
                 </div>
                 <div>
