@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     flex-flow: column;
-    height: 280px;
+    height: 300px;
 }
 
 .post-review-btn {
@@ -41,4 +41,17 @@
 .medium-big-star {
     margin-top: 10px;
     font-size: 30px;
+}
+
+.submit-your-review-btn {
+    margin-top: 20px;
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.submit-your-review-btn:hover {
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
 }

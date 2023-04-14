@@ -18,9 +18,6 @@ function CreateReviewModal() {
                 className="new-review-text"
                 placeholder="Just a quick review"
             />
-
-
-
             <div className="star-average-rating-input">
                 <div
                     className={activeRating >= 1 ? "star-filled" : "star-empty"}
@@ -94,7 +91,11 @@ function CreateReviewModal() {
                 </div>
             </div>
 
-
+            <button
+                className="submit-your-review-btn clickable"
+            >
+                Submit your review
+            </button>
 
 
 
