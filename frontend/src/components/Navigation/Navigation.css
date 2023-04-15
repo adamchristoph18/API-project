@@ -23,6 +23,11 @@
     margin-left: 40px;
 }
 
+.site-logo {
+    height: 40px;
+    margin-left: 4px;
+}
+
 .create-new-spot {
     text-decoration: none;
     margin-right: 40px;
@@ -109,7 +114,6 @@
     justify-content: center;
     padding: 5px 0;
     width: 100%;
-    /* border-bottom: 2px solid black; */
 }
 
 .manage-reviews:hover {
