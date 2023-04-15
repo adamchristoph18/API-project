@@ -15,7 +15,8 @@ function Navigation({ isLoaded }){
         <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
         <img
           className='site-logo'
-        src="favicon.png" />
+          src="favicon.png"
+          alt='short-havens-logo'/>
       </div>
 
         <div className='nav-bar-right'>
