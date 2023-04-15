@@ -8,7 +8,6 @@ import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import OpenCreateReview from '../CreateReviewModal/OpenCreateReview';
 import './SpotShow.css';
 
-
 const SpotShow = () => {
     const { spotId } = useParams();
     const spotObj = useSelector(state => state.spots.singleSpot);
@@ -26,12 +25,11 @@ const SpotShow = () => {
     }, [dispatch, spotId, reviewsArr.length]);
 
     if (!spotObj) return null;
-    if (!reviewsObj) return null;
-    if (!imagesArr) return null;
-    if (!reviewsArr.length) return null;
+    // if (!reviewsObj) return null;
+    // if (!imagesArr) return null;
+    // if (!reviewsArr.length) return null;
 
     const ownerOfSpotId = spotObj.Owner.id;
-
 
     const numReviews = spotObj.numReviews;
     // helper function to check if the spot has any reviews
@@ -40,7 +38,6 @@ const SpotShow = () => {
     const userOwnsSpot = () => ownerOfSpotId === sessionUser?.id ? true : false;
     // helper function to check if current user has already written a review for the spot or not
     const userAlreadyWroteReview = () => reviewsArr.some(review => review.userId === sessionUser.id);
-
 
 
     return (
