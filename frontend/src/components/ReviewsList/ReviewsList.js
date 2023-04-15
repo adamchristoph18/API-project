@@ -25,8 +25,14 @@ const ReviewsList = ({ review }) => {
             <h3 className="review-author">
                 {review.User?.firstName}
             </h3>
-            <p className="date-of-review">
+            <p className="date-of-review-line">
                 {months[month]}, {year}
+                    <div className="review-num-stars">
+                        {review.stars}
+                    </div>
+                    <div className="starrr">
+                        <i className="fa-solid fa-star small-star" />
+                    </div>
             </p>
             <p>
                 {review.review}
