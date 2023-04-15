@@ -1,0 +1,18 @@
+.each-review {
+    /* border: 1px solid red; */
+}
+
+
+.review-author {
+    /* border: 1px solid green; */
+    font-size: 24px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.date-of-review {
+    /* border: 1px solid blue; */
+    margin-top: 0px;
+    font-size: 12px;
+    color: gray;
+}
