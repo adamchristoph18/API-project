@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { displaySpotThunk } from '../../store/spots';
 import { getReviewsForSpotThunk } from '../../store/reviews';
@@ -53,14 +53,14 @@ const SpotShow = () => {
                 <img
                     className='preview-image'
                     src={imagesArr[0].url}
-                    alt="spot's preview image"
+                    alt="spot's preview"
                 />
                 <div className='extra-images'>
                     {imagesArr.length > 1 ?
                                         <img
                                             className='extra-image x-image-one'
                                             src={imagesArr[1].url}
-                                            alt="spot image"
+                                            alt="spot extra one"
                                         />
                                         : null
                                         }
@@ -68,7 +68,7 @@ const SpotShow = () => {
                                         <img
                                             className='extra-image x-image-two'
                                             src={imagesArr[2].url}
-                                            alt="spot image"
+                                            alt="spot extra two"
                                         />
                                         : null
                                         }
@@ -76,7 +76,7 @@ const SpotShow = () => {
                                         <img
                                             className='extra-image x-image-three'
                                             src={imagesArr[3].url}
-                                            alt="spot image"
+                                            alt="spot extra three"
                                         />
                                         : null
                                         }
@@ -84,7 +84,7 @@ const SpotShow = () => {
                                         <img
                                             className='extra-image x-image-four'
                                             src={imagesArr[4].url}
-                                            alt="spot image"
+                                            alt="spot extra four"
                                         />
                                         : null
                                         }
