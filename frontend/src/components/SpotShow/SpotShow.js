@@ -113,7 +113,7 @@ const SpotShow = () => {
                     >Reserve</button>
                 </div>
             </div>
-                <div>
+                <div className='top-pillow'>
                     <div className='pillow'>
                     <i className="fa-solid fa-star icon star-icon big-big-star" />
                         <span

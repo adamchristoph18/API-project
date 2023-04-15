@@ -108,6 +108,10 @@
     margin-top: 20px;
 }
 
+.top-pillow {
+    margin-bottom: 25px;
+}
+
 .pillow {
     /* border: 2px solid green; */
     display: flex;
