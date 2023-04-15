@@ -13,10 +13,10 @@ function Navigation({ isLoaded }){
     <div className='nav-bar'>
       <div>
         <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
-        <img
+        {/* <img
           className='site-logo'
           src="favicon.png"
-          alt='short-havens-logo'/>
+          alt='short-havens-logo'/> */}
       </div>
 
         <div className='nav-bar-right'>

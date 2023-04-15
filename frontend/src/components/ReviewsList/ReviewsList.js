@@ -1,6 +1,7 @@
 
 const ReviewsList = ({ review }) => {
-    // const month =
+    // const dateCreated = () => new Date(review.createdAt);
+    // const month = dateCreated.getMonth();
 
     return (
         <div>
@@ -8,7 +9,7 @@ const ReviewsList = ({ review }) => {
                 {review.User?.firstName}
             </h3>
             {/* <p>
-                {() => Date(review.createdAt).getMonth()}
+                {month}
             </p> */}
             <p>
                 {review.review}
