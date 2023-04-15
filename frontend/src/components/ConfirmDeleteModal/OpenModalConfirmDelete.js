@@ -6,9 +6,12 @@ function OpenModalConfirmDelete({
     modalComponent, // component to render inside the modal
     itemText, // text of the menu item that opens the modal
     onItemClick, // optional: callback function that will be called once the menu item that opens the modal is clicked
-    onModalClose // optional: callback function that will be called once the modal is closed
+    onModalClose, // optional: callback function that will be called once the modal is closed
+    review
   }) {
     const { setModalContent, setOnModalClose } = useModal();
+
+    const dolphinClassName = (review ? "delete-review-button clickable" : "delete-button clickable")
 
     const onClick = (e) => {
       e.stopPropagation();
@@ -18,7 +21,7 @@ function OpenModalConfirmDelete({
     };
 
     return (
-      <div className='delete-button clickable' onClick={onClick}>{itemText}</div>
+      <div className={dolphinClassName} onClick={onClick}>{itemText}</div>
     );
   }
 

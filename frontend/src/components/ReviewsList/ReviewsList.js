@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import OpenModalConfirmDelete from "../ConfirmDeleteModal/OpenModalConfirmDelete";
+import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 import "./ReviewsList.css";
 
 const ReviewsList = ({ review }) => {
@@ -43,6 +45,13 @@ const ReviewsList = ({ review }) => {
             <p>
                 {review.review}
             </p>
+            {userWroteReview() && (
+                <OpenModalConfirmDelete
+                itemText="Delete Review"
+                review={review}
+                modalComponent={<ConfirmDeleteModal review={review} />}
+            />
+            )}
         </div>
     )
 };
