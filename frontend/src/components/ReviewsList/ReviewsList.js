@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import "./ReviewsList.css";
 
 const ReviewsList = ({ review }) => {
@@ -19,6 +20,11 @@ const ReviewsList = ({ review }) => {
         10: "November",
         11: "December"
     };
+
+    const sessionUser = useSelector(state => state.session.user);
+    // Helper function to determine if the logged in user wrote the review or not
+    const userWroteReview = () => review.User.id === sessionUser.id;
+
 
     return (
         <div className="each-review">
