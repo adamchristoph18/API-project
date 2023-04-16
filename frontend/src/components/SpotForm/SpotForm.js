@@ -17,11 +17,11 @@ function SpotForm({ spot, formType }) {
     const [longitude, setLongitude] = useState(spot?.lng || "");
     const [title, setTitle] = useState(spot?.name || "");
     const [price, setPrice] = useState(spot?.price || 0);
-    const [previewImage, setPreviewImage] = useState(spot?.SpotImages?.[0]?.url || "");
-    const [urlTwo, setUrlTwo] = useState(spot?.SpotImages?.[1]?.url || "");
-    const [urlThree, setUrlThree] = useState(spot?.SpotImages?.[2]?.url || "");
-    const [urlFour, setUrlFour] = useState(spot?.SpotImages?.[3]?.url || "");
-    const [urlFive, setUrlFive] = useState(spot?.SpotImages?.[4]?.url || "");
+    const [previewImage, setPreviewImage] = useState("");
+    const [urlTwo, setUrlTwo] = useState("");
+    const [urlThree, setUrlThree] = useState("");
+    const [urlFour, setUrlFour] = useState("");
+    const [urlFive, setUrlFive] = useState("");
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
@@ -51,7 +51,7 @@ function SpotForm({ spot, formType }) {
             name: title,
             description,
             price,
-            spotImages: imageUrls
+            spotImages: formType === "create" ? imageUrls : spot.spotImages
         };
 
         const err = {};
@@ -68,12 +68,17 @@ function SpotForm({ spot, formType }) {
             err.description = "Description needs a minimum of 30 characters"
         }
         if (price === 0) err.price = "Price is required"
-        if (previewImage === "") {
-            err.previewImage = "A preview image is required!"
+
+        if (formType === "create") {
+            if (previewImage === "") {
+                err.previewImage = "A preview image is required!"
+            }
         }
-        if (previewImage && (!(previewImage.endsWith(".png")) || !(previewImage.endsWith(".jpg")) || !(previewImage.endsWith(".jpeg")))) {
-            err.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
-        }
+
+
+        // if (previewImage && (!(previewImage.endsWith(".png")) || !(previewImage.endsWith(".jpg")) || !(previewImage.endsWith(".jpeg")))) {
+        //     err.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
+        // }
 
         setErrors(err); // this is asynchronous
         if (Object.keys(err).length) return; // prevents from bad request
@@ -82,14 +87,13 @@ function SpotForm({ spot, formType }) {
             newSpot.id = spotId;
         }
 
-        const spot = await dispatch(formType === "update" ? editSpotThunk(newSpot) : createNewSpotThunk(newSpot));
+        const retSpot = await dispatch(formType === "update" ? editSpotThunk(newSpot) : createNewSpotThunk(newSpot));
 
-        if (spot.errors) {
-            setErrors(spot.errors);
-            return; // just so it doesn't hit the redirect
+        if (retSpot.errors) {
+            setErrors(retSpot.errors);
         }
 
-        history.push(`/spots/${spot.id}`);
+        history.push(`/spots/${retSpot.id}`);
     }
 
     return (

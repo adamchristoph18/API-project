@@ -20,13 +20,12 @@
     font-size: 36px;
     font-weight: 800;
     text-decoration: none;
-    font-style: italic;
     margin-left: 40px;
 }
 
-.short-havens-title:hover {
-    box-shadow: 0px 3px 2px rgba(128, 128, 128, .3);
-    transition: ease-in .15s;
+.site-logo {
+    height: 40px;
+    margin-left: 4px;
 }
 
 .create-new-spot {
@@ -115,7 +114,6 @@
     justify-content: center;
     padding: 5px 0;
     width: 100%;
-    /* border-bottom: 2px solid black; */
 }
 
 .manage-reviews:hover {

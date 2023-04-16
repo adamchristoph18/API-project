@@ -34,6 +34,7 @@ export const editSpot = (spot) => ({
 });
 
 // Thunk action creators
+
 // Get all spots thunk
 export const getAllSpotsThunk = () => async (dispatch) => {
     const response = await csrfFetch('/api/spots');
@@ -99,8 +100,8 @@ export const createNewSpotThunk = (payload) => async (dispatch) => {
         return spot; // this sends the new spot to the frontend
 
     } else {
-        const response = await response.json();
-        return response; // need to change all the rest to this
+        const errResponse = await response.json();
+        return errResponse;
     }
 };
 
@@ -114,8 +115,8 @@ export const displaySpotThunk = (spotId) => async (dispatch) => {
 
         return spot;
     } else {
-        const errors = await response.json();
-        return errors;
+        const errResponse = await response.json();
+        return errResponse;
     }
 };
 
@@ -143,8 +144,7 @@ export const editSpotThunk = (payload) => async (dispatch) => {
         lng,
         name,
         description,
-        price,
-        spotImages
+        price
     } = payload;
 
     const newSpot = {
@@ -172,23 +172,12 @@ export const editSpotThunk = (payload) => async (dispatch) => {
     if (response.ok) {
         const spot = await response.json();
 
-        for (let i = 0; i < spotImages.length; i++) {
-            const image = spotImages[i];
-            await csrfFetch(`/api/spots/${spot.id}/images`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(image)
-            });
-        }
-
         dispatch(editSpot(spot)); // this line updates the state
         return spot; // this sends the new spot to the frontend
 
     } else {
-        const errors = await response.json();
-        return errors;
+        const errResponse = await response.json();
+        return errResponse;
     }
 };
 

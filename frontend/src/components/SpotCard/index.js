@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 import OpenModalConfirmDelete from "../ConfirmDeleteModal/OpenModalConfirmDelete";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 import './SpotCard.css';
