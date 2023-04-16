@@ -7,46 +7,29 @@
     display: flex;
 }
 
-/* @media screen and (max-width: 800px) {
-    .spot-images {
-        display: block;
-    }
-} */
-
 .preview-image {
     height: 420px;
-    width: 600px;
+    width: 50%;
+    object-fit: cover;
 }
 
 .extra-images {
     display: flex;
+    /* box-sizing: border-box; */
+    width: 50%;
     flex-flow: row wrap;
 }
 
 .extra-image {
     height: 200px;
-    width: 40%;
+    width: 47%;
+    box-sizing: border-box;
     object-fit: cover;
+    margin: 0 5px 0 5px;
 }
 
-.x-image-one {
-    height: 200px;
-    margin: 0px 0px 0px 10px;
-}
-
-.x-image-two {
-    height: 200px;
-    margin: 0px 0px 5px 10px;
-}
-
-.x-image-three {
-    height: 200px;
-    margin: 0px 0px -15px 10px;
-}
-
-.x-image-four {
-    height: 200px;
-    margin: 0px 0px 0px 10px;
+.x-image-three, .x-image-four {
+    margin-top: 15px;
 }
 
 .per-night-reserve {
@@ -113,6 +96,7 @@
 
 .spot-details {
     display: flex;
+    justify-content: space-between;
     border-bottom: 2px solid black;
 }
 
@@ -156,4 +140,22 @@
 .post-your-review-btn:hover {
     box-shadow: 0px 4px 2px rgba(128, 128, 128, .3);
     transition: ease-in .15s;
+}
+
+@media screen and (max-width: 1000px) {
+    .spot-images {
+        display: block;
+    }
+    .preview-image {
+        height: 420px;
+        min-width: 100%;
+    }
+    .x-image-three, .x-image-two, .x-image-one, .x-image-four {
+        box-sizing: border-box;
+        width: 48%;
+    }
+    .extra-images {
+        box-sizing: border-box;
+        width: 100%;
+    }
 }
