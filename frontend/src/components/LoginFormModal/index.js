@@ -36,6 +36,9 @@ function LoginFormModal() {
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <div>
+        {errors.message && (
+          <p className="login-errors">{errors.message}</p>
+        )}
           <input
             className="credential-input"
             type="text"
@@ -55,10 +58,6 @@ function LoginFormModal() {
             required
           />
         </div>
-
-        {errors.message && (
-          <p className="login-errors">{errors.message}</p>
-        )}
         <button
           type="submit"
           className="log-in-button clickable"

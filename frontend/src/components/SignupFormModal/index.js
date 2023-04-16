@@ -48,6 +48,9 @@ function SignupFormModal() {
         className="sign-up-form"
         onSubmit={handleSubmit}
       >
+        {errors.firstName && <p className="sign-up-errors">{errors.firstName}</p>}
+        {errors.lastName && <p>{errors.lastName}</p>}
+        {errors.email && <p className="sign-up-errors">{errors.email}</p>}
       <label>
           <input
             type="text"
@@ -55,10 +58,8 @@ function SignupFormModal() {
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            required
           />
         </label>
-        {errors.firstName && <p className="sign-up-errors">{errors.firstName}</p>}
         <label>
           <input
             type="text"
@@ -66,10 +67,8 @@ function SignupFormModal() {
             className="sign-up-input"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            required
           />
         </label>
-        {errors.lastName && <p>{errors.lastName}</p>}
         <label>
           <input
             type="text"
@@ -77,10 +76,8 @@ function SignupFormModal() {
             className="sign-up-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </label>
-        {errors.email && <p className="sign-up-errors">{errors.email}</p>}
         <label>
           <input
             type="text"
@@ -88,7 +85,6 @@ function SignupFormModal() {
             className="sign-up-input"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
           />
         </label>
         {errors.username && <p className="sign-up-errors">{errors.username}</p>}
@@ -99,7 +95,6 @@ function SignupFormModal() {
             className="sign-up-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
         </label>
         {errors.password && <p className="sign-up-errors">{errors.password}</p>}
@@ -110,7 +105,6 @@ function SignupFormModal() {
             className="sign-up-input"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            required
           />
         </label>
         {errors.confirmPassword && (

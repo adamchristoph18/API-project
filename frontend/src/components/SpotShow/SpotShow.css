@@ -7,6 +7,12 @@
     display: flex;
 }
 
+/* @media screen and (max-width: 800px) {
+    .spot-images {
+        display: block;
+    }
+} */
+
 .preview-image {
     height: 420px;
     width: 600px;
