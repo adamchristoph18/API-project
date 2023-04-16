@@ -1,9 +1,10 @@
 import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { deleteSpotThunk } from "../../store/spots";
+import { deleteReviewThunk } from "../../store/reviews";
 
 
-function ConfirmDeleteModal({ spot }) {
+function ConfirmDeleteModal({ spot, review }) {
     const { closeModal } = useModal();
 
     const dispatch = useDispatch();
@@ -11,24 +12,47 @@ function ConfirmDeleteModal({ spot }) {
     return (
         <div className="confirm-delete-mdl">
             <h2 className="c-delete-title">Confirm Delete</h2>
-            <p className="warning">
-                Are you sure you want to remove this spot from the images?
-            </p>
-            <button
-                className="yes-delete-button clickable"
-                onClick={() => {
-                    dispatch(deleteSpotThunk(spot.id))
-                    closeModal();
-                }}
-            >
+            {spot ? <p className="warning">
+                Are you sure you want to remove this spot from the listings?
+            </p> : <p className="warning">
+                Are you sure you want to remove this review?
+            </p>}
+            {spot ?
+                <>
+                <button
+                    className="yes-delete-button clickable"
+                    onClick={() => {
+                        dispatch(deleteSpotThunk(spot.id));
+                        closeModal();
+                    }}
+                >
                 Yes (Delete Spot)
-            </button>
-            <button
-                className="no-keep-button clickable"
-                onClick={closeModal}
-            >
-                No (Keep Spot)
-            </button>
+                </button>
+                <button
+                    className="no-keep-button clickable"
+                    onClick={closeModal}
+                >
+                    No (Keep Spot)
+                </button>
+                </>
+                : <>
+                    <button
+                        className="yes-delete-button clickable"
+                        onClick={() => {
+                            dispatch(deleteReviewThunk(review.id));
+                            closeModal();
+                        }}
+                    >
+                        Yes (Delete Review)
+                    </button>
+                    <button
+                        className="no-keep-button clickable"
+                        onClick={closeModal}
+                    >
+                        No (Keep Review)
+                    </button>
+                    </>
+            }
         </div>
     )
 
