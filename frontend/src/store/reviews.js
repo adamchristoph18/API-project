@@ -53,8 +53,8 @@ export const createAReviewThunk = (payload) => async (dispatch) => {
         dispatch(createReview(review));
         return review;
     } else {
-        const response = await response.json();
-        return response;
+        const errResponse = await response.json();
+        return errResponse;
     }
 };
 

@@ -100,8 +100,8 @@ export const createNewSpotThunk = (payload) => async (dispatch) => {
         return spot; // this sends the new spot to the frontend
 
     } else {
-        const response = await response.json();
-        return response; // need to change all the rest to this
+        const errResponse = await response.json();
+        return errResponse;
     }
 };
 
@@ -115,8 +115,8 @@ export const displaySpotThunk = (spotId) => async (dispatch) => {
 
         return spot;
     } else {
-        const errors = await response.json();
-        return errors;
+        const errResponse = await response.json();
+        return errResponse;
     }
 };
 
@@ -176,8 +176,8 @@ export const editSpotThunk = (payload) => async (dispatch) => {
         return spot; // this sends the new spot to the frontend
 
     } else {
-        const errors = await response.json();
-        return errors;
+        const errResponse = await response.json();
+        return errResponse;
     }
 };
 
