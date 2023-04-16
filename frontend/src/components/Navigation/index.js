@@ -11,7 +11,13 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='nav-bar'>
-      <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
+      <div>
+        <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
+        {/* <img
+          className='site-logo'
+          src="favicon.png"
+          alt='short-havens-logo'/> */}
+      </div>
 
         <div className='nav-bar-right'>
           {sessionUser ? // only render the 'Create a New Spot' if there is a current user

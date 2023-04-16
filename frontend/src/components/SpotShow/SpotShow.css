@@ -101,3 +101,45 @@
     display: flex;
     border-bottom: 2px solid black;
 }
+
+.big-big-star {
+    font-size: 40px !important;
+    margin-left: 0px;
+    margin-top: 20px;
+}
+
+.top-pillow {
+    margin-bottom: 25px;
+}
+
+.pillow {
+    /* border: 2px solid green; */
+    display: flex;
+}
+
+.avg-rating-larger {
+    font-size: 40px;
+    margin-top: 10px;
+    height: fit-content;
+    /* border: 2px solid blue; */
+}
+
+.number-reviews {
+    font-size: 30px;
+    padding-top: 10px;
+    width: fit-content;
+    margin: 10px 0 0 30px;
+    /* border: 2px solid red; */
+}
+
+.post-your-review-btn {
+    margin-left: 0;
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10px;
+}
+
+.post-your-review-btn:hover {
+    box-shadow: 0px 4px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
+}
