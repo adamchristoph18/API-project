@@ -105,7 +105,7 @@ const SpotShow = () => {
                         >{spotObj.numReviews}</span>
                         <p
                             className='reviews-word'
-                        >reviews</p>
+                        >{spotObj.numReviews === 1 ? "Review" : "Reviews"}</p>
                     </div>
                     <button
                         onClick={() => alert("Feature coming soon!")}
