@@ -42,7 +42,7 @@ const ReviewsList = ({ review }) => {
             <p>
                 {review.review}
             </p>
-            {sessionUser && review.User.id === sessionUser.id && (
+            {sessionUser && review.User?.id === sessionUser.id && (
                 <OpenModalConfirmDelete
                 itemText="Delete Review"
                 review={review}

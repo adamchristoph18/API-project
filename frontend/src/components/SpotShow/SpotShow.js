@@ -136,7 +136,7 @@ const SpotShow = () => {
                                 review={review}
                                 key={review.id}
                             />
-                        )) : userOwnsSpot() ? null : <p>Be the first to post a review!</p>}
+                        )) : userOwnsSpot() ? null : sessionUser && (<p>Be the first to post a review!</p>)}
                 </div>
         </div>
     )
