@@ -73,12 +73,23 @@ function SpotForm({ spot, formType }) {
             if (previewImage === "") {
                 err.previewImage = "A preview image is required!"
             }
+            if (previewImage && (!(previewImage.endsWith(".png")) && !(previewImage.endsWith(".jpg")) && !(previewImage.endsWith(".jpeg")))) {
+                err.previewImageEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+            }
+            if (urlTwo && (!(urlTwo.endsWith(".png")) && !(urlTwo.endsWith(".jpg")) && !(urlTwo.endsWith(".jpeg")))) {
+                err.urlTwoEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+            }
+            if (urlThree && (!(urlThree.endsWith(".png")) && !(urlThree.endsWith(".jpg")) && !(urlThree.endsWith(".jpeg")))) {
+                err.urlThreeEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+            }
+            if (urlFour && (!(urlFour.endsWith(".png")) && !(urlFour.endsWith(".jpg")) && !(urlFour.endsWith(".jpeg")))) {
+                err.urlFourEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+            }
+            if (urlFive && (!(urlFive.endsWith(".png")) && !(urlFive.endsWith(".jpg")) && !(urlFive.endsWith(".jpeg")))) {
+                err.urlFiveEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+            }
         }
 
-
-        // if (previewImage && (!(previewImage.endsWith(".png")) || !(previewImage.endsWith(".jpg")) || !(previewImage.endsWith(".jpeg")))) {
-        //     err.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
-        // }
 
         setErrors(err); // this is asynchronous
         if (Object.keys(err).length) return; // prevents from bad request
@@ -271,6 +282,7 @@ function SpotForm({ spot, formType }) {
                             onChange={(e) => setPreviewImage(e.target.value)}
                         />
                         <p className="errors">{errors.previewImage}</p>
+                        <p className="errors">{previewImage && errors.previewImageEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -279,6 +291,7 @@ function SpotForm({ spot, formType }) {
                             value={urlTwo}
                             onChange={(e) => setUrlTwo(e.target.value)}
                         />
+                        <p className="errors">{urlTwo && errors.urlTwoEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -287,6 +300,7 @@ function SpotForm({ spot, formType }) {
                             value={urlThree}
                             onChange={(e) => setUrlThree(e.target.value)}
                         />
+                        <p className="errors">{urlThree && errors.urlThreeEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -295,6 +309,7 @@ function SpotForm({ spot, formType }) {
                             value={urlFour}
                             onChange={(e) => setUrlFour(e.target.value)}
                         />
+                        <p className="errors">{urlFour && errors.urlFourEnding}</p>
                         <input
                             className="last-image-input"
                             type="text"
@@ -303,6 +318,7 @@ function SpotForm({ spot, formType }) {
                             value={urlFive}
                             onChange={(e) => setUrlFive(e.target.value)}
                         />
+                        <p className="errors">{urlFive && errors.urlFiveEnding}</p>
                 </div>
                 }
             </div>
