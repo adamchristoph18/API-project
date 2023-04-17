@@ -96,6 +96,7 @@ const SpotShow = () => {
                     <div className='spot-info-above-reserve'>
                         <i className="fa-solid fa-dollar-sign icon dolla-sign icon-large" />
                         <p className='price'>{spotObj.price}</p>
+                        <p className='per-night-reserve'>/night</p>
                         <i className="fa-solid fa-star icon star-icon" />
                         <span
                             className='avg-rating'

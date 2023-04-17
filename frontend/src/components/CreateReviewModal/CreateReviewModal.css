@@ -22,6 +22,8 @@
 }
 
 .new-review-text {
+    resize: none;
+    padding: 5px;
     width: 350px;
     height: 100px;
     background-color: rgb(229, 253, 253);
