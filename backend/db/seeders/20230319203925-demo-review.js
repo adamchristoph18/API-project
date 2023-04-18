@@ -29,25 +29,25 @@ module.exports = {
       {
         spotId: spotIdMap['Pearl overlook'],
         userId: userIdMap.John,
-        review: 'Great place! Had a lot of fun. Wonderful memories.',
+        review: 'Great place! Had a lot of fun. Wonderful memories. I stayed here with my extended family, and we had a blast!',
         stars: 4
       },
       {
         spotId: spotIdMap['Beaver Island Cove'],
         userId: userIdMap.Dirk,
-        review: 'So much fun. Brought my wife and kids. We all had fun.',
+        review: 'So much fun. Brought my wife and kids. We all had fun. Would recommend this place to anyone who likes the outdoors!',
         stars: 5
       },
       {
         spotId: spotIdMap['Black Bear Cove'],
         userId: userIdMap.Carrie,
-        review: 'Too many Bears! Hated the decor. Do not recommend.',
+        review: 'Too many bugs! Hated the decor. Do not recommend.',
         stars: 1
       },
       {
         spotId: spotIdMap['Black Bear Cove'],
         userId: userIdMap.Carrie,
-        review: 'Came back a second time, had more fun.',
+        review: 'Came back a second time, and had more fun. I brought a few friends with me this time, and there were less bugs.',
         stars: 4
       }
     ], {});
