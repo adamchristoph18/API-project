@@ -101,6 +101,7 @@ const SpotShow = () => {
                         <span
                             className='avg-rating'
                         >{Number(spotObj.avgStarRating) ? Number(spotObj.avgStarRating).toFixed(1) : "New"}</span>
+                        <p className='dot'>·</p>
                         <span
                             className='num-reviews'
                         >{spotObj.numReviews}</span>
