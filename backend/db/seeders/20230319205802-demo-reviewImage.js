@@ -20,15 +20,15 @@ module.exports = {
     options.tableName = 'ReviewImages';
     return queryInterface.bulkInsert(options, [
       {
-        reviewId: reviewIdMap['Great place! Had a lot of fun. Wonderful memories.'],
+        reviewId: reviewIdMap['Great place! Had a lot of fun. Wonderful memories. I stayed here with my extended family, and we had a blast!'],
         url: 'pearl.url'
       },
       {
-        reviewId: reviewIdMap['Too many Bears! Hated the decor. Do not recommend.'],
+        reviewId: reviewIdMap['Too many bugs! Hated the decor. Do not recommend.'],
         url: 'bear.url'
       },
       {
-        reviewId: reviewIdMap['So much fun. Brought my wife and kids. We all had fun.'],
+        reviewId: reviewIdMap['So much fun. Brought my wife and kids. We all had fun. Would recommend this place to anyone who likes the outdoors!'],
         url: 'rock.url'
       }
     ], {});

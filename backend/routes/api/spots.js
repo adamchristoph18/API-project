@@ -169,12 +169,12 @@ const validateCreateSpot = [
         .withMessage('Country is required'),
     check('lat')
         .exists({ checkFalsy: true })
-        .custom((lat) => lat >= -90 && lat <= 90)
-        .withMessage('Latitude is not valid'),
+        // .custom((lat) => lat >= -90 && lat <= 90)
+        .withMessage('Latitude is required'),
     check('lng')
         .exists({ checkFalsy: true })
-        .custom((lng) => lng >= -180 && lng <= 180)
-        .withMessage('Longitude is not valid'),
+        // .custom((lng) => lng >= -180 && lng <= 180)
+        .withMessage('Longitude is required'),
     check('name')
         .exists({ checkFalsy: true })
         .withMessage('Name must be less than 50 characters'),
