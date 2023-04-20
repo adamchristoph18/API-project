@@ -23,14 +23,79 @@ function SpotForm({ spot, formType }) {
     const [urlFour, setUrlFour] = useState("");
     const [urlFive, setUrlFive] = useState("");
     const [errors, setErrors] = useState({});
+    const [submittedErrors, setSubmittedErrors] = useState({});
+    const [submitted, setSubmitted] = useState(false);
 
     const history = useHistory();
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user);
 
+    useEffect(() => {
+
+            const err = {};
+
+            if (country === "") err.country = "Country is required";
+            if (address === "") err.address = "Address is required";
+            if (city === "") err.city = "City is required";
+            if (state === "") err.state = "State is required";
+            if (latitude === "") err.latitude = "Latitude is required";
+            if (longitude === "") err.longitude = "Longitude is required";
+            if (title === "") err.title = "Name is required";
+            if (description.length < 30) {
+                err.description = "Description needs a minimum of 30 characters"
+            }
+            if (price === 0) err.price = "Price is required"
+
+            if (formType === "create") {
+                if (previewImage === "") {
+                    err.previewImage = "A preview image is required!"
+                }
+                if (previewImage && (!(previewImage.endsWith(".png")) && !(previewImage.endsWith(".jpg")) && !(previewImage.endsWith(".jpeg")))) {
+                    err.previewImageEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+                }
+                if (urlTwo && (!(urlTwo.endsWith(".png")) && !(urlTwo.endsWith(".jpg")) && !(urlTwo.endsWith(".jpeg")))) {
+                    err.urlTwoEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+                }
+                if (urlThree && (!(urlThree.endsWith(".png")) && !(urlThree.endsWith(".jpg")) && !(urlThree.endsWith(".jpeg")))) {
+                    err.urlThreeEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+                }
+                if (urlFour && (!(urlFour.endsWith(".png")) && !(urlFour.endsWith(".jpg")) && !(urlFour.endsWith(".jpeg")))) {
+                    err.urlFourEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+                }
+                if (urlFive && (!(urlFive.endsWith(".png")) && !(urlFive.endsWith(".jpg")) && !(urlFive.endsWith(".jpeg")))) {
+                    err.urlFiveEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
+                }
+
+            setSubmittedErrors(err);
+
+            if (submitted) { // If you've already submitted, need to set errors directly
+                setErrors(err); // this will be dynamic on the form
+            }
+        }
+
+    }, [country,
+        address,
+        city,
+        state,
+        latitude,
+        longitude,
+        title,
+        description,
+        price,
+        previewImage,
+        urlTwo,
+        urlThree,
+        urlFour,
+        urlFive]);
+
+
     const handleSubmit = async event => {
         event.preventDefault();
+        setSubmitted(true);
+        setErrors(submittedErrors);
+        if (Object.keys(submittedErrors).length > 0) return;
+
 
         const imageUrls = [ {url: previewImage, preview: true } ];
 
@@ -38,7 +103,6 @@ function SpotForm({ spot, formType }) {
         if (urlThree.length > 0) imageUrls.push({url: urlThree, preview: false});
         if (urlFour.length > 0) imageUrls.push({url: urlFour, preview: false});
         if (urlFive.length > 0) imageUrls.push({url: urlFive, preview: false});
-
 
         const newSpot = {
             ownerId: sessionUser.id,
@@ -54,44 +118,7 @@ function SpotForm({ spot, formType }) {
             spotImages: formType === "create" ? imageUrls : spot.spotImages
         };
 
-        const err = {};
-
-        if (country === "") err.country = "Country is required";
-        if (address === "") err.address = "Address is required";
-        if (city === "") err.city = "City is required";
-        if (state === "") err.state = "State is required";
-        if (address === "") err.address = "Address is required";
-        if (latitude === "") err.latitude = "Latitude is required";
-        if (longitude === "") err.longitude = "Longitude is required";
-        if (title === "") err.title = "Name is required";
-        if (description.length < 30) {
-            err.description = "Description needs a minimum of 30 characters"
-        }
-        if (price === 0) err.price = "Price is required"
-
-        if (formType === "create") {
-            if (previewImage === "") {
-                err.previewImage = "A preview image is required!"
-            }
-            if (previewImage && (!(previewImage.endsWith(".png")) && !(previewImage.endsWith(".jpg")) && !(previewImage.endsWith(".jpeg")))) {
-                err.previewImageEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
-            }
-            if (urlTwo && (!(urlTwo.endsWith(".png")) && !(urlTwo.endsWith(".jpg")) && !(urlTwo.endsWith(".jpeg")))) {
-                err.urlTwoEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
-            }
-            if (urlThree && (!(urlThree.endsWith(".png")) && !(urlThree.endsWith(".jpg")) && !(urlThree.endsWith(".jpeg")))) {
-                err.urlThreeEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
-            }
-            if (urlFour && (!(urlFour.endsWith(".png")) && !(urlFour.endsWith(".jpg")) && !(urlFour.endsWith(".jpeg")))) {
-                err.urlFourEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
-            }
-            if (urlFive && (!(urlFive.endsWith(".png")) && !(urlFive.endsWith(".jpg")) && !(urlFive.endsWith(".jpeg")))) {
-                err.urlFiveEnding = "Please make sure your images end with either .png, .jpg, or .jpeg";
-            }
-        }
-
-        setErrors(err); // this is asynchronous
-        if (Object.keys(err).length) return; // prevents from bad request
+        if (Object.values(newSpot).length === 0) return;
 
         if (formType === "update") {
             newSpot.id = spotId;
@@ -280,7 +307,7 @@ function SpotForm({ spot, formType }) {
                             value={previewImage}
                             onChange={(e) => setPreviewImage(e.target.value)}
                         />
-                        <p className="errors">{errors.previewImage}</p>
+                        <p className="errors">{errors.previewImage || errors.previewImageEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -289,6 +316,7 @@ function SpotForm({ spot, formType }) {
                             value={urlTwo}
                             onChange={(e) => setUrlTwo(e.target.value)}
                         />
+                        <p className="errors">{errors.urlTwoEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -297,6 +325,7 @@ function SpotForm({ spot, formType }) {
                             value={urlThree}
                             onChange={(e) => setUrlThree(e.target.value)}
                         />
+                        <p className="errors">{errors.urlThreeEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -305,6 +334,7 @@ function SpotForm({ spot, formType }) {
                             value={urlFour}
                             onChange={(e) => setUrlFour(e.target.value)}
                         />
+                        <p className="errors">{errors.urlFourEnding}</p>
                         <input
                             className="last-image-input"
                             type="text"
@@ -313,12 +343,12 @@ function SpotForm({ spot, formType }) {
                             value={urlFive}
                             onChange={(e) => setUrlFive(e.target.value)}
                         />
+                        <p className="errors">{errors.urlFiveEnding}</p>
                 </div>
                 }
             </div>
             <button
                 className="create-spot-button clickable"
-                disabled={Object.keys(errors).length > 0}
                 type="submit"
             >
                 {formType === "update" ? "Update Spot" : "Create Spot"}
