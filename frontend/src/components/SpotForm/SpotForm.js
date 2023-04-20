@@ -307,7 +307,7 @@ function SpotForm({ spot, formType }) {
                             value={previewImage}
                             onChange={(e) => setPreviewImage(e.target.value)}
                         />
-                        <p className="errors">{errors.previewImage}</p>
+                        <p className="errors">{errors.previewImage || errors.previewImageEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -316,6 +316,7 @@ function SpotForm({ spot, formType }) {
                             value={urlTwo}
                             onChange={(e) => setUrlTwo(e.target.value)}
                         />
+                        <p className="errors">{errors.urlTwoEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -324,6 +325,7 @@ function SpotForm({ spot, formType }) {
                             value={urlThree}
                             onChange={(e) => setUrlThree(e.target.value)}
                         />
+                        <p className="errors">{errors.urlThreeEnding}</p>
                         <input
                             className="image-input"
                             type="text"
@@ -332,6 +334,7 @@ function SpotForm({ spot, formType }) {
                             value={urlFour}
                             onChange={(e) => setUrlFour(e.target.value)}
                         />
+                        <p className="errors">{errors.urlFourEnding}</p>
                         <input
                             className="last-image-input"
                             type="text"
@@ -340,6 +343,7 @@ function SpotForm({ spot, formType }) {
                             value={urlFive}
                             onChange={(e) => setUrlFive(e.target.value)}
                         />
+                        <p className="errors">{errors.urlFiveEnding}</p>
                 </div>
                 }
             </div>
