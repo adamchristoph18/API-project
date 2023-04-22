@@ -90,6 +90,30 @@ module.exports = {
         name: 'Mountain Valley View',
         description:'Spending the night in a castle? You can! You are staying in a quiet, fairy tale environment.',
         price: 9240
+      },
+      {
+        ownerId: userIdMap.Dirk,
+        address: '471 Abbey Rd',
+        city: 'Muir of Ord',
+        state: 'Scotland',
+        country: 'United Kingdom',
+        lat: 78.5958941,
+        lng: 61.6933244,
+        name: 'Scatwell Manor',
+        description:'Scatwell House is the perfect place to rest and enjoy complete relaxation, located 10 km northwest of Marybank.',
+        price: 1340
+      },
+      {
+        ownerId: userIdMap.Dirk,
+        address: '9909 Corner Dr',
+        city: 'Breckenridge',
+        state: 'Colorado',
+        country: 'United States of America',
+        lat: 44.5954241,
+        lng: 61.6933270,
+        name: 'Cabin Oasis',
+        description:'With meticulous attention to detail and designed to deliver an epic experience.',
+        price: 2159
       }
     ], {});
   },

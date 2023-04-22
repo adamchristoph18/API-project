@@ -6,7 +6,7 @@ import './AllSpots.css';
 
 
 const AllSpots = () => {
-
+    // Grab the spots object directly from the store
     const spotsObj = useSelector(state => state.spots.allSpots);
     const spots = Object.values(spotsObj); // turn into array to map below
 

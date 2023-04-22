@@ -169,6 +169,56 @@ module.exports = {
         url: 'https://a0.muscache.com/im/pictures/miso/Hosting-630058522819373033/original/4335e754-0d0a-4ae1-bdb0-137bc035748b.jpeg?im_w=720',
         preview: false
       },
+      {
+        spotId: spotIdMap['Scatwell Manor'],
+        url: 'https://a0.muscache.com/im/pictures/65bbebc6-a897-4d58-a42b-0569133d6389.jpg',
+        preview: true
+      },
+      {
+        spotId: spotIdMap['Scatwell Manor'],
+        url: 'https://a0.muscache.com/im/pictures/1db4b74e-933e-4794-930e-3eeba23267bd.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Scatwell Manor'],
+        url: 'https://a0.muscache.com/im/pictures/80ca5709-125d-4612-922a-ec8a4b74a5f0.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Scatwell Manor'],
+        url: 'https://a0.muscache.com/im/pictures/2d22b361-3bfc-443b-95dd-d14e08fbcba8.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Scatwell Manor'],
+        url: 'https://a0.muscache.com/im/pictures/76772dc0-a917-4051-b0a1-86bdb716099d.jpg?im_w=720',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Cabin Oasis'],
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-553724453830698306/original/32a46b55-fee1-4553-bdba-a7a1c84b2bdd.jpeg',
+        preview: true
+      },
+      {
+        spotId: spotIdMap['Cabin Oasis'],
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-553724453830698306/original/bc192c28-9a78-47e2-b533-643e856006cd.jpeg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Cabin Oasis'],
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-553724453830698306/original/4ffdbc06-d624-484e-9505-8b534685c14a.jpeg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Cabin Oasis'],
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-553724453830698306/original/0eea157f-eeb0-4f6f-a3bc-9ab18dd1fc4e.jpeg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Cabin Oasis'],
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-553724453830698306/original/ac322ca8-d799-44a6-badf-d36a3ae158b6.jpeg',
+        preview: false
+      },
     ], {});
   },
 
