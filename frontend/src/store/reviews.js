@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 // Action type constants
 const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS';
+const GET_USERS_REVIEWS = 'reviews/GET_USERS_REVIEWS';
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 
@@ -10,6 +11,11 @@ export const loadReviews = (reviews) => ({
     type: LOAD_REVIEWS,
     reviews
 });
+
+export const getUsersReviews = (reviews) => ({
+    type: GET_USERS_REVIEWS,
+    reviews
+})
 
 export const createReview = (review) => ({
     type: CREATE_REVIEW,
@@ -34,6 +40,19 @@ export const getReviewsForSpotThunk = (spotId) => async (dispatch) => {
         return reviews;
     }
 };
+
+// Get all of the current user's reviews thunk
+export const getCurrentUsersReviewsThunk = () => async (dispatch) => {
+    const response = await csrfFetch('/api/reviews/current');
+
+    if (response.ok) {
+        const reviewsObj = await response.json();
+        const reviews = reviewsObj.Reviews;
+        dispatch(getUsersReviews(reviews));
+
+        return reviews;
+    }
+}
 
 // Create a review thunk
 export const createAReviewThunk = (payload) => async (dispatch) => {
