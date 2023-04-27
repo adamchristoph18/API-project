@@ -99,6 +99,13 @@ const reviewsReducer = (state = initialState, action) => {
             });
             return newState;
         }
+        case GET_USERS_REVIEWS: {
+            const newState = {...state, user: {...state.user}};
+            action.reviews.forEach(review => {
+                newState.user[review.id] = review
+            });
+            return newState;
+        }
         case CREATE_REVIEW: {
             const newState = {...state, spot: {...state.spot}};
             newState.spot[action.review.id] = action.review;
