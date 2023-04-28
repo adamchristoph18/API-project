@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import getCurrentUsersReviewsThunk from "../../store/reviews";
+import {getCurrentUsersReviewsThunk} from "../../store/reviews";
 import ReviewsList from "../ReviewsList/ReviewsList"
 import "./ManageReviews.css";
 import { useEffect } from "react";
