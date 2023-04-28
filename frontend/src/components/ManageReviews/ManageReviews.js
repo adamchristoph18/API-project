@@ -6,14 +6,13 @@ import { useEffect } from "react";
 
 const ManageReviews = () => {
     const reviewsObj = useSelector(state => state.reviews.user);
-    const reviewsArr = Object.values(reviewsObj);
+    const reviewsArr = Object.values(reviewsObj).reverse();
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCurrentUsersReviewsThunk());
     }, [dispatch]);
-
 
     if (!reviewsObj) return null;
 
