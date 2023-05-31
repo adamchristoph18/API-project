@@ -25,9 +25,6 @@ const SpotShow = () => {
     }, [dispatch, spotId, reviewsArr.length]);
 
     if (!spotObj) return null;
-    // if (!reviewsObj) return null;
-    // if (!imagesArr) return null;
-    // if (!reviewsArr.length) return null;
 
     const ownerOfSpotId = spotObj.Owner.id;
 
