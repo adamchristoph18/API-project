@@ -15,7 +15,7 @@ function Navigation({ isLoaded }){
         <NavLink className='short-havens-title' exact to="/">Short Havens</NavLink>
         <img
           className='site-logo'
-          src="./apple-touch-icon.png"
+          src="https://pixy.org/src/92/thumbs350/924358.jpg"
           alt='short-havens-logo'/>
       </div>
 
