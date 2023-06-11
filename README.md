@@ -4,6 +4,11 @@ Short Havens is a soft clone of AirBnB's website. Who doesn't need a vacation, o
 
 Visit the live site here -----> [Short Havens](https://short-havens.onrender.com)
 
+## Home Page
+
+![Screen Shot 2023-06-11 at 7 57 07 PM](https://github.com/adamchristoph18/Short-havens/assets/110206190/5f793c28-8d51-46f3-9ed6-42a9e4d63071)
+
+
 ## Database Schema Design
 
 ![airbnb-dbdiagram]
