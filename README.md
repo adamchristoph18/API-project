@@ -2,6 +2,8 @@
 
 Short Havens is a soft clone of AirBnB's website. Who doesn't need a vacation, or want to book a haven away from home? With that inspiration in mind, Short Havens serves users to be able to see available spots, create, update, and delete spots, and also leave reviews!
 
+Visit the live site here -----> [Short Havens](https://short-havens.onrender.com)
+
 ## Database Schema Design
 
 ![airbnb-dbdiagram]
