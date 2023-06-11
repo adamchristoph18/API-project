@@ -2,6 +2,11 @@ const express = require('express');
 const { requireAuth } = require('../../utils/auth');
 const { Spot, SpotImage } = require('../../db/models');
 
+const {
+    multipleMulterUpload,
+    multiplePublicFileUpload
+} = require('../../awsS3.js');
+
 const router = express.Router();
 
 
