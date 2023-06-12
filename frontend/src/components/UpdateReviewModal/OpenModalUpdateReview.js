@@ -20,7 +20,7 @@ function OpenModalUpdateReview({
     };
 
     return (
-      <div onClick={onClick}>{itemText}</div>
+      <div className="update-user-review-button" onClick={onClick}>{itemText}</div>
     );
   }
 
