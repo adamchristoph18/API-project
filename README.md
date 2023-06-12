@@ -31,12 +31,6 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 ![Screen Shot 2023-06-12 at 10 18 54 AM](https://github.com/adamchristoph18/Short-havens/assets/110206190/9c842cab-5dfd-4e3a-a5af-764cce0014e1)
 
 
-## Database Schema Design
-
-![airbnb-dbdiagram]
-
-[airbnb-dbdiagram]: ./assets/airbnb_dbdiagram.png
-
 ## API Documentation
 
 ## USER AUTHENTICATION/AUTHORIZATION
