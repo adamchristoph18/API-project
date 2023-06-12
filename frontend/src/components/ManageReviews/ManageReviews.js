@@ -17,7 +17,7 @@ const ManageReviews = () => {
     if (!reviewsObj) return null;
 
     return (
-        <div>
+        <div className="manage-reviews-div">
             <h1>Manage Reviews</h1>
             {reviewsArr.map(review => (
                 <ReviewsList
