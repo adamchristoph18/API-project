@@ -1,7 +1,10 @@
 import { useModal } from "../../context/Modal";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { createAReviewThunk, getReviewsForSpotThunk } from "../../store/reviews";
+import { useDispatch, useSelector } from "react-redux";
+import { createAReviewThunk,
+         getReviewsForSpotThunk,
+         updateReviewThunk,
+         getCurrentUsersReviewsThunk } from "../../store/reviews";
 import "./CreateReviewModal.css";
 // import thunk here
 
@@ -11,6 +14,8 @@ function CreateReviewModal({ spotId, oldReview }) {
     const [review, setReview] = useState(oldReview?.review || "");
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
+
+    const sessionUser = useSelector(state => state.session.user);
 
     const dispatch = useDispatch();
 
@@ -27,19 +32,27 @@ function CreateReviewModal({ spotId, oldReview }) {
             stars: rating
         };
 
+        const updatedReview = {
+            user: sessionUser,
+            id: oldReview?.id,
+            review,
+            stars: rating
+        };
+
         const err = {};
         if (review.length < 10) err.review = "Please make your review at least 10 characters";
 
         setErrors(err);
         if (Object.keys(errors).length) return;
 
-        const retReview = await dispatch(createAReviewThunk(newReview));
+        const retReview = oldReview ? await dispatch(updateReviewThunk(updatedReview)) : await dispatch(createAReviewThunk(newReview));
 
 
         if (retReview.errors) {
             setErrors(retReview.errors);
         } else {
             dispatch(getReviewsForSpotThunk(spotId));
+            dispatch(getCurrentUsersReviewsThunk());
             closeModal();
         }
     };
