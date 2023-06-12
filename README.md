@@ -13,6 +13,10 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
+## Wiki Links
+
+![Redux Store Shape](https://github.com/adamchristoph18/Short-havens/wiki/Redux-Store-Shape)
+![DB Schema](https://github.com/adamchristoph18/Short-havens/wiki/Short-Havens-DataBase-Schema)
 
 ## Home Page
 
