@@ -5,10 +5,10 @@ import { createAReviewThunk, getReviewsForSpotThunk } from "../../store/reviews"
 import "./CreateReviewModal.css";
 // import thunk here
 
-function CreateReviewModal({ spotId }) {
+function CreateReviewModal({ spotId, oldReview }) {
     const [rating, setRating] = useState(1);
-    const [activeRating, setActiveRating] = useState(1);
-    const [review, setReview] = useState("");
+    const [activeRating, setActiveRating] = useState(oldReview?.stars || 1);
+    const [review, setReview] = useState(oldReview?.review || "");
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
 

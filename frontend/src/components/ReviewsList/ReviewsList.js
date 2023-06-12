@@ -54,7 +54,7 @@ const ReviewsList = ({ review }) => {
                     <OpenModalUpdateReview
                         itemText="Update Review"
                         review={review}
-                        modalComponent={<CreateReviewModal update={true} review={review} />}
+                        modalComponent={<CreateReviewModal oldReview={review} />}
                     />
                 </div>
             )}
