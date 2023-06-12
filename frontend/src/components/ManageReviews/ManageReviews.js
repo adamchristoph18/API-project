@@ -19,7 +19,8 @@ const ManageReviews = () => {
     return (
         <div className="manage-reviews-div">
             <h1>Manage Reviews</h1>
-            {reviewsArr.map(review => (
+            {reviewsArr.length === 0 ? <p>You have not posted any reviews yet!</p>
+            : reviewsArr.map(review => (
                 <ReviewsList
                     review={review}
                     key={review.id}
