@@ -23,6 +23,11 @@
     text-align: center;
 }
 
+.delete-review-button:hover {
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.7);
+    transition: ease-in .15s;
+}
+
 .confirm-delete-mdl {
     height: 280px;
 }
