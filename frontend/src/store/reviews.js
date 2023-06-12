@@ -100,7 +100,7 @@ const reviewsReducer = (state = initialState, action) => {
             return newState;
         }
         case GET_USERS_REVIEWS: {
-            const newState = {...state, user: {...state.user}};
+            const newState = {...state, user: {}};
             action.reviews.forEach(review => {
                 newState.user[review.id] = review
             });
@@ -112,8 +112,9 @@ const reviewsReducer = (state = initialState, action) => {
             return newState;
         }
         case DELETE_REVIEW: {
-            const newState = {...state, spot: {...state.spot}};
+            const newState = {...state, spot: {...state.spot}, user: {...state.user}};
             delete newState.spot[action.reviewId];
+            delete newState.user[action.reviewId];
             return newState;
         }
         default:

@@ -12,7 +12,7 @@ const ManageReviews = () => {
 
     useEffect(() => {
         dispatch(getCurrentUsersReviewsThunk());
-    }, [dispatch]);
+    }, [dispatch, reviewsArr.length]);
 
     if (!reviewsObj) return null;
 
