@@ -15,8 +15,8 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 
 ## Wiki Links
 
-![Redux Store Shape](https://github.com/adamchristoph18/Short-havens/wiki/Redux-Store-Shape)
-![DB Schema](https://github.com/adamchristoph18/Short-havens/wiki/Short-Havens-DataBase-Schema)
+- [Redux Store Shape](https://github.com/adamchristoph18/Short-havens/wiki/Redux-Store-Shape)
+- [DB Schema](https://github.com/adamchristoph18/Short-havens/wiki/Short-Havens-DataBase-Schema)
 
 ## Home Page
 
