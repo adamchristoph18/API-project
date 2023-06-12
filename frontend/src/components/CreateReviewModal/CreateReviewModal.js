@@ -5,6 +5,7 @@ import { createAReviewThunk,
          getReviewsForSpotThunk,
          updateReviewThunk,
          getCurrentUsersReviewsThunk } from "../../store/reviews";
+import { displaySpotThunk } from '../../store/spots';
 import "./CreateReviewModal.css";
 // import thunk here
 
@@ -47,12 +48,12 @@ function CreateReviewModal({ spotId, oldReview }) {
 
         const retReview = oldReview ? await dispatch(updateReviewThunk(updatedReview)) : await dispatch(createAReviewThunk(newReview));
 
-
         if (retReview.errors) {
             setErrors(retReview.errors);
         } else {
             dispatch(getReviewsForSpotThunk(spotId));
             dispatch(getCurrentUsersReviewsThunk());
+            dispatch(displaySpotThunk(spotId));
             closeModal();
         }
     };

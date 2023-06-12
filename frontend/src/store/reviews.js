@@ -104,7 +104,7 @@ export const updateReviewThunk = (payload) => async (dispatch) => {
     } = payload;
 
     const newReview = { review, stars };
-
+    console.log('yeeeet -------> ', newReview);
     const response = await csrfFetch(`/api/reviews/${id}`, {
         method: 'PUT',
         headers: {
