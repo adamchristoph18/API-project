@@ -1,0 +1,17 @@
+.manage-reviews-div {
+    margin-left: 40px;
+}
+
+.back-home {
+    background-color: #ff5A5F;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+}
+
+.back-home:hover {
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
+}

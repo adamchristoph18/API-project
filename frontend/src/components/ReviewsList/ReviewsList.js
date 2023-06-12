@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import OpenModalConfirmDelete from "../ConfirmDeleteModal/OpenModalConfirmDelete";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
+import OpenModalUpdateReview from "../UpdateReviewModal/OpenModalUpdateReview";
+import CreateReviewModal from "../CreateReviewModal/CreateReviewModal";
 import "./ReviewsList.css";
 
 const ReviewsList = ({ review }) => {
@@ -43,11 +45,18 @@ const ReviewsList = ({ review }) => {
                 {review.review}
             </p>
             {sessionUser && review.User?.id === sessionUser.id && (
-                <OpenModalConfirmDelete
-                itemText="Delete Review"
-                review={review}
-                modalComponent={<ConfirmDeleteModal review={review} />}
-            />
+                <div className="user-review-options-line">
+                    <OpenModalConfirmDelete
+                        itemText="Delete Review"
+                        review={review}
+                        modalComponent={<ConfirmDeleteModal review={review} />}
+                    />
+                    <OpenModalUpdateReview
+                        itemText="Update Review"
+                        review={review}
+                        modalComponent={<CreateReviewModal spotId={review.spotId} oldReview={review} />}
+                    />
+                </div>
             )}
         </div>
     )
