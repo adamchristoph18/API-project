@@ -8,6 +8,14 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 
 ![Screen Shot 2023-06-11 at 7 57 07 PM](https://github.com/adamchristoph18/Short-havens/assets/110206190/5f793c28-8d51-46f3-9ed6-42a9e4d63071)
 
+## Individual Spot Page
+
+![Screen Shot 2023-06-12 at 10 10 52 AM](https://github.com/adamchristoph18/Short-havens/assets/110206190/b7c20bdc-1491-4669-8d94-a9c97c167967)
+
+## User's Manage Spots Page
+
+![Screen Shot 2023-06-12 at 10 18 54 AM](https://github.com/adamchristoph18/Short-havens/assets/110206190/9c842cab-5dfd-4e3a-a5af-764cce0014e1)
+
 
 ## Database Schema Design
 
