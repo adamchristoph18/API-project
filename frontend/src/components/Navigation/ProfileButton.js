@@ -65,6 +65,13 @@ function ProfileButton({ user }) {
                 closeMenu();
               }}
             >Manage Reviews</span>
+            <span
+              className="manage-bookings clickable"
+              onClick={(e) => {
+                history.push("/bookings/current")
+                closeMenu();
+              }}
+            >Manage Bookings</span>
             <span className="log-out clickable" onClick={logout}>
               Log Out
             </span>

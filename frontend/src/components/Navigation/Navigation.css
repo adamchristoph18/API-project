@@ -116,12 +116,24 @@
     width: 100%;
 }
 
+.manage-bookings {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+    width: 100%;
+}
+
 .manage-reviews:hover {
     background-color: rgb(253, 93, 75);
     color: white;
 }
 
 .manage-spots:hover {
+    background-color: rgb(253, 93, 75);
+    color: white;
+}
+
+.manage-bookings:hover {
     background-color: rgb(253, 93, 75);
     color: white;
 }
