@@ -1,10 +1,10 @@
 import "./CreateBookingModal.css";
 
-function CreateBookingModal() {
+function CreateBookingModal({ spotId, spotObj }) {
     return (
-        <>
-            Hello!
-        </>
+        <div>
+            <h3 className="book-modal-title">Let's Book Your Stay at {spotObj.name}!</h3>
+        </div>
     )
 }
 
