@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import OpenCreateReview from '../CreateReviewModal/OpenCreateReview';
+import OpenCreateBookingModal from '../CreateBookingModal/OpenCreateBookingModal';
+import CreateBookingModal from '../CreateBookingModal/CreateBookingModal';
 import './SpotShow.css';
 
 const SpotShow = () => {
@@ -106,10 +108,10 @@ const SpotShow = () => {
                             className='reviews-word'
                         >{spotObj.numReviews === 1 ? "Review" : "Reviews"}</p>
                     </div>
-                    <button
-                        onClick={() => alert("Feature coming soon!")}
-                        className='reserve-button clickable'
-                    >Reserve</button>
+                    <OpenCreateBookingModal
+                        itemText="Reserve"
+                        modalComponent={<CreateBookingModal spotId={spotId} />}
+                        />
                 </div>
             </div>
                 <div className='top-pillow'>

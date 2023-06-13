@@ -7,7 +7,6 @@ import { createAReviewThunk,
          getCurrentUsersReviewsThunk } from "../../store/reviews";
 import { displaySpotThunk } from '../../store/spots';
 import "./CreateReviewModal.css";
-// import thunk here
 
 function CreateReviewModal({ spotId, oldReview }) {
     const [rating, setRating] = useState(1);
