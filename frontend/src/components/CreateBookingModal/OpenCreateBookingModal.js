@@ -18,7 +18,7 @@ function OpenCreateBookingModal({
     };
 
     return (
-        <div className='reserve-button clickable' onClick={onClick}>{itemText}</div>
+        <div className='reserve-spot-button clickable' onClick={onClick}>{itemText}</div>
     );
 }
 
