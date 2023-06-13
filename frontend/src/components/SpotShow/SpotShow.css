@@ -147,6 +147,11 @@
     margin: 40px 15px 0 15px;
 }
 
+.cant-reserve {
+    margin-left: 20px;
+    font-style: italic;
+}
+
 @media screen and (max-width: 1000px) {
     .spot-images {
         display: block;
