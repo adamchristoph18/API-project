@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import OpenModalConfirmDelete from "../ConfirmDeleteModal/OpenModalConfirmDelete";
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 import OpenModalUpdateReview from "../UpdateReviewModal/OpenModalUpdateReview";
@@ -9,6 +10,8 @@ const ReviewsList = ({ review }) => {
     const dateCreated = new Date(review.createdAt);
     const month = dateCreated.getMonth();
     const year = dateCreated.getFullYear();
+
+    const history = useHistory();
 
     const months = {
         0: "January",
@@ -28,7 +31,7 @@ const ReviewsList = ({ review }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     return (
-        <div className="each-review">
+        <div className="each-review clickable" onClick={() => history.push(`/spots/${review.Spot.id}`)}>
             <h3 className="review-author">
                 {review.User?.firstName}
             </h3>
