@@ -57,6 +57,7 @@ function CreateBookingModal({ spotId, spotObj }) {
         }
 
         closeModal();
+        history.push('/bookings/current');
     };
 
     return (
