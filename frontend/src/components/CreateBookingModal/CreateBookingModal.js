@@ -74,7 +74,7 @@ function CreateBookingModal({ spotId, spotObj, existingBooking }) {
 
     return (
         <div>
-            <h3 className="book-modal-title">Let's Book Your Stay at {spotObj.name}!</h3>
+            {existingBooking ? <h3 className="book-modal-title">Update Your Stay at {spotObj.name}!</h3> : <h3 className="book-modal-title">Let's Book Your Stay at {spotObj.name}!</h3>}
             <form onSubmit={handleSubmit}>
                 <div className='modal-errors'>
                     {errors &&
