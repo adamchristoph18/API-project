@@ -56,9 +56,12 @@ function CreateBookingModal({ spotId, spotObj, existingBooking }) {
         setErrors({});
 
         const payload = { spotId, startDate, endDate };
+        const updatePayload = { bookingId: existingBooking?.id, startDate, endDate };
 
         try {
-            await dispatch(createNewBookingThunk(payload));
+            if (existingBooking) await dispatch(updateBookingThunk(updatePayload));
+            else await dispatch(createNewBookingThunk(payload));
+
             await dispatch(getCurrentUsersBookingsThunk());
         } catch (e) {
             let err = await e.json();

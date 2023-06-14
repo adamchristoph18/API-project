@@ -151,7 +151,8 @@ router.put('/:bookingId', requireAuth, validBooking, async(req, res, next) => {
     const newStartDate = new Date(startDate).getTime();
 
     if (newStartDate < now) {
-        const err = new Error("You can't modify a booking to be in the past!");
+        const err = new Error("This date is in the past!");
+        err.errors = {"BookingIssue": "This date is in the past!"}
         err.status = 403;
         return next(err);
     }
