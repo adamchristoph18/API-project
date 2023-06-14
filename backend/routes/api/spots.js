@@ -540,6 +540,7 @@ router.post('/:spotId/bookings', requireAuth, validBooking, async(req, res, next
 
     if (newStartDate < now) { // check to make sure user isn't trying to make a booking in the past
         const err = new Error("Please make a booking in the future!");
+        err.errors = {"Booking": "Please make a booking in the future!"}
         err.status = 403;
         return next(err);
     }

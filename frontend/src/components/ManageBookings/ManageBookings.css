@@ -1,0 +1,52 @@
+.manage-bookings-div {
+    margin-left: 40px;
+}
+
+.your-bookings-div {
+    display: flex;
+    flex-flow: row wrap;
+    /* border: 2px solid blue; */
+}
+
+.booking-card {
+    display: flex;
+    flex-flow: column;
+    width: 230px;
+    height: 400px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: white;
+    transition: transform .2s;
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    /* border: 2px solid red; */
+}
+
+.booking-card-image {
+    height: 50%;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.booking-spot-name {
+    margin: 10px 0 5px 10px;
+    /* border: 2px solid black; */
+}
+
+.booking-city-state {
+    font-size: 12px;
+    margin: 0px 0 10px 10px;
+    /* border: 2px solid black; */
+}
+
+.start-date-of-booking {
+    width: fit-content;
+    margin: 5px 0 0 25px;
+    /* border: 2px solid blue; */
+}
+
+.end-date-of-booking {
+    width: fit-content;
+    margin: 5px 0 0 25px;
+}

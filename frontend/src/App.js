@@ -7,6 +7,7 @@ import AllSpots from "./components/AllSpots";
 import SpotShow from "./components/SpotShow/SpotShow";
 import ManageSpots from "./components/ManageSpots/ManageSpots";
 import ManageReviews from "./components/ManageReviews/ManageReviews";
+import ManageBookings from "./components/ManageBookings/ManageBookings";
 import UpdateSpotForm from "./components/UpdateSpotForm/UpdateSpotForm";
 import CreateNewSpotForm from "./components/CreateNewSpotForm/CreateNewSpotForm";
 import './App.css';
@@ -28,6 +29,7 @@ function App() {
           <Route path="/spots/:spotId/edit"><UpdateSpotForm /></Route>
           <Route path="/spots/:spotId"><SpotShow /></Route>
           <Route path="/reviews/current"><ManageReviews /></Route>
+          <Route path="/bookings/current"><ManageBookings /></Route>
           <p>Page Not Found</p>
         </Switch>}
     </>
