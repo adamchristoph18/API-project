@@ -22,6 +22,12 @@
     /* border: 2px solid red; */
 }
 
+.booking-card:hover {
+    transform: scale(1.05);
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    transition: ease-in .15s;
+}
+
 .booking-card-image {
     height: 50%;
     object-fit: cover;
