@@ -109,10 +109,10 @@ const SpotShow = () => {
                         >{spotObj.numReviews === 1 ? "Review" : "Reviews"}</p>
                     </div>
                     {userOwnsSpot() ? (<div className='cant-reserve'>*You can't reserve your own spot</div>)
-                    : <OpenCreateBookingModal
-                            itemText="Reserve"
-                            modalComponent={<CreateBookingModal spotId={spotId} spotObj={spotObj} />}
-                        />}
+                    : sessionUser ? <OpenCreateBookingModal
+                    itemText="Reserve"
+                    modalComponent={<CreateBookingModal spotId={spotId} spotObj={spotObj} />}
+                /> : <div className='cant-reserve'>*Log in to reserve a spot</div>}
                 </div>
             </div>
                 <div className='top-pillow'>
