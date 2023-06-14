@@ -4,19 +4,22 @@
 
 .your-bookings-div {
     display: flex;
-    border: 2px solid blue;
+    flex-flow: row wrap;
+    /* border: 2px solid blue; */
 }
 
 .booking-card {
     display: flex;
     flex-flow: column;
     width: 230px;
+    height: 400px;
     margin-right: 15px;
     margin-bottom: 20px;
     border-radius: 15px;
     background-color: white;
     transition: transform .2s;
-    border: 2px solid red;
+    box-shadow: 3px 3px 2px rgba(128, 128, 128, .3);
+    /* border: 2px solid red; */
 }
 
 .booking-card-image {
@@ -35,4 +38,15 @@
     font-size: 12px;
     margin: 0px 0 10px 10px;
     /* border: 2px solid black; */
+}
+
+.start-date-of-booking {
+    width: fit-content;
+    margin: 5px 0 0 25px;
+    /* border: 2px solid blue; */
+}
+
+.end-date-of-booking {
+    width: fit-content;
+    margin: 5px 0 0 25px;
 }

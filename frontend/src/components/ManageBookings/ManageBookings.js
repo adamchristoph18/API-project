@@ -7,7 +7,7 @@ import "./ManageBookings.css";
 
 const ManageBookings = () => {
     const bookingsObj = useSelector(state => state.bookings.user);
-    const bookings = Object.values(bookingsObj);
+    const bookings = Object.values(bookingsObj).reverse();
 
     const dispatch = useDispatch();
 
