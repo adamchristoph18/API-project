@@ -7,34 +7,70 @@ import { createNewBookingThunk,
 import "./CreateBookingModal.css";
 
 function CreateBookingModal({ spotId, spotObj }) {
-    const dispatch = useDispatch();
     const history = useHistory();
+    const dispatch = useDispatch();
     const { closeModal } = useModal();
 
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
-    const [submitted, setSubmitted] = useState(false);
+    const user = useSelector(state => state.session.user);
+
+    const today = new Date();
+
+    const getTomorrow = (startDate) => {
+        const date = new Date(startDate);
+        date.setDate(date.getDate() + 1);
+        return date;
+    };
+
+    const formatDate = (str) => {
+        str = str.split("T")[0].split("-");
+        return [str[1], str[2], str[0]].join("/");
+    };
+
+    const [startDate, setStartDate] = useState(today);
+    const [tomorrow, setTomorrow] = useState(getTomorrow(today));
+    const [endDate, setEndDate] = useState(tomorrow);
     const [errors, setErrors] = useState({});
+
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    // Updates the minimum end date
+    useEffect(() => {
+        setTomorrow(getTomorrow(startDate));
+    }, [startDate]);
+
+    useEffect(() => {
+        if (endDate < tomorrow) setEndDate(tomorrow);
+    }, [tomorrow]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmitted(true);
+
+        setErrors({});
 
         const payload = { spotId, startDate, endDate };
-        const newBooking = await dispatch(createNewBookingThunk(payload));
 
-        if (newBooking.errors) {
-            setErrors(newBooking.errors);
-        } else {
-            dispatch(getCurrentUsersBookingsThunk());
-            closeModal();
+        try {
+            await dispatch(createNewBookingThunk(payload));
+        } catch (e) {
+            let err = await e.json();
+            return setErrors(err.errors);
         }
+
+        closeModal();
     };
 
     return (
         <div>
             <h3 className="book-modal-title">Let's Book Your Stay at {spotObj.name}!</h3>
             <form onSubmit={handleSubmit}>
+                <div className='modal-errors'>
+                    {errors &&
+                        Object.values(errors).map((error) => (
+                        <p className="error" key={error}>
+                            {error}
+                        </p>
+                        ))}
+                </div>
                 <label className="date-label">Start Date:</label>
                 <input
                     type="date"
