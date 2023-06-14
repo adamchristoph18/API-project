@@ -23,3 +23,14 @@
     height: 50%;
     object-fit: cover;
 }
+
+.booking-spot-name {
+    margin: 10px 0 5px 10px;
+    /* border: 2px solid black; */
+}
+
+.booking-city-state {
+    font-size: 12px;
+    margin: 0px 0 10px 10px;
+    /* border: 2px solid black; */
+}
