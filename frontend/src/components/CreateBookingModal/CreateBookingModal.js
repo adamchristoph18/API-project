@@ -66,7 +66,7 @@ function CreateBookingModal({ spotId, spotObj }) {
                 <div className='modal-errors'>
                     {errors &&
                         Object.values(errors).map((error) => (
-                        <p className="error" key={error}>
+                        <p className="booking-error" key={error}>
                             {error}
                         </p>
                         ))}
