@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { createNewBookingThunk,
-         getCurrentUsersBookingsThunk } from "../../store/bookings";
+         getCurrentUsersBookingsThunk,
+         updateBookingThunk } from "../../store/bookings";
 import "./CreateBookingModal.css";
 
 function CreateBookingModal({ spotId, spotObj, existingBooking }) {
@@ -32,6 +33,13 @@ function CreateBookingModal({ spotId, spotObj, existingBooking }) {
     const [errors, setErrors] = useState({});
 
     const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        if (existingBooking) {
+            setStartDate(new Date(existingBooking.startDate).toISOString().split("T")[0]);
+            setEndDate(new Date(existingBooking.endDate).toISOString().split("T")[0]);
+        }
+    }, [existingBooking]);
 
     // Updates the minimum end date
     useEffect(() => {
