@@ -1,5 +1,5 @@
 .each-review {
-    /* border: 1px solid red; */
+    border: 1px solid red;
     border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 }
 
