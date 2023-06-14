@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUsersBookingsThunk } from "../../store/bookings";
 import BookingCard from "./BookingCard";
@@ -21,11 +22,12 @@ const ManageBookings = () => {
         <div className="manage-bookings-div">
             <h1>Manage Your Bookings</h1>
             <div className="your-bookings-div">
-                {bookings.map(booking => (
-                    <BookingCard
-                        booking={booking}
-                        key={booking.id}
-                    />
+                {bookings.length === 0 ? <p>You have no trips scheduled.</p> :
+                    bookings.map(booking => (
+                        <BookingCard
+                            booking={booking}
+                            key={booking.id}
+                        />
                 ))}
             </div>
         </div>
