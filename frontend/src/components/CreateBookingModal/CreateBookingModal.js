@@ -6,7 +6,7 @@ import { createNewBookingThunk,
          getCurrentUsersBookingsThunk } from "../../store/bookings";
 import "./CreateBookingModal.css";
 
-function CreateBookingModal({ spotId, spotObj }) {
+function CreateBookingModal({ spotId, spotObj, existingBooking }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const { closeModal } = useModal();

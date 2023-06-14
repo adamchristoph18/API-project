@@ -65,6 +65,29 @@ export const createNewBookingThunk = (payload) => async (dispatch) => {
 };
 
 // Edit a booking thunk
+export const updateBookingThunk = (payload) => async (dispatch) => {
+    const { bookingId, startDate, endDate } = payload;
+    const newBooking = { startDate, endDate };
+
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newBooking)
+    });
+
+    if (response.ok) {
+        const booking = await response.json();
+
+        dispatch(updateBooking(booking)); // this line updates the state
+        return booking; // this sends the new spot to the frontend
+
+    } else {
+        const errResponse = await response.json();
+        return errResponse;
+    }
+};
 
 // Delete a booking thunk
 
@@ -81,6 +104,12 @@ const bookingsReducer = (state = initialState, action) => {
             return newState;
         }
         case CREATE_BOOKING: {
+            const newState = {...state, spot: {...state.spot}, user: {...state.user} };
+            newState.spot[action.booking.id] = action.booking;
+            newState.user[action.booking.id] = action.booking;
+            return newState;
+        }
+        case UPDATE_BOOKING: {
             const newState = {...state, spot: {...state.spot}, user: {...state.user} };
             newState.spot[action.booking.id] = action.booking;
             newState.user[action.booking.id] = action.booking;
