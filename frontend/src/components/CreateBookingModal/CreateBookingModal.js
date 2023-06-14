@@ -27,8 +27,8 @@ function CreateBookingModal({ spotId, spotObj, existingBooking }) {
         return [str[1], str[2], str[0]].join("/");
     };
 
-    const [startDate, setStartDate] = useState(today);
-    const [tomorrow, setTomorrow] = useState(getTomorrow(today));
+    const [startDate, setStartDate] = useState(today.toISOString().split("T")[0]);
+    const [tomorrow, setTomorrow] = useState(getTomorrow(today).toISOString().split("T")[0]);
     const [endDate, setEndDate] = useState(tomorrow);
     const [errors, setErrors] = useState({});
 
