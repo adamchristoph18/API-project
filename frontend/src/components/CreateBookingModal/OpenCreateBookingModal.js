@@ -6,9 +6,12 @@ function OpenCreateBookingModal({
     modalComponent, // component to render inside the modal
     itemText, // text of the menu item that opens the modal
     onItemClick, // optional: callback function that will be called once the menu item that opens the modal is clicked
-    onModalClose // optional: callback function that will be called once the modal is closed
+    onModalClose, // optional: callback function that will be called once the modal is closed
+    booking
 }) {
     const { setModalContent, setOnModalClose } = useModal();
+
+    const dolphinClassName = (booking ? "edit-booking-user-button clickable" : "reserve-spot-button clickable")
 
     const onClick = (e) => {
         e.stopPropagation();
@@ -18,7 +21,7 @@ function OpenCreateBookingModal({
     };
 
     return (
-        <div className='reserve-spot-button clickable' onClick={onClick}>{itemText}</div>
+        <div className={dolphinClassName} onClick={onClick}>{itemText}</div>
     );
 }
 

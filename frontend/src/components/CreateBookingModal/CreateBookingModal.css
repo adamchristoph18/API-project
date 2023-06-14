@@ -16,6 +16,23 @@
     transition: ease-in .15s;
 }
 
+.edit-booking-user-button {
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10px;
+    width: 70%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 2px black;
+}
+
+.edit-booking-user-button:hover {
+    box-shadow: 2px 2px 2px black;
+    transition: ease-in .15s;
+}
+
 .book-modal-title {
     margin: 20px 50px;
 }

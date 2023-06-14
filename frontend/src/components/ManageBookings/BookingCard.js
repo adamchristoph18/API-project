@@ -1,3 +1,5 @@
+import OpenCreateBookingModal from "../CreateBookingModal/OpenCreateBookingModal";
+import CreateBookingModal from "../CreateBookingModal/CreateBookingModal";
 import "./ManageBookings.css";
 
 const BookingCard = ({ booking }) => {
@@ -14,6 +16,12 @@ const BookingCard = ({ booking }) => {
             <p className="booking-city-state">{booking.Spot.city}, {booking.Spot.state}</p>
             <p className="start-date-of-booking">Start date: {formatDate(booking.startDate)}</p>
             <p className="end-date-of-booking">End date: {formatDate(booking.endDate)}</p>
+
+            <OpenCreateBookingModal
+                itemText="Edit Booking"
+                booking={true}
+                modalComponent={<CreateBookingModal spotId={booking.Spot.id} spotObj={booking.Spot} existingBooking={booking} />}
+            />
         </div>
     )
 };
