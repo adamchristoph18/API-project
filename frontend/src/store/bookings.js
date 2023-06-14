@@ -90,6 +90,15 @@ export const updateBookingThunk = (payload) => async (dispatch) => {
 };
 
 // Delete a booking thunk
+export const deleteBookingThunk = (bookingId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        dispatch(deleteBooking(bookingId));
+    }
+};
 
 
 // Bookings reducer
@@ -113,6 +122,12 @@ const bookingsReducer = (state = initialState, action) => {
             const newState = {...state, spot: {...state.spot}, user: {...state.user} };
             newState.spot[action.booking.id] = action.booking;
             newState.user[action.booking.id] = action.booking;
+            return newState;
+        }
+        case DELETE_BOOKING: {
+            const newState = {...state, spot: {...state.spot}, user: {...state.user} };
+            delete newState.spot[action.bookingId];
+            delete newState.user[action.bookingId];
             return newState;
         }
         default:

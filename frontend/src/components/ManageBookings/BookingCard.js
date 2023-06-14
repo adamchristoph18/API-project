@@ -1,5 +1,7 @@
 import OpenCreateBookingModal from "../CreateBookingModal/OpenCreateBookingModal";
 import CreateBookingModal from "../CreateBookingModal/CreateBookingModal";
+import OpenDeleteBookingModal from "../DeleteBookingModal/OpenDeleteBookingModal";
+import DeleteBookingModal from "../DeleteBookingModal/DeleteBookingModal";
 import "./ManageBookings.css";
 
 const BookingCard = ({ booking }) => {
@@ -21,6 +23,11 @@ const BookingCard = ({ booking }) => {
                 itemText="Edit Booking"
                 booking={true}
                 modalComponent={<CreateBookingModal spotId={booking.Spot?.id} spotObj={booking.Spot} existingBooking={booking} />}
+            />
+
+            <OpenDeleteBookingModal
+                itemText="Cancel Booking"
+                modalComponent={<DeleteBookingModal bookingId={booking.id} />}
             />
         </div>
     )
