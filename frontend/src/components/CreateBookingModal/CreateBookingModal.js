@@ -51,6 +51,7 @@ function CreateBookingModal({ spotId, spotObj }) {
 
         try {
             await dispatch(createNewBookingThunk(payload));
+            await dispatch(getCurrentUsersBookingsThunk());
         } catch (e) {
             let err = await e.json();
             return setErrors(err.errors);

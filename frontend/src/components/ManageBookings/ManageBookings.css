@@ -1,3 +1,25 @@
 .manage-bookings-div {
     margin-left: 40px;
 }
+
+.your-bookings-div {
+    display: flex;
+    border: 2px solid blue;
+}
+
+.booking-card {
+    display: flex;
+    flex-flow: column;
+    width: 230px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: white;
+    transition: transform .2s;
+    border: 2px solid red;
+}
+
+.booking-card-image {
+    height: 50%;
+    object-fit: cover;
+}
