@@ -44,7 +44,7 @@ module.exports = {
         price: 1290
       },
       {
-        ownerId: userIdMap['Dirk'],
+        ownerId: userIdMap['Adam'],
         address: '195 Twin Lakes Rd',
         city: 'Lac-Beauport',
         state: 'Quebec',
@@ -56,7 +56,7 @@ module.exports = {
         price: 790
       },
       {
-        ownerId: userIdMap['Dirk'],
+        ownerId: userIdMap['Adam'],
         address: '593 Copperstone Dr',
         city: 'Superior',
         state: 'Montana',
@@ -68,7 +68,7 @@ module.exports = {
         price: 4420
       },
       {
-        ownerId: userIdMap['Dirk'],
+        ownerId: userIdMap['Adam'],
         address: '741 Murwil Ct',
         city: 'Beverly Hills',
         state: 'California',
@@ -92,7 +92,7 @@ module.exports = {
         price: 9240
       },
       {
-        ownerId: userIdMap.Dirk,
+        ownerId: userIdMap.Adam,
         address: '471 Abbey Rd',
         city: 'Muir of Ord',
         state: 'Scotland',
@@ -104,7 +104,7 @@ module.exports = {
         price: 1340
       },
       {
-        ownerId: userIdMap.Dirk,
+        ownerId: userIdMap.Adam,
         address: '9909 Corner Dr',
         city: 'Breckenridge',
         state: 'Colorado',

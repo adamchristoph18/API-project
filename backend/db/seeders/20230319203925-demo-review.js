@@ -28,13 +28,13 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         spotId: spotIdMap['Pearl overlook'],
-        userId: userIdMap.John,
+        userId: userIdMap.Adam,
         review: 'Great place! Had a lot of fun. Wonderful memories. I stayed here with my extended family, and we had a blast!',
         stars: 4
       },
       {
         spotId: spotIdMap['Beaver Island Cove'],
-        userId: userIdMap.Dirk,
+        userId: userIdMap.Adam,
         review: 'So much fun. Brought my wife and kids. We all had fun. Would recommend this place to anyone who likes the outdoors!',
         stars: 5
       },

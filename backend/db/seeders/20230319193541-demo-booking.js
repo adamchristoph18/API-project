@@ -28,19 +28,19 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         spotId: spotIdMap['Beaver Island Cove'],
-        userId: userIdMap['Dirk'],
+        userId: userIdMap['Adam'],
         startDate: new Date('2023-09-14'),
         endDate: new Date('2023-10-03')
       },
       {
         spotId: spotIdMap['Pearl overlook'],
-        userId: userIdMap['John'],
+        userId: userIdMap['Adam'],
         startDate: new Date('2023-12-14'),
         endDate: new Date('2023-12-29')
       },
       {
-        spotId: spotIdMap['Black Bear Cove'],
-        userId: userIdMap['Carrie'],
+        spotId: spotIdMap['Mountain Valley View'],
+        userId: userIdMap['Adam'],
         startDate: new Date('2023-10-04'),
         endDate: new Date('2023-10-20')
       }
