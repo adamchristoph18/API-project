@@ -17,7 +17,7 @@ const AllSpots = () => {
         dispatch(getAllSpotsThunk())
     }, [dispatch]);
 
-    if (!spotsObj) return <LoadingPage />
+    if (!spots.length) return <LoadingPage />
 
     return (
         <div className="all-spots">
