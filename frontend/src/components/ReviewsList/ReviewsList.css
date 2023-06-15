@@ -1,5 +1,6 @@
 .each-review {
     border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    word-wrap: break-word;
     /* border: 1px solid red; */
 }
 

@@ -94,7 +94,7 @@ const SpotShow = () => {
             <div className='spot-details'>
                 <div>
                     <h2>Hosted by {spotObj.Owner.firstName} {spotObj.Owner.lastName}</h2>
-                    <p>{spotObj.description}</p>
+                    <p className='spot-description-p'>{spotObj.description}</p>
                 </div>
                 <div className='reserve-box'>
                     <div className='spot-info-above-reserve'>
