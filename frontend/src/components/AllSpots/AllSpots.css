@@ -1,8 +1,12 @@
+.all-spots-page {
+    height: 100vh;
+}
+
 .all-spots {
-    /* border: 2px solid green; */
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     margin: 30px auto;
     width: 98%;
+    /* border: 2px solid green; */
 }

@@ -20,13 +20,15 @@ const AllSpots = () => {
     if (!spots.length) return <LoadingPage />
 
     return (
-        <div className="all-spots">
-            {spots.map(spot => (
-                <SpotCard
-                    spot={spot}
-                    key={spot.id}
-                />
-            ))}
+        <div className="all-spots-page">
+            <div className="all-spots">
+                {spots.map(spot => (
+                    <SpotCard
+                        spot={spot}
+                        key={spot.id}
+                    />
+                ))}
+            </div>
         </div>
     )
 };

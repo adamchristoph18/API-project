@@ -22,7 +22,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="whole-site">
       <Navigation isLoaded={isLoaded} />
         {isLoaded && <Switch>
             <Route exact path="/"><AllSpots /></Route>
@@ -35,7 +35,7 @@ function App() {
             <PageNotFound />
           </Switch>}
         <Footer />
-    </>
+    </div>
   );
 }
 
