@@ -6,7 +6,7 @@ function LoadingPage() {
         <div className="loading-page">
             <BeatLoader
                 loading={true}
-                color="#36d7b7"
+                color="#ff5A5F"
                 size={20}
                 />
         </div>
