@@ -48,8 +48,6 @@ function SignupFormModal() {
         className="sign-up-form"
         onSubmit={handleSubmit}
       >
-        {errors.firstName && <p className="sign-up-errors">{errors.firstName}</p>}
-        {errors.lastName && <p>{errors.lastName}</p>}
       <label>
           <input
             type="text"
@@ -58,6 +56,7 @@ function SignupFormModal() {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             />
+        {errors.firstName && <p className="sign-up-errors">{errors.firstName}</p>}
         </label>
         <label>
           <input
@@ -67,6 +66,7 @@ function SignupFormModal() {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             />
+        {errors.lastName && <p className="sign-up-errors">{errors.lastName}</p>}
         </label>
         <label>
           <input
