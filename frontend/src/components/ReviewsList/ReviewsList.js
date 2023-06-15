@@ -31,7 +31,7 @@ const ReviewsList = ({ review }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     return (
-        <div className="each-review clickable" onClick={() => history.push(`/spots/${review.Spot.id}`)}>
+        <div className="each-review clickable" onClick={() => history.push(`/spots/${review.Spot?.id}`)}>
             <h3 className="review-author">
                 {review.User?.firstName}
             </h3>

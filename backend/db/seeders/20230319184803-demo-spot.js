@@ -114,6 +114,30 @@ module.exports = {
         name: 'Cabin Oasis',
         description:'With meticulous attention to detail and designed to deliver an epic experience.',
         price: 2159
+      },
+      {
+        ownerId: userIdMap['Carrie'],
+        address: '843 Hoag Ave',
+        city: 'Earleville',
+        state: 'Maryland',
+        country: 'United States of America',
+        lat: 36.5264790,
+        lng: 29.6333674,
+        name: 'Waterfront Paradise',
+        description:'It is a traditional style home that sleeps 18 & features 6,000 sq. ft. on 3 levels of living.',
+        price: 1200
+      },
+      {
+        ownerId: userIdMap['Dirk'],
+        address: '900 States Ave',
+        city: 'Bird in Hand',
+        state: 'Pennsylvania',
+        country: 'United States of America',
+        lat: 56.5264742,
+        lng: 81.6333777,
+        name: 'Bird Haven',
+        description:'It is a traditional style home that sleeps 18 & features 6,000 sq. ft. on 3 levels of living.',
+        price: 950
       }
     ], {});
   },

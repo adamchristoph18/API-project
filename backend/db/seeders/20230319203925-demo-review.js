@@ -49,6 +49,24 @@ module.exports = {
         userId: userIdMap.Carrie,
         review: 'Came back a second time, and had more fun. I brought a few friends with me this time, and there were less bugs.',
         stars: 4
+      },
+      {
+        spotId: spotIdMap['Waterfront Paradise'],
+        userId: userIdMap.Dirk,
+        review: 'My family and I had a great time, but got stuck with bad weather unfortunately. Still made some good memories.',
+        stars: 3
+      },
+      {
+        spotId: spotIdMap['Waterfront Paradise'],
+        userId: userIdMap.John,
+        review: 'Such an incredible place to take a quick vacation. Would recommend to anyone!',
+        stars: 5
+      },
+      {
+        spotId: spotIdMap['Waterfront Paradise'],
+        userId: userIdMap.Adam,
+        review: 'Not only was this place beautiful and spacious inside, we spent most time outside by the lake. So many things to do.',
+        stars: 4
       }
     ], {});
   },

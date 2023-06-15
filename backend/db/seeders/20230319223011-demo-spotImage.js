@@ -219,6 +219,56 @@ module.exports = {
         url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-553724453830698306/original/ac322ca8-d799-44a6-badf-d36a3ae158b6.jpeg',
         preview: false
       },
+      {
+        spotId: spotIdMap['Waterfront Paradise'],
+        url: 'https://a0.muscache.com/im/pictures/83c7dd43-2069-48aa-a580-fcce551c8518.jpg',
+        preview: true
+      },
+      {
+        spotId: spotIdMap['Waterfront Paradise'],
+        url: 'https://a0.muscache.com/im/pictures/c1fbc8b8-5f47-4c1a-ac54-1e5ea43d6ed9.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Waterfront Paradise'],
+        url: 'https://a0.muscache.com/im/pictures/cc94f0ad-cb8f-4fe2-aebd-89cce7a26895.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Waterfront Paradise'],
+        url: 'https://a0.muscache.com/im/pictures/1664dee0-e9c1-48cd-a37f-e2e4d816c071.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Waterfront Paradise'],
+        url: 'https://a0.muscache.com/im/pictures/da4e966f-0f8d-4bda-9a14-9054437211dd.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Bird Haven'],
+        url: 'https://a0.muscache.com/im/pictures/0ec4272c-06df-46cd-ac78-c8f94eaced85.jpg',
+        preview: true
+      },
+      {
+        spotId: spotIdMap['Bird Haven'],
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-35711829/original/672ee961-bc4f-4848-bc75-df5b860847ca.jpeg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Bird Haven'],
+        url: 'https://a0.muscache.com/im/pictures/6b6ebc54-bd6f-4327-b175-3469b2f6f27b.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Bird Haven'],
+        url: 'https://a0.muscache.com/im/pictures/92b9bfe5-e21a-432a-87a0-887391196467.jpg',
+        preview: false
+      },
+      {
+        spotId: spotIdMap['Bird Haven'],
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-35711829/original/76319a96-58af-4487-94f6-3d6ba3080f4a.jpeg',
+        preview: false
+      }
     ], {});
   },
 
