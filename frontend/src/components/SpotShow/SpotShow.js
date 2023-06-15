@@ -27,6 +27,10 @@ const SpotShow = () => {
         dispatch(displaySpotThunk(spotId));
     }, [dispatch, spotId, reviewsArr.length]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
     if (!spotObj || spotObj.id !== parseInt(spotId)) return <LoadingPage />;
 
     const ownerOfSpotId = spotObj.Owner.id;

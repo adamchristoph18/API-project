@@ -21,6 +21,10 @@ const ManageSpots = () => {
         dispatch(getAllSpotsThunk())
     }, [dispatch]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
     return (
         <div className='manage-spot-page'>
             <div className='manage-spots-header'>

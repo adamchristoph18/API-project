@@ -17,6 +17,10 @@ const AllSpots = () => {
         dispatch(getAllSpotsThunk())
     }, [dispatch]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
     if (!spots.length) return <LoadingPage />
 
     return (
