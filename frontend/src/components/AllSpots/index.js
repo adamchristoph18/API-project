@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../store/spots";
 import SpotCard from "../SpotCard";
+import LoadingPage from "../LoadingPage/LoadingPage";
 import './AllSpots.css';
 
 
@@ -15,6 +16,8 @@ const AllSpots = () => {
     useEffect(() => {
         dispatch(getAllSpotsThunk())
     }, [dispatch]);
+
+    if (!spotsObj) return <LoadingPage />
 
     return (
         <div className="all-spots">
