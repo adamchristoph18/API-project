@@ -8,7 +8,9 @@ import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import OpenCreateReview from '../CreateReviewModal/OpenCreateReview';
 import OpenCreateBookingModal from '../CreateBookingModal/OpenCreateBookingModal';
 import CreateBookingModal from '../CreateBookingModal/CreateBookingModal';
+import BeatLoader from 'react-spinners/BeatLoader';
 import './SpotShow.css';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 const SpotShow = () => {
     const { spotId } = useParams();
@@ -26,7 +28,7 @@ const SpotShow = () => {
         dispatch(displaySpotThunk(spotId));
     }, [dispatch, spotId, reviewsArr.length]);
 
-    if (!spotObj) return null;
+    if (!spotObj || spotObj.id !== parseInt(spotId)) return <LoadingPage />;
 
     const ownerOfSpotId = spotObj.Owner.id;
 
