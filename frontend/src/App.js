@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer/Footer";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 import AllSpots from "./components/AllSpots";
 import SpotShow from "./components/SpotShow/SpotShow";
 import ManageSpots from "./components/ManageSpots/ManageSpots";
@@ -31,7 +32,7 @@ function App() {
             <Route path="/spots/:spotId"><SpotShow /></Route>
             <Route path="/reviews/current"><ManageReviews /></Route>
             <Route path="/bookings/current"><ManageBookings /></Route>
-            <p>Page Not Found</p>
+            <PageNotFound />
           </Switch>}
         <Footer />
     </>

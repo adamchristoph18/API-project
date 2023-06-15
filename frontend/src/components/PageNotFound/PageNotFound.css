@@ -1,0 +1,23 @@
+.go-to-home {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: #ff5A5F;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+    margin-top: 15px;
+    width: 200px;
+}
+
+.page-not-found {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.oops {
+    font-size: 40px;
+    margin-bottom: 0px;
+}

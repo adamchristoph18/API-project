@@ -8,7 +8,6 @@ import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import OpenCreateReview from '../CreateReviewModal/OpenCreateReview';
 import OpenCreateBookingModal from '../CreateBookingModal/OpenCreateBookingModal';
 import CreateBookingModal from '../CreateBookingModal/CreateBookingModal';
-import BeatLoader from 'react-spinners/BeatLoader';
 import './SpotShow.css';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
