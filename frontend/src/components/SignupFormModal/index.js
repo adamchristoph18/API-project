@@ -50,7 +50,6 @@ function SignupFormModal() {
       >
         {errors.firstName && <p className="sign-up-errors">{errors.firstName}</p>}
         {errors.lastName && <p>{errors.lastName}</p>}
-        {errors.email && <p className="sign-up-errors">{errors.email}</p>}
       <label>
           <input
             type="text"
@@ -58,7 +57,7 @@ function SignupFormModal() {
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-          />
+            />
         </label>
         <label>
           <input
@@ -67,7 +66,7 @@ function SignupFormModal() {
             className="sign-up-input"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-          />
+            />
         </label>
         <label>
           <input
@@ -76,8 +75,9 @@ function SignupFormModal() {
             className="sign-up-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
+            />
         </label>
+          {errors.email && <p className="sign-up-errors">{errors.email}</p>}
         <label>
           <input
             type="text"
