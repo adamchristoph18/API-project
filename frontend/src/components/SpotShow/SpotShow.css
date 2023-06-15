@@ -152,6 +152,11 @@
     font-style: italic;
 }
 
+
+.spot-description-p {
+    word-wrap: break-word;
+}
+
 @media screen and (max-width: 1000px) {
     .spot-images {
         display: block;
