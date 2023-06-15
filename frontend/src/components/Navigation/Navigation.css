@@ -63,7 +63,7 @@
     position: fixed;
     margin-top: 12px;
     right: 75px;
-    width: 160px;
+    min-width: 160px;
 }
 
 .non-user-menu {
@@ -107,6 +107,10 @@
     padding: 5px 0;
     width: 100%;
     border-top: 2px solid black;
+}
+
+.user-display-email {
+    padding: 0 10px;
 }
 
 .manage-reviews {
