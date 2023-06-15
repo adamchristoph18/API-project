@@ -50,7 +50,7 @@ function ProfileButton({ user }) {
         {user ? (
           <div className="user-menu">
             <span className="greeting">Hello, {user.firstName}!</span>
-            <span>{user.email}</span>
+            <span className="user-display-email">{user.email}</span>
             <span
               className="manage-spots clickable"
               onClick={(e) => {
