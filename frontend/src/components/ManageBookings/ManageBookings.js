@@ -16,6 +16,10 @@ const ManageBookings = () => {
         dispatch(getCurrentUsersBookingsThunk());
     }, [dispatch]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
     if (!bookingsObj) return null;
 
     return (

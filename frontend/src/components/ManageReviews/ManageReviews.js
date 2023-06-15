@@ -15,6 +15,10 @@ const ManageReviews = () => {
         dispatch(getCurrentUsersReviewsThunk());
     }, [dispatch, reviewsArr.length]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
     if (!reviewsObj) return null;
 
     return (

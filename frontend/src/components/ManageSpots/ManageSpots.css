@@ -1,6 +1,7 @@
 .manage-spot-page {
     display: flex;
     flex-flow: column;
+    height: 100vh;
 }
 
 .manage-spots-header {

@@ -8,7 +8,6 @@ import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import OpenCreateReview from '../CreateReviewModal/OpenCreateReview';
 import OpenCreateBookingModal from '../CreateBookingModal/OpenCreateBookingModal';
 import CreateBookingModal from '../CreateBookingModal/CreateBookingModal';
-import BeatLoader from 'react-spinners/BeatLoader';
 import './SpotShow.css';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
@@ -27,6 +26,10 @@ const SpotShow = () => {
         dispatch(getReviewsForSpotThunk(spotId));
         dispatch(displaySpotThunk(spotId));
     }, [dispatch, spotId, reviewsArr.length]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
 
     if (!spotObj || spotObj.id !== parseInt(spotId)) return <LoadingPage />;
 

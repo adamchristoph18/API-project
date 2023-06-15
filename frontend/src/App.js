@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer/Footer";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 import AllSpots from "./components/AllSpots";
 import SpotShow from "./components/SpotShow/SpotShow";
 import ManageSpots from "./components/ManageSpots/ManageSpots";
@@ -20,19 +22,20 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="whole-site">
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && <Switch>
-          <Route exact path="/"><AllSpots /></Route>
-          <Route path="/spots/new"><CreateNewSpotForm /></Route>
-          <Route path="/spots/current"><ManageSpots /></Route>
-          <Route path="/spots/:spotId/edit"><UpdateSpotForm /></Route>
-          <Route path="/spots/:spotId"><SpotShow /></Route>
-          <Route path="/reviews/current"><ManageReviews /></Route>
-          <Route path="/bookings/current"><ManageBookings /></Route>
-          <p>Page Not Found</p>
-        </Switch>}
-    </>
+        {isLoaded && <Switch>
+            <Route exact path="/"><AllSpots /></Route>
+            <Route path="/spots/new"><CreateNewSpotForm /></Route>
+            <Route path="/spots/current"><ManageSpots /></Route>
+            <Route path="/spots/:spotId/edit"><UpdateSpotForm /></Route>
+            <Route path="/spots/:spotId"><SpotShow /></Route>
+            <Route path="/reviews/current"><ManageReviews /></Route>
+            <Route path="/bookings/current"><ManageBookings /></Route>
+            <PageNotFound />
+          </Switch>}
+        <Footer />
+    </div>
   );
 }
 

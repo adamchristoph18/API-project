@@ -14,3 +14,7 @@
 * {
     font-family: 'Poppins', sans-serif;
 }
+
+.whole-site {
+    height: 100vh;
+}
