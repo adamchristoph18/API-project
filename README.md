@@ -45,6 +45,27 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 ![CreateNewSpotForm](https://github.com/adamchristoph18/Short-havens/assets/110206190/acdc2205-f48e-463b-be38-8ce4f00e659d)
 
 
+## Getting Started
+
+1. Clone this repository
+     https://github.com/adamchristoph18/Short-havens/edit/main/README.md
+
+2. Install denpendencies into the Backed and the Frontend by making a terminal for each one and then run the following:
+     - npm install
+
+3. Create a .env file using the .envexample provided
+
+4. Set up your database with information from your .env and then run the following to create your database, migrate, and seed:
+     - npx dotenv sequelize db:create
+     - npx dotenv sequelize db:migrate
+     - npx dotenv sequelize db:seed:all
+
+5. Start the app for both backend and frontend using:
+     - npm start
+  
+6. Now you can either use the demo account or create your own account!
+
+
 ## API Documentation
 
 ## USER AUTHENTICATION/AUTHORIZATION
@@ -1479,3 +1500,8 @@ Return spots filtered by query parameters.
       }
     }
     ```
+
+## Future Features
+
+- AWS S3 for image file uploads
+- Google Maps API (Logged-in users will be able to locate a spot's general location on the spot details page)
