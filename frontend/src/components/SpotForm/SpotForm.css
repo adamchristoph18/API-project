@@ -5,6 +5,7 @@
 .new-spot-form {
     margin: 0 auto;
     width: 480px;
+    min-height: 100vh;
 }
 
 .form-title {
