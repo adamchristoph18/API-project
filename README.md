@@ -20,18 +20,29 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 
 ## Home Page
 
-![Screen Shot 2023-06-11 at 7 57 07 PM](https://github.com/adamchristoph18/Short-havens/assets/110206190/5f793c28-8d51-46f3-9ed6-42a9e4d63071)
+![Homepage](https://github.com/adamchristoph18/Short-havens/assets/110206190/42984675-fbc1-4e6d-a105-1b2ae24d0776)
 
 ![Screen Shot 2023-06-12 at 10 54 13 AM](https://github.com/adamchristoph18/Short-havens/assets/110206190/460f4fd7-a152-499e-8f3a-7d69dec7f555)
 
-
 ## Individual Spot Page
 
-![Screen Shot 2023-06-12 at 10 10 52 AM](https://github.com/adamchristoph18/Short-havens/assets/110206190/b7c20bdc-1491-4669-8d94-a9c97c167967)
+![SpotShowPage](https://github.com/adamchristoph18/Short-havens/assets/110206190/1e38270f-2657-4f25-bdae-29a5e74dcd0f)
 
 ## User's Manage Spots Page
 
-![Screen Shot 2023-06-12 at 10 18 54 AM](https://github.com/adamchristoph18/Short-havens/assets/110206190/9c842cab-5dfd-4e3a-a5af-764cce0014e1)
+![ManageSpotsPage](https://github.com/adamchristoph18/Short-havens/assets/110206190/e4bbf3dc-466b-46b5-a549-f3f516fb0bf2)
+
+## User's Manage Reviews Page & Update Review Modal
+
+![ManageReviews-UpdateReview](https://github.com/adamchristoph18/Short-havens/assets/110206190/4f6184b3-e823-4727-8a8f-3cbd34c5fbe9)
+
+## User's Manage Bookings Page
+
+![ManageBookingsPage](https://github.com/adamchristoph18/Short-havens/assets/110206190/52334547-2cf3-4eed-8bf8-3a2bb1027669)
+
+## Create New Spot Form
+
+![CreateNewSpotForm](https://github.com/adamchristoph18/Short-havens/assets/110206190/acdc2205-f48e-463b-be38-8ce4f00e659d)
 
 
 ## API Documentation
