@@ -15,8 +15,9 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 
 ## Wiki Links
 
-- [Redux Store Shape](https://github.com/adamchristoph18/Short-havens/wiki/Redux-Store-Shape)
 - [DB Schema](https://github.com/adamchristoph18/Short-havens/wiki/Short-Havens-DataBase-Schema)
+- [API Documentation](https://github.com/adamchristoph18/Short-havens/wiki/API-Documentation)
+- [Redux Store Shape](https://github.com/adamchristoph18/Short-havens/wiki/Redux-Store-Shape)
 
 ## Home Page
 
@@ -64,7 +65,27 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
      - npm start
   
 6. Now you can either use the demo account or create your own account!
-   
+
+
+# Features 
+
+## Spots
+* Users can create a Spot
+* Users can read/view other Spots
+* Users can update their Spot
+* Users can delete their Spot
+
+## Reviews
+* Users can create reviews for Spots
+* Users can read/view all of the reviews for a Spot
+* Users can delete/update their review for a Spot
+
+## Bookings
+Logged-in Users can
+* Create a booking at a spot
+* Update their booking at a spot
+* Read/view all of their bookings
+* Delete/cancel their bookings
 
 ## Future Features
 
