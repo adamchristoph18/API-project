@@ -1,6 +1,6 @@
 # Short Havens
 
-Short Havens is a soft clone of AirBnB's website. Who doesn't need a vacation, or want to book a haven away from home? With that inspiration in mind, Short Havens serves users to be able to see available spots, create, update, and delete spots, and also leave reviews!
+Short Havens is a soft clone of AirBnB's website. Who doesn't need a vacation, or want to book a haven away from home? With that inspiration in mind, Short Havens serves users to be able to see available spots, create, update, and delete spots, leave reviews, and create bookings!
 
 Visit the live site here -----> [Short Havens](https://short-havens.onrender.com)
 
@@ -49,7 +49,7 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 ## Getting Started
 
 1. Clone this repository
-     https://github.com/adamchristoph18/Short-havens
+     - https://github.com/adamchristoph18/Short-havens
 
 2. Install denpendencies into the Backed and the Frontend by making a terminal for each one and then run the following:
      - npm install
@@ -70,15 +70,15 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 # Features 
 
 ## Spots
-* Users can create a Spot
-* Users can read/view other Spots
-* Users can update their Spot
-* Users can delete their Spot
+* Users can create a spot
+* Users can read/view other spots
+* Users can update their spots
+* Users can delete their spots
 
 ## Reviews
-* Users can create reviews for Spots
-* Users can read/view all of the reviews for a Spot
-* Users can delete/update their review for a Spot
+* Users can post a review for a spot
+* Users can read/view all of the reviews for a spot
+* Users can delete/update their review for a spot
 
 ## Bookings
 Logged-in Users can
