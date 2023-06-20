@@ -492,6 +492,9 @@ const validBooking = async(req, res, next) => {
         const currBookingStart = new Date(booking.startDate).getTime();
         const currBookingEnd = new Date(booking.endDate).getTime();
 
+        const overlapDateStart = new Date(booking.startDate).toISOString().split("T")[0];
+        const overlapDateEnd = new Date(booking.endDate).toISOString().split("T")[0];
+
         if ((newBookingStart >= currBookingStart && newBookingStart <= currBookingEnd) && (newBookingEnd >= currBookingStart && newBookingEnd <= currBookingEnd)) {
             bookingConflict.errors.startDate = "Start date conflicts with an existing booking"
             bookingConflict.errors.endDate = "End date conflicts with an existing booking"
@@ -505,6 +508,11 @@ const validBooking = async(req, res, next) => {
 
         if (newBookingEnd >= currBookingStart && newBookingEnd <= currBookingEnd) {
             bookingConflict.errors.endDate = "End date conflicts with an existing booking"
+            return res.status(403).json(bookingConflict);
+        }
+
+        if (newBookingStart <= currBookingStart && newBookingEnd >= currBookingEnd) {
+            bookingConflict.errors.overlap = `Dates overlap with an existing booking that goes from ${overlapDateStart} to ${overlapDateEnd}`
             return res.status(403).json(bookingConflict);
         }
 
