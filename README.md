@@ -21,7 +21,7 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 
 ## Home Page
 
-![Homepage](https://github.com/adamchristoph18/Short-havens/assets/110206190/42984675-fbc1-4e6d-a105-1b2ae24d0776)
+![Homepage](https://github.com/adamchristoph18/Short-havens/assets/110206190/04708fc2-13df-47e8-b043-a2f9cfbf24eb)
 
 ![Screen Shot 2023-06-12 at 10 54 13 AM](https://github.com/adamchristoph18/Short-havens/assets/110206190/460f4fd7-a152-499e-8f3a-7d69dec7f555)
 
@@ -31,7 +31,7 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 
 ## User's Manage Spots Page
 
-![ManageSpotsPage](https://github.com/adamchristoph18/Short-havens/assets/110206190/e4bbf3dc-466b-46b5-a549-f3f516fb0bf2)
+![ManageSpotsPage](https://github.com/adamchristoph18/Short-havens/assets/110206190/d6c06252-e739-45d3-a84f-0c71d220257a)
 
 ## User's Manage Reviews Page & Update Review Modal
 
@@ -39,7 +39,7 @@ Visit the live site here -----> [Short Havens](https://short-havens.onrender.com
 
 ## User's Manage Bookings Page
 
-![ManageBookingsPage](https://github.com/adamchristoph18/Short-havens/assets/110206190/52334547-2cf3-4eed-8bf8-3a2bb1027669)
+![ManageBookingsPage](https://github.com/adamchristoph18/Short-havens/assets/110206190/f4f438f8-9069-4469-9c30-641e1c64bf62)
 
 ## Create New Spot Form
 
