@@ -41,6 +41,12 @@ function SignupFormModal() {
     });
   };
 
+  const demoUser = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({ credential: "demoUser", password: "password" }))
+      .then(closeModal)
+  }
+
   return (
     <>
       <h1 className="sign-up-title">Sign Up</h1>
@@ -117,6 +123,12 @@ function SignupFormModal() {
           Sign Up
         </button>
       </form>
+      <div
+        className="demo-user-link-sign-up clickable"
+        onClick={demoUser}
+      >
+        Demo User
+      </div>
     </>
   );
 }

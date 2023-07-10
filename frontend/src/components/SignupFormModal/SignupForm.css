@@ -19,8 +19,8 @@
 .submit-button-sign-up {
     width: 360px;
     height: 60px;
+    color: white;
     margin-left: 370px;
-    margin-bottom: 25px;
     background-color: rgb(253, 93, 75);
 }
 
@@ -37,4 +37,11 @@
     margin-top: -5px;
     margin-bottom: 5px;
     font-style: italic;
+}
+
+.demo-user-link-sign-up {
+    text-decoration: underline;
+    color: purple;
+    margin: 10px auto 30px auto;
+    width: fit-content;
 }
